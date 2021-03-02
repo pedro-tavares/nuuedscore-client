@@ -1,0 +1,93 @@
+body {
+  font-family: "Proxima Nova" !important;
+}
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../../fonts/ProximaNovaRegular.otf");
+
+  /* // src: url("../../fonts/ProximaNovaRegular.otf"); */
+}
+#about {
+  background-color: #46bc61;
+  color: white;
+}
+#strip {
+  background-color: #3a74b9;
+  margin-top: 4px;
+}
+
+.buttondemo {
+  background-color: #0074b9;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 50px;
+  font-size: 18px;
+  letter-spacing: 0.8;
+  margin: 70px 0px;
+  color: white;
+}
+.footer-bottam-text {
+  line-height: 80px;
+  background-color: #0074b9;
+  color: white;
+  font-family: "Proxima Nova";
+  font-size: small;
+}
+
+.paradisplay p {
+  font-size: 17px;
+}
+.iconsetting img {
+  height: 110px;
+  width: 80%;
+  margin-left: 50px;
+}
+@media(max-width:767px){
+  .iconsetting img {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+.ourvision img {
+  margin-top: -15px;
+}
+.ourstory img {
+  margin-top: 20px;
+}
+#navbarResponsive li {
+  margin-left: 8px;
+}
+#navbarResponsive ul li a {
+  margin-right: 20px;
+}
+
+#navbarResponsive button {
+  display: inline-block;
+  margin: 2% 20px;
+  padding: 5px 0px;
+  text-align: center;
+  width: 100px;
+  position: relative;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+}
+#navbarResponsive button {
+  display: inline-block;
+  margin: 2% 10px;
+  padding: 5px 0px;
+  text-align: center;
+  width: 100px;
+  position: relative;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+}
+.nav-item1::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1.5px;
+  /*background: #0074b9;*/
+  transition: width 0.3s;
+}

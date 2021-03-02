@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from nuuedscore.com/contactus.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 Feb 2021 15:20:00 GMT -->
+<head>
+    <title>NuuEDSCORE</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="content/Favicon_NuuEDScore.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="src/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="src/css/contactus.css" />
+    <script src="src/js/jquery.min.js"></script>
+    <script src="src/js/popper.min.js"></script>
+    <script src="src/js/bootstrap.min.js"></script>
+    <script src="src/js/jquery.validate.min.js"></script>
+    <!-- <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDS2RNuMo9weCVRKY8SabpjzCNzBFz4ggc&callback=myMap"></script> -->
+
+
+        
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // $("#map-container-google-12").css({
+            //     height: 500,
+               
+            // });
+            // var myLatlng = new google.maps.LatLng(37.387985, -122.083115);
+            // var mapOptions = {
+            //     zoom: 18,
+            //     center: myLatlng
+            // }
+            // var map = new google.maps.Map(document.getElementById("map-container-google-12"), mapOptions);
+            // var marker = new google.maps.Marker({
+            //     position: myLatlng,
+            //     title: "NuuEDSCORE"
+            // });
+            jQuery.validator.addMethod("lettersonly", function(value, element) {
+            return this.optional(element) || /^[a-z]+$/i.test(value);
+            }, "Letters only please"); 
+            
+            // marker.setMap(map);
+
+            $('#buttonSubmit').click(function () {
+                
+                $('form[id="contactus_form"]').validate({
+                    rules: {
+                        
+                        firstname: {
+                            required: true,
+                            lettersonly:true
+                        },
+                        lastname: {
+                            required: true,
+                            lettersonly:true
+                        },
+                        email: {
+                            required: true,
+                            email: true,
+                        },
+                        address: 'required',
+                        subject: 'required',
+                        message: 'required',
+                    },
+                    messages: {
+                        firstname: 'This field is required',
+                        lastname: 'This field is required',
+                        email: 'Enter a valid email',
+                        address: 'This field is required',
+                        subject: 'This field is required',
+                        message: 'This field is required',
+                    },
+                    submitHandler: function (form) {
+                        let firstname = $('#contactus_form').find('input[name="firstname"]').val();
+                        let lastname = $('#contactus_form').find('input[name="lastname"]').val();
+                        let email = $('#contactus_form').find('input[name="email"]').val();
+                        let address = $('#contactus_form').find('input[name="address"]').val();
+                        let subject = $('#contactus_form').find('input[name="subject"]').val();
+                        let txtmessage = $('#message').val();
+                        let contactdata = {
+                            "message": txtmessage,
+                            "address": address,
+                            "company": "",
+                            "email": email,
+                            "firstName": firstname,
+                            "interests": "Please put comma seperated interests",
+                            "lastName": lastname,
+                            "subject": subject,
+                            "type": "CONTACT"
+                        };
+                        $.ajax({
+                            url: 'http://54.200.78.46:9090/nuued-org/api/v1/contact/create',
+                            type: 'PUT',
+                            data: JSON.stringify(contactdata),
+                            dataType: "json",
+                            contentType: "application/json; charset=utf-8",
+                            success: function (response) {
+                                $('#firstname').val('');
+                                $('#lastname').val('');
+                                $('#email').val('');
+                                $('#address').val('');
+                                $('#subject').val('');
+                                $('#message').val('');
+                                $('#displayThanks').css('display', 'block');
+                            },
+                            error: function (e) {
+                                alert("error", e);
+                            }
+                        });
+
+                        return false;
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light position-sticky" id="mainNav">
+        <div class="container">
+          <a href="index.html">
+            <img class="img-fluid" src="content/NuLogo_Small.svg" style="width: 90px; height: 50px; margin-top: 10px; margin-bottom: 10px;">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item1">
+                <a class="nav-link js-scroll-trigger" href="index-2.html">Home</a>
+              </li>
+              <li class="nav-item1">
+                <a class="nav-link js-scroll-trigger" href="myexperience.html">The Experience</a>
+              </li>
+              <li class="nav-item1">
+                <a class="nav-link js-scroll-trigger" href="why.html">The Why</a>
+              </li>
+              <li class="nav-item1">
+                <a class="nav-link js-scroll-trigger" href="about.html">About Us</a>
+              </li>
+              <li class="nav-item1">
+                <a class="nav-link js-scroll-trigger" href="team.html">The Team</a>
+             </li>
+              <li class="nav-item1">
+                <a class="nav-link js-scroll-trigger" href="contactus.html">Contact Us</a>
+                </i>
+
+                <!--
+              <li class="nav-item">
+                <button onclick="location.href = 'http://54.200.78.46/app/#/auth/login';"
+                  class="btn btnNuuED">LOGIN</button>
+              </li>
+              <li class="nav-item">
+                <button onclick="location.href = 'http://54.200.78.46/app/#/auth/registration';"
+                  class="btn btn-secondary">SIGN UP</button>
+              </li>
+-->
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <form id="contactus_form" method="post" action="#">
+        
+        <!--
+        <div class="img-fluid bg-image">
+            <nav class="navbar navbar-expand-lg navbar-light position-sticky" id="mainNav">
+                <div class="container">
+                    <a href="http://54.200.78.46/">  <img class="img-fluid" src="content/NuLogo_Small.svg" style="width: 90px; height: 50px; margin-top: 15px;">
+                    </a>
+                </div>
+            </nav>
+        </div>-->
+
+        <section style="background-color: #0074b9; color: white; text-align: center; padding-top: 30px; padding-bottom: 20px;">
+            <h3>CONTACT US</h3>
+        </section>
+
+        <div class="" style="background-color: #46bc61; margin-top: 4px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <div id="ui">
+                            <form class="form-group">
+                                <div class="row" style="margin-top: 60px;">
+                                    <div class="col-lg-6">
+                                        <input type="text" id="firstname" name="firstname" class="form-control"
+                                            placeholder="First Name">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" id="lastname" name="lastname" class="form-control"
+                                            placeholder="Last Name">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="email" id="email" name="email" class="form-control"
+                                            placeholder="Email">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" id="address" name="address" class="form-control"
+                                            placeholder="Address">
+                                    </div>
+                                </div>
+                                
+                                <input type="text" id="subject" name="subject" class="form-control"
+                                    placeholder="Subject">
+                               
+                                <div>
+                                <textarea class="form-control" rows="5" name="message" id="message"
+                                    placeholder="Message"></textarea>
+                                </div>
+
+                        </div>
+                        <div class="text-center" style="margin: 30px 0px; border: none;">
+                            <input id="buttonSubmit" type="submit" class="btn btn-primary" value="SUBMIT" />
+                        </div>
+                        <h6 id="displayThanks" style="display:none; text-align: center; color: white; margin-top: 20px;" >
+                            Thanks for
+                            submitting!</h6>
+<!--
+                            <div id="map-container-google-12" class=" iframe-container z-depth-1-half map-container-7" style="height: 500px">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.081181105206!2d-122.08531398483761!3d37.38791237983178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb732c7fe7b95%3A0x92b5cb9d8dadf65d!2s650%20Castro%20St%20Suite%20%23120-276%2C%20Mountain%20View%2C%20CA%2094041%2C%20USA!5e0!3m2!1sen!2sin!4v1597921278700!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                              </div>-->             
+                           <!--<div id="googleMap"></div>--> 
+                           <div class=" d-block segment-one footercontent">
+                            <p>
+                                650 Castro Street<br>
+                                Suite #120-276<br>
+                                Mountain View Ca 94041<br>
+                    
+                                <br>info@nuuedscore.com
+                            </p>
+                        </div>
+                           
+    </form>
+    <!-- <img src="content/contact us.png " class="img-fluid text-center"> -->
+
+    </div>
+   
+    </div>
+    <div class="col-lg-2"></div>
+    
+    </div>
+    
+    </form>
+    
+    <Footer>
+        <p class="footer-bottam-text text-center text-white">© NuuEDSCORE LLC 2020 | <a href="#"><span class="text-white">Privacy Policy</span></a></p>
+    </Footer>
+    </div>
+    </div>
+</body>
+
+
+<!-- Mirrored from nuuedscore.com/contactus.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 Feb 2021 15:20:00 GMT -->
+</html>

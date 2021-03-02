@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>NuuEDSCORE</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="content/Favicon_NuuEDScore.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="src/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="src/css/scheduledemo.css" />
+    <script src="src/js/jquery.min.js"></script>
+    <script src="src/js/popper.min.js"></script>
+    <script src="src/js/bootstrap.min.js"></script>
+    <script src="src/js/jquery.validate.min.js"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDS2RNuMo9weCVRKY8SabpjzCNzBFz4ggc"></script> -->
+    <script src="../cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <!-- // <script src="src/js/additionalvalidate.js"></script> -->
+    <style>
+        .main-div:first-child{
+            width: 100%;
+            margin: 30px 30px;
+        }
+        .main-div{
+            display: inline-flex;
+            width: 100%;
+            margin-bottom: 20px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+        @media (max-width: 767px) {
+            .main-div{
+                display: block;
+                margin: 0 auto !important;
+            }
+            .main-div:first-child{
+                margin-top: 30px !important;
+            }
+        }
+        .main-div .content {
+            padding: 8px;
+        }
+        .main-div h6.checkbox-inline{
+            font-weight: bold;
+        }
+        .main-div p.checkbox-inline{
+            line-height: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light position-sticky" id="mainNav">
+        <div class="container">
+            <a href="index.html">
+                <img class="img-fluid" src="content/NuLogo_Small.svg"
+                    style="width: 90px; height: 50px; margin-top: 10px; margin-bottom: 10px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item1">
+                        <a class="nav-link js-scroll-trigger" href="index-2.html">Home</a>
+                    </li>
+                    <li class="nav-item1">
+                        <a class="nav-link js-scroll-trigger" href="myexperience.html">The Experience</a>
+                    </li>
+                    <li class="nav-item1">
+                        <a class="nav-link js-scroll-trigger" href="why.html">The Why</a>
+                    </li>
+                    <li class="nav-item1">
+                        <a class="nav-link js-scroll-trigger" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item1">
+                        <a class="nav-link js-scroll-trigger" href="team.html">The Team</a>
+                    </li>
+                    <li class="nav-item1">
+                        <a class="nav-link js-scroll-trigger" href="contactus.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section
+        style="background-color: #46bc61; color: white; text-align: center; padding-top: 30px; padding-bottom: 20px;">
+        <h3>CATEGORIES WE OFFER</h3>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="main-div">
+                <div class="col-md-6">
+                    <div class="content">
+                        <h6 class="checkbox-inline mb-0">Personality Assessments</h6>
+                        <p class="checkbox-inline">The measurement of personal characteristics. These assessmentsare an end result of gathering information intended to advance psychological theory and research and to increase the probabilitythat wise decisions will be made in applied settings.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content">
+                        <h6 class="checkbox-inline mb-0">Resourcing and Matching</h6>
+                        <p class="checkbox-inline">Proper resourcing is a key to success. NuuEDSCORE helps in this area with our robust recommendations engine that identifies such resources as tutors, recruiters, colleges, job listings and more.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-div">
+                <div class="col-md-6">
+                    <div class="content">
+                        <h6 class="checkbox-inline mb-0">Learning Style Assessments</h6>
+                        <p class="checkbox-inline">The measurement of a person’s preferential way to learn and how that person absorbs, processes, comprehends and retains information. Learners can use recognition of their individual learning styles to find what study methods, environments, and activities help them learn best.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content">
+                        <h6 class="checkbox-inline mb-0">Auto Onboarding</h6>
+                        <p class="checkbox-inline">NuuEDSCORE onboarding helps employers and people discover how their roles fit within the company's workforce. NuuEDSCORE addresses an employers need to improve productivity, employee engagement and employee retention helping employees know one another better and how to work together and communicate effectively.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-div">
+                <div class="col-md-6">
+                    <div class="content">
+                        <h6 class="checkbox-inline mb-0">Career Assessments</h6>
+                        <p class="checkbox-inline">Are designed to help individuals understand how a variety of personal attributes (i.e., data values, preferences, motivations, aptitudes and skills), impact their potential success and satisfaction with different career options and work environments.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content">
+                        <h6 class="checkbox-inline mb-0">Skills Development Training</h6>
+                        <p class="checkbox-inline">This training improves current or future employee performance by increasing an employee’s ability to perform through learning, usually by changing the employee’s attitude or increasing his or her skills and knowledge.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-div">
+                <div class="col-md-6">
+                    <div class="content">
+                        <h6 class="checkbox-inline mb-0">Skills Correlations (Matching)</h6>
+                        <p class="checkbox-inline">These are the skills results based from the Personality, Learning and Career assessments. The results identfies a persons strong and weak skills. Custom tailored skills results are provided to the learner based off of these matching correlations.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content">
+                        <h6 class="checkbox-inline mb-0">Entrepreneurship Skills</h6>
+                        <p class="checkbox-inline">A broad range of skills such as technical skills, leadership skills and busines management and creative thinking can lend to independent success and entreprenuership. Suc skill can be applied to many different roles within an organization or applied to self-directed business enterpriese.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-div">
+                <div class="col-md-6">
+                    <div class="content">
+                        <h6 class="checkbox-inline mb-0">Improve Reading</h6>
+                        <p class="checkbox-inline">We offer custom tailored content designed to effectively improve reading levels for both your personal and professional life which can increase your overall enjoyment of reading and contribute to your path to success.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content">
+                        <h6 class="checkbox-inline mb-0">Resume Building (Coming Soon)</h6>
+                        <p class="checkbox-inline">Development of professional resume templates with basic, modern, and creative styles is a NuuEDSCORE component that will be available soon. Resume Building component will include a critique and the ability to build, print, and download your resume in minutes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-div">
+                <div class="col-md-6">
+                    <div class="content">
+                        <h6 class="checkbox-inline mb-0">Financial Literacy (Coming Soon)</h6>
+                        <p class="checkbox-inline">The ability to understand and effectively use various financial skills, including personal financial management, budgeting, and investing is financial literacy. NuuEDSCORE will offer a financial literacy component soon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center m-2">
+            <a href="scheduledemo.html" class="btn btn-success">BACK</a>
+        </div>
+    </div>
+
+    <Footer>
+        <p class="footer-bottam-text text-center text-white">© NuuEDSCORE LLC 2020 | <a href="#"><span
+                    class="text-white">Privacy Policy</span></a></p>
+    </Footer>
+</body>
+</html>

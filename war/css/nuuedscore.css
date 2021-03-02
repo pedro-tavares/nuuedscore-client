@@ -1,0 +1,147 @@
+/*
+body {
+	font: "Arial",sans-serif;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #777777;
+  margin: 40px 0px 70px;
+  text-align: center;
+}
+
+button.gwt-Button {
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	color: white;
+	background: #5DBCD2;
+	cursor: pointer;
+}
+button.gwt-Button[disabled] {
+	background: lightgrey;
+}
+
+.gwt-DialogBox {
+  width: 400px;
+}
+
+.dialogVPanel {
+  margin: 5px;
+}
+
+.infoLbl {
+	font-weight: bold;
+ 	color: blue;
+}
+
+.errorLbl {
+	font-weight: bold;
+ 	color: red;
+}
+
+#closeButton {
+  margin: 15px 6px 6px;
+}
+
+.topPanel {
+	height: 75px;
+	width: 100%;
+	background-color: white;
+	border-bottom: 1px solid grey;
+	z-index: 1;
+	padding-right: 10px;
+}
+
+.loginPanel {
+	z-index: 1;
+}
+
+.centerPanel {
+	width: 100%;
+	height: 100%;
+	background-color: white;
+}
+
+.menuPanel {
+	z-index: 1;
+}
+
+.presentationPanel {
+	width: 100%;
+	height: 80px;
+	color: white;
+	background-color: darkgrey;
+	font-weight: bold;
+	opacity: 0.75;
+  	filter: alpha(opacity=75); 
+}
+
+.centerPanels {
+	width: 100%;
+	height: 100%;
+}
+
+.bottomPanel {
+	width: 100%;
+	height: 25px;
+	color: blue;
+	background-color: white;
+	font-weight: bold;
+	opacity: 0.75;
+  	filter: alpha(opacity=75);
+}
+
+.logoImg {
+	align: left;
+	z-index: 1000;
+}
+
+.centerImg {
+	width: 100%;
+	height: 100%;
+  	z-index: -1;
+}
+
+.centerImgLoggedin {
+	width: 100%;
+	height: 100%;
+  	z-index: -1;
+	opacity: 0.25;
+  	filter: alpha(opacity=25);
+}
+
+.loggedinPanel {
+	border-spacing: 10px;
+}
+.loggedinLabel {
+	font-weight: bold;
+}
+
+.titledPanel {
+	background-color: white;	
+}
+
+.titledPanelLabel {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.subTitledPanelLabel {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.fileUploadLabel {
+	width: 75px;
+}
+
+.listBoxServers {
+	overflow: hidden;	
+}
+
+.labelFileStatus {
+	font-weight: bold;
+	color: blue;
+}
+*/

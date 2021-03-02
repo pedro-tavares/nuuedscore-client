@@ -1,0 +1,128 @@
+body {
+  font-family: "Proxima Nova" !important;
+}
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../../fonts/ProximaNovaRegular.otf");
+
+  /* // src: url("../../fonts/ProximaNovaRegular.otf"); */
+}
+
+.btn-primary {
+  padding: 10px 70px;
+  background-color: #0074b9;
+  border-radius: 10px;
+}
+
+.form-group input {
+  border-radius: 10px;
+}
+.form-group textarea {
+  border-radius: 10px;
+}
+
+.sizeadjust {
+  margin-top: 50px;
+}
+.form-control {
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+form label {
+  display: inline-block;
+  width: 100px;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+  margin-left: 5px;
+}
+
+label.error {
+  display: inline;
+}
+.map-container-7 iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.footer-bottam-text {
+  line-height: 80px;
+  background-color: #0074b9;
+  color: white;
+  font-family: "Proxima Nova";
+  font-size: small;
+}
+.iframe-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+}
+.iframe-container > * {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+#navbarResponsive li {
+  margin-left: 8px;
+}
+#navbarResponsive ul li a {
+  margin-right: 20px;
+}
+
+#navbarResponsive button {
+  display: inline-block;
+  margin: 2% 20px;
+  padding: 5px 0px;
+  text-align: center;
+  width: 100px;
+  position: relative;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+}
+#navbarResponsive button {
+  display: inline-block;
+  margin: 2% 10px;
+  padding: 5px 0px;
+  text-align: center;
+  width: 100px;
+  position: relative;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+}
+.nav-item1::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1.5px;
+  /*background: #0074b9;*/
+  transition: width 0.3s;
+}
+.footercontent {
+  text-align: right;
+  color: white;
+  margin-top: 100px;
+}
+
+
+@media (max-width: 767.98px) {
+  .footercontent {
+    text-align: center;
+  }
+  
+}
