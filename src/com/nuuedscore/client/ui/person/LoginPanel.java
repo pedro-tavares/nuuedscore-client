@@ -31,22 +31,25 @@ import com.nuuedscore.shared.dto.Person;
  */
 public class LoginPanel extends VerticalPanel {
 	
+	private VerticalPanel
+		loginInnerPanel;
 	private Button 
 		loginButton, 
 		createAccountButton,
 		dialogCloseButton;
-	private Label 
+	private Label
+		viewTitleLabel,
 		//nameLbl, 
-		emailLbl, 
-		passwordLbl, 
+		emailLabel, 
+		passwordLabel, 
 		//reenterPasswordLbl, 
-		textToServerLbl, 
-		errorLbl;
+		textToServerLabel, 
+		errorLabel;
 	private TextBox 
 		//nameField, 
-		emailField;
+		emailValue;
 	private PasswordTextBox 
-		passwordField/*, 
+		passwordValue/*, 
 		reenterPasswordField*/
 		;
 	private HTML serverResponseLabel;
@@ -58,19 +61,28 @@ public class LoginPanel extends VerticalPanel {
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		this.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		
+		loginInnerPanel = new VerticalPanel();
+		loginInnerPanel.setStyleName("loginInnerPanel");
+		loginInnerPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		loginInnerPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+		loginInnerPanel.setSpacing(10);
+		
+		viewTitleLabel = new Label("LOGIN");
+		viewTitleLabel.setStyleName("viewTitleLabel");
+		
 		//nameLbl = new Label("Enter Name:");
 		//nameField = new TextBox();
 
-		emailLbl = new Label("Email Address");
-		emailField = new TextBox();
+		emailLabel = new Label("Email Address");
+		emailValue = new TextBox();
 
-		passwordLbl = new Label("Password");
-		passwordField = new PasswordTextBox();
-		passwordField.addFocusHandler(
+		passwordLabel = new Label("Password");
+		passwordValue = new PasswordTextBox();
+		passwordValue.addFocusHandler(
 			new FocusHandler() {
 				@Override
 			    public void onFocus(FocusEvent event) {
-					errorLbl.setText("");
+					errorLabel.setText("");
 			    }
 			});
 /*
@@ -84,23 +96,23 @@ public class LoginPanel extends VerticalPanel {
 				}
 			});
 */
-		loginButton = new Button("LOGIN");
-		createAccountButton = new Button("Create Account");
-
-		emailField.setFocus(true);
-		emailField.selectAll();
+		emailValue.setFocus(true);
+		emailValue.selectAll();
 		
-		errorLbl = new Label();
-		errorLbl.setStyleName("errorLbl");
+		errorLabel = new Label();
+		errorLabel.setStyleName("errorLbl");
 
 		createDialogBox();
 
+		loginButton = new Button("LOGIN");
+		createAccountButton = new Button("Create Account");
+		
 		loginButton.addClickHandler(event -> {
-			if (emailField.getText().equals("")) {
-				errorLbl.setText("Email cannot be empty!");
+			if (emailValue.getText().equals("")) {
+				errorLabel.setText("Email cannot be empty!");
 			}
-			else if (passwordField.getText().equals("")) {
-				errorLbl.setText("Password cannot be empty!");
+			else if (passwordValue.getText().equals("")) {
+				errorLabel.setText("Password cannot be empty!");
 			}
 /*			
 			else if (!passwordField.getText().equals(reenterPasswordField.getText())) {
@@ -108,30 +120,36 @@ public class LoginPanel extends VerticalPanel {
 			} 
 */			
 			else {
-				textToServerLbl.setText(emailField.getText());
+				textToServerLabel.setText(emailValue.getText());
 				//callLoginService();
 				
-				NuuEdScore.letsGo(emailField.getText());				
+				NuuEdScore.letsGo(emailValue.getText());				
 			}
 		});
 		
 		createAccountButton.addClickHandler(event -> {
 			CreateAccountDialog createAccountDialog = new CreateAccountDialog(
-				emailField.getText(),
-				passwordField.getText()
+				emailValue.getText(),
+				passwordValue.getText()
 			);
 			createAccountDialog.show();
 		});
 
-		this.add(emailLbl);
-		this.add(emailField);
-		this.add(passwordLbl);
-		this.add(passwordField);
-//		this.add(reenterPasswordLbl);
-//		this.add(reenterPasswordField);		
+		this.add(viewTitleLabel);
+		
+		this.add(loginInnerPanel);
+		loginInnerPanel.add(emailLabel);
+		loginInnerPanel.setCellHorizontalAlignment(emailLabel, HasHorizontalAlignment.ALIGN_LEFT);
+		loginInnerPanel.add(emailValue);
+		loginInnerPanel.add(passwordLabel);
+		loginInnerPanel.setCellHorizontalAlignment(passwordLabel, HasHorizontalAlignment.ALIGN_LEFT);
+		loginInnerPanel.add(passwordValue);
+//		innerPanel.add(reenterPasswordLbl);
+//		innerPanel.add(reenterPasswordField);
+		
 		this.add(loginButton);
 //		this.add(createAccountButton);
-		this.add(errorLbl);
+		this.add(errorLabel);
 	}
 
 	public void clear() {
@@ -145,14 +163,14 @@ public class LoginPanel extends VerticalPanel {
 
 		dialogCloseButton = new Button("Close");
 		dialogCloseButton.getElement().setId("closeButton");
-		textToServerLbl = new Label();
+		textToServerLabel = new Label();
 		serverResponseLabel = new HTML();
 
 		VerticalPanel dialogVPanel = new VerticalPanel();
 		dialogVPanel.addStyleName("dialogVPanel");
 
 		dialogVPanel.add(new HTML("<b>Login via email:</b>"));
-		dialogVPanel.add(textToServerLbl);
+		dialogVPanel.add(textToServerLabel);
 
 		dialogVPanel.add(new HTML("<br><b>Server replies:</b>"));
 		dialogVPanel.add(serverResponseLabel);
@@ -176,8 +194,8 @@ public class LoginPanel extends VerticalPanel {
 	}
 
 	public void autoLogin() {
-		emailField.setText("pedro.javalabs@gmail.com");
-		passwordField.setText("password"); 
+		emailValue.setText("pedro.javalabs@gmail.com");
+		passwordValue.setText("password"); 
 		loginButton.click();
 	}
 	
@@ -189,8 +207,8 @@ public class LoginPanel extends VerticalPanel {
 		
 		Person user = new Person();
 		user.setName("");
-		user.setEmail(emailField.getText());
-		user.setPassword(passwordField.getText());
+		user.setEmail(emailValue.getText());
+		user.setPassword(passwordValue.getText());
 		
 		ServiceFactory.PERSON_SERVICE.login(user, new MethodCallback<String>() {
 

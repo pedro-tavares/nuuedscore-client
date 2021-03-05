@@ -3,12 +3,12 @@
   --blue: #0074B9;
   --white: #ffffff;
 }
-
 body {
-	font: "Arial",sans-serif;
-	background-color: var(--blue);
+	background-color: white;
+    font-size: 0.875em;
+    font-family: "Proxima Nova";
+    overflow-x: hidden !important;
 }
-
 h1 {
   font-size: 2em;
   font-weight: bold;
@@ -16,65 +16,74 @@ h1 {
   margin: 40px 0px 70px;
   text-align: center;
 }
-
-button.gwt-Button {
-	height: 25px;
-	border: none;
-	border-radius: 7px;
-	-moz-border-radius: 7px;
-	color: white;
-	background: var(--blue);
-	cursor: pointer;
+/** LABEL **/
+.poweredByRAILabel {
+	z-index: 999;
 }
-button.gwt-Button[disabled] {
-	background: lightgrey;
+.loggedinLabel {
+	font-weight: bold;
 }
-
-.gwt-DialogBox {
-  width: 400px;
+.viewTitleLabel {
+	color: var(--blue);
+	font-size: 30px;
 }
-
-.dialogVPanel {
-  margin: 5px;
+.fileUploadLabel {
+	width: 75px;
 }
-
+.fileStatusLabel {
+	font-weight: bold;
+	color: blue;
+}
+.titledPanelLabel {
+	font-size: 25px;
+	font-weight: bold;
+}
+.subTitledPanelLabel {
+	font-size: 15px;
+	font-weight: bold;
+}
 .infoLbl {
 	font-weight: bold;
  	color: blue;
 }
-
 .errorLbl {
 	font-weight: bold;
  	color: red;
 }
 
-#closeButton {
-  margin: 15px 6px 6px;
-}
-
+/** PANEL */
 .topPanel {
 	height: 75px;
 	width: 100%;
 	background-color: white;
-	border-bottom: 1px solid grey;
+	border-bottom: 3px solid var(--green);
 	z-index: 1;
 	padding-right: 10px;
 }
-
-.loginPanel {
+.loginInnerPanel {
 	z-index: 1;
+	color: white;
 	background-color: var(--green);
+	border: 3px solid var(--blue);
+  	border-radius: 10px;
+  	-moz-border-radius: 10px;
+	width: 80%;
+	padding: 50px;
 }
-
+.loggedinPanel {
+	border-spacing: 10px;
+}
+.menuPanel {
+	z-index: 1;
+}
 .centerPanel {
 	width: 100%;
 	height: 100%;
 }
-
-.menuPanel {
-	z-index: 1;
+.centerPanels {
+	width: 100%;
+	/*height: 100%;*/
 }
-
 .presentationPanel {
 	width: 100%;
 	height: 80px;
@@ -84,12 +93,9 @@ button.gwt-Button[disabled] {
 	opacity: 0.75;
   	filter: alpha(opacity=75); 
 }
-
-.centerPanels {
-	width: 100%;
-	height: 100%;
+.titledPanel {
+	background-color: white;	
 }
-
 .bottomPanel {
 	width: 100%;
 	height: 25px;
@@ -99,20 +105,76 @@ button.gwt-Button[disabled] {
 	opacity: 0.75;
   	filter: alpha(opacity=75);
 }
+.dialogVPanel {
+  margin: 5px;
+}
 
+/** TEXTBOX **/
+.gwt-TextBox {
+	height: 25px;
+	width: 100%;
+	padding: 2px;
+	background: #E8F0FE;
+	border-color: #CED4DA;
+  	border-radius: 10px;
+  	-moz-border-radius: 10px;
+}
+.gwt-PasswordTextBox-readonly {
+ 	color: #888;
+}
+.gwt-PasswordTextBox {
+	height: 25px;
+	width: 100%;
+	padding: 2px;
+	background: #E8F0FE;
+	border-color: #CED4DA;
+  	border-radius: 10px;
+  	-moz-border-radius: 10px;}
+.gwt-PasswordTextBox-readonly {
+ 	color: #888;
+}
+
+/** BUTTON */
+button.gwt-Button {
+  background: var(--blue);
+  border: none;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 10px 50px;
+  font-size: 18px;
+  letter-spacing: 0.8;
+  margin: 70px 0px;
+  color: white;
+  cursor: pointer;
+}
+button.gwt-Button[selected] {
+	background: red;
+}
+button.gwt-Button[disabled] {
+	background: lightgrey;
+}
+
+/** DIALOG **/
+.gwt-DialogBox {
+  width: 400px;
+}
+
+#closeButton {
+  margin: 15px 6px 6px;
+}
+
+/** IMAGE **/
 .logoImg {
 	width: 90px;
 	height: 50px;
 	z-index: 1000;
 	padding: 10px;
 }
-
 .centerImg {
 	width: 100%;
 	height: 100%;
   	z-index: -1;
 }
-
 .centerImgLoggedin {
 	width: 100%;
 	height: 100%;
@@ -121,36 +183,7 @@ button.gwt-Button[disabled] {
   	filter: alpha(opacity=25);
 }
 
-.loggedinPanel {
-	border-spacing: 10px;
-}
-.loggedinLabel {
-	font-weight: bold;
-}
-
-.titledPanel {
-	background-color: white;	
-}
-
-.titledPanelLabel {
-	font-size: 25px;
-	font-weight: bold;
-}
-
-.subTitledPanelLabel {
-	font-size: 15px;
-	font-weight: bold;
-}
-
-.fileUploadLabel {
-	width: 75px;
-}
-
+/** LIST **/
 .listBoxServers {
 	overflow: hidden;	
-}
-
-.labelFileStatus {
-	font-weight: bold;
-	color: blue;
 }

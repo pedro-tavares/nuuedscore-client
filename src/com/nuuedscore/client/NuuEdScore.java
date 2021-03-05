@@ -12,6 +12,7 @@ import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.nuuedscore.IConstants;
@@ -39,6 +40,7 @@ public class NuuEdScore implements EntryPoint {
 	
 	private static CenterPanel centerPanel = new CenterPanel();
 	private static LoginPanel loginPanel = new LoginPanel();
+	private static Label poweredByRAILabel = new Label("Powered by R AI");
 	private static Image 
 		centerImg,
 		centerImgLoggedIn;
@@ -94,15 +96,13 @@ public class NuuEdScore implements EntryPoint {
 	}
 	
 	private void createUI() {
-		/*
-		centerImg = new Image("images/background.jpg");
-		centerImg.setStyleName("centerImg");
+		centerImg = new Image("images/NuuEDScore_Background.png");
+		centerImg.setStyleName("centerImgLoggedin");
 		RootPanel.get().add(centerImg, 0, 0);
-		*/
 		
 		topPanel = new HorizontalPanel();
 		topPanel.setStyleName("topPanel");
-		topPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
+		//topPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 		topPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		
 		Image logoImg = new Image("images/NuLogo_Small.jpg");
@@ -113,6 +113,12 @@ public class NuuEdScore implements EntryPoint {
 		
 		topPanel.add(logoImg);
 		topPanel.setCellHorizontalAlignment(logoImg, HasHorizontalAlignment.ALIGN_LEFT);
+		
+		topPanel.add(poweredByRAILabel);
+		topPanel.setCellHorizontalAlignment(poweredByRAILabel, HasHorizontalAlignment.ALIGN_LEFT);
+
+		poweredByRAILabel.setStyleName("poweredByRAILabel");
+		RootPanel.get().add(poweredByRAILabel, 110, 45);
 		
 		resize();
 		
@@ -142,7 +148,7 @@ public class NuuEdScore implements EntryPoint {
 			topPanel.add(loginPanel);
 		}
 */		
-		loginPanel.setStyleName("loginPanel");
+
 		centerPanel.add(loginPanel);
 		centerPanel.setCellVerticalAlignment(loginPanel, HasVerticalAlignment.ALIGN_TOP);
 		centerPanel.setCellHorizontalAlignment(loginPanel, HasHorizontalAlignment.ALIGN_CENTER);
