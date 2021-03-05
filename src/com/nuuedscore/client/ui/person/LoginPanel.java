@@ -26,10 +26,10 @@ import com.nuuedscore.shared.dto.Person;
  * Login Panel
  * 
  * @author PATavares
- * @since Feb 2021
+ * @since Mar 2021
  * 
  */
-public class LoginPanel extends HorizontalPanel {
+public class LoginPanel extends VerticalPanel {
 	
 	private Button 
 		loginButton, 
@@ -61,10 +61,10 @@ public class LoginPanel extends HorizontalPanel {
 		//nameLbl = new Label("Enter Name:");
 		//nameField = new TextBox();
 
-		emailLbl = new Label("Email:");
+		emailLbl = new Label("Email Address");
 		emailField = new TextBox();
 
-		passwordLbl = new Label("Password:");
+		passwordLbl = new Label("Password");
 		passwordField = new PasswordTextBox();
 		passwordField.addFocusHandler(
 			new FocusHandler() {
@@ -84,7 +84,7 @@ public class LoginPanel extends HorizontalPanel {
 				}
 			});
 */
-		loginButton = new Button("Login");
+		loginButton = new Button("LOGIN");
 		createAccountButton = new Button("Create Account");
 
 		emailField.setFocus(true);

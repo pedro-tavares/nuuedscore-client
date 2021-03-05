@@ -7,6 +7,7 @@ import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -18,6 +19,7 @@ import com.nuuedscore.client.ui.CenterPanel;
 import com.nuuedscore.client.ui.MenuPanel;
 import com.nuuedscore.client.ui.person.LoggedinPanel;
 import com.nuuedscore.client.ui.person.LoginPanel;
+import com.nuuedscore.client.ui.person.PersonListPanel;
 import com.nuuedscore.shared.dto.Person;
 
 /**
@@ -47,16 +49,17 @@ public class NuuEdScore implements EntryPoint {
 	
 	@Override
 	public void onModuleLoad() {
+//		Window.alert("Powered by R AI");
+
 		INSTANCE = this;
 
 		detectHOST_IP();
 		
-		//createUI();
+		//prototypeUI();
+		createUI();
 		//loginPanel.autoLogin();
 		
 		doSTUFF();
-		
-		Window.alert("Powered by R AI");
 	}
 
 	public static NuuEdScore GET() {
@@ -75,6 +78,20 @@ public class NuuEdScore implements EntryPoint {
 		HOST = Window.Location.getHost();
 		//Window.alert(HOST);
 	}
+
+	private PersonListPanel personPanel;
+	
+	private void prototypeUI() {
+		Button testBtn = new Button("LOGIN");
+		testBtn.addClickHandler(event -> {
+			if (personPanel == null) {
+				personPanel = new PersonListPanel();
+			}
+			NuuEdScore.GET().showView(personPanel);
+
+		});
+		RootPanel.get().add(testBtn, 50, 75);
+	}
 	
 	private void createUI() {
 		/*
@@ -89,16 +106,13 @@ public class NuuEdScore implements EntryPoint {
 		topPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		
 		Image logoImg = new Image("images/NuLogo_Small.jpg");
-		//logoImg.setStyleName("logoImg");
+		logoImg.setStyleName("logoImg");
 		//logoImg.setPixelSize(400, 75);
 
 		RootPanel.get().add(topPanel, 0, 0);
 		
 		topPanel.add(logoImg);
 		topPanel.setCellHorizontalAlignment(logoImg, HasHorizontalAlignment.ALIGN_LEFT);
-		
-		loginPanel.setStyleName("loginPanel");
-		topPanel.add(loginPanel);
 		
 		resize();
 		
@@ -109,7 +123,7 @@ public class NuuEdScore implements EntryPoint {
 			}
 		});
 		
-		//createCenterPanel();
+		createCenterPanel();
 	}
 	
 	private void createCenterPanel() {
@@ -128,6 +142,10 @@ public class NuuEdScore implements EntryPoint {
 			topPanel.add(loginPanel);
 		}
 */		
+		loginPanel.setStyleName("loginPanel");
+		centerPanel.add(loginPanel);
+		centerPanel.setCellVerticalAlignment(loginPanel, HasVerticalAlignment.ALIGN_TOP);
+		centerPanel.setCellHorizontalAlignment(loginPanel, HasHorizontalAlignment.ALIGN_CENTER);
 	}
 	
 	private static void resize() {
@@ -212,7 +230,7 @@ public class NuuEdScore implements EntryPoint {
 //		 resize();
 	}
 
-	public void showView(Panel viewPanel) {
+	public void showView(Panel viewPanel) {		
 		if (centerImgLoggedIn != null) {
 			centerImgLoggedIn.removeFromParent();
 		}
