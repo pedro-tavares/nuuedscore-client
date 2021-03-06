@@ -80,7 +80,7 @@ public class LoginRegisterPanel extends VerticalPanel {
 			}
 		});
 
-		confirmPasswordLabel = new Label("Confirm Password:");
+		confirmPasswordLabel = new Label("Confirm Password");
 		confirmPasswordValue = new PasswordTextBox();
 		confirmPasswordValue.addFocusHandler(new FocusHandler() {
 			@Override
@@ -101,7 +101,7 @@ public class LoginRegisterPanel extends VerticalPanel {
 		loginButton.addClickHandler(event -> {
 			if (validate()) {
 				textToServerLabel.setText(emailValue.getText());
-				callLoginService();
+				callLoginService(this.getPerson());
 			}
 		});
 
@@ -135,7 +135,7 @@ public class LoginRegisterPanel extends VerticalPanel {
 		loginInnerPanel.setCellHorizontalAlignment(confirmPasswordLabel, HasHorizontalAlignment.ALIGN_LEFT);
 		loginInnerPanel.add(confirmPasswordValue);
 
-		loginInnerPanel.add(errorLabel);
+		loginInnerPanel.add(serverResponseLabel);
 
 		this.add(loginButton);
 		this.add(registerButton);
@@ -243,105 +243,73 @@ public class LoginRegisterPanel extends VerticalPanel {
 		loginButton.click();
 	}
 
-	private void callLoginService() {
+	private void callLoginService(Person person) {
 		GWT.log("callLoginService");
 
 		loginButton.getElement().getStyle().setCursor(Cursor.WAIT);
 		RootPanel.getBodyElement().getStyle().setCursor(Cursor.WAIT);
 
-		Person person = this.getPerson();
-
 		ServiceFactory.PERSON_SERVICE.login(person, new MethodCallback<String>() {
-
 			@Override
 			public void onSuccess(Method method, String response) {
-
-				// Window.alert(response);
 				GWT.log(response);
+				Window.alert("Login SUCCESS");
 
 				loginButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
 				RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
 
 				serverResponseLabel.removeStyleName("errorLbl");
-
-				// showDialogBox("Login - SUCCESS", "");
-				// Window.alert("Login SUCCESS");
-
+				
 				NuuEdScore.letsGo(response);
 			}
 
-			// TODO: Check why its FAILURE, do LOGIN_SUCCESS for now
 			@Override
 			public void onFailure(Method method, Throwable exception) {
 				loginButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
 				RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
 
-				GWT.log("Login FAILURE:" + method.getResponse().getText());
-				// Window.alert(method.getResponse().getText());
-				// Window.alert("Login FAILURE");
-
-				// NuuEdScore.letsGo(method.getResponse().getText());
+				GWT.log("PERSON_SERVICE.login FAILURE:" + method.getResponse().getText());
+				Window.alert("PERSON_SERVICE.login FAILURE:" + method.getResponse().getText());
 
 				serverResponseLabel.addStyleName("errorLbl");
-				// showDialogBox("Login - FAILURE", method.getResponse().getText());
-
-				JSONValue responseValue = JSONParser.parse(method.getResponse().getText());
-				JSONObject responseObj = responseValue.isObject();
-
-				errorLabel.setText(responseObj.get("message").isString().stringValue());
-
-				// NuuEdScore.letsGo(method.getResponse().getText());
 			}
 		});
 	}
 
 	private void callRegisterService() {
-		GWT.log("callRegisterinService");
+		GWT.log("callRegisterService");
 
 		loginButton.getElement().getStyle().setCursor(Cursor.WAIT);
 		RootPanel.getBodyElement().getStyle().setCursor(Cursor.WAIT);
 
 		Person person = this.getPerson();
 
-		ServiceFactory.PERSON_SERVICE.register(person, new MethodCallback<Person>() {
-
+		ServiceFactory.PERSON_SERVICE.register(person, new MethodCallback<String>() {
 			@Override
-			public void onSuccess(Method method, Person response) {
-
-				// Window.alert(response);
-				GWT.log(response.toString());
-
+			public void onSuccess(Method method, String response) {
 				loginButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
 				RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
 
+				GWT.log(response.toString());
+				Window.alert("PERSON_SERVICE.registerS:" + response);
+
 				serverResponseLabel.removeStyleName("errorLbl");
-
-				Window.alert("Login SUCCESS");
-
-				// NuuEdScore.letsGo(response);
+				serverResponseLabel.setText(response);
+				
+				// AUTO LOGIN
+				//callLoginService(response);
 			}
 
-			// TODO: Check why its FAILURE, do LOGIN_SUCCESS for now
 			@Override
 			public void onFailure(Method method, Throwable exception) {
 				loginButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
 				RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
 
-				GWT.log("Login FAILURE:" + method.getResponse().getText());
-				// Window.alert(method.getResponse().getText());
-				// Window.alert("Login FAILURE");
+				String response = method.getResponse().getText();
+				GWT.log("PERSON_SERVICE.registerF:" + response);
 
-				// NuuEdScore.letsGo(method.getResponse().getText());
-
-				serverResponseLabel.addStyleName("errorLbl");
-				// showDialogBox("Login - FAILURE", method.getResponse().getText());
-
-				JSONValue responseValue = JSONParser.parse(method.getResponse().getText());
-				JSONObject responseObj = responseValue.isObject();
-
-				errorLabel.setText(responseObj.get("message").isString().stringValue());
-
-				// NuuEdScore.letsGo(method.getResponse().getText());
+				serverResponseLabel.removeStyleName("errorLbl");
+				serverResponseLabel.setText(response);
 			}
 		});
 	}

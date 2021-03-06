@@ -29,7 +29,7 @@ public interface IPersonService extends RestService {
 
 	@POST
 	@Path("/register")
-	public void register(@BeanParam Person user, MethodCallback<Person> callback);
+	public void register(@BeanParam Person user, MethodCallback<String> callback);
 	
 	@POST
 	@Path("/login")
