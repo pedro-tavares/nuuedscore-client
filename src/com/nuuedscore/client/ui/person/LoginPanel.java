@@ -1,17 +1,23 @@
 package com.nuuedscore.client.ui.person;
 
+import java.util.logging.Logger;
+
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
-import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -31,6 +37,7 @@ import com.nuuedscore.shared.dto.Person;
  */
 public class LoginPanel extends VerticalPanel {
 	
+	private static Image imageLogo = new Image("images/Logo_New_WEBSITE.svg");
 	private VerticalPanel
 		loginInnerPanel;
 	private Button 
@@ -135,6 +142,9 @@ public class LoginPanel extends VerticalPanel {
 			createAccountDialog.show();
 		});
 
+		this.add(imageLogo);
+		imageLogo.setPixelSize(400, 75);
+		
 		this.add(viewTitleLabel);
 		
 		this.add(loginInnerPanel);
