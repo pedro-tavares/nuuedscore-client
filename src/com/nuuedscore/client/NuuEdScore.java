@@ -20,7 +20,7 @@ import com.nuuedscore.IConstants;
 import com.nuuedscore.client.ui.CenterPanel;
 import com.nuuedscore.client.ui.MenuPanel;
 import com.nuuedscore.client.ui.person.LoggedinPanel;
-import com.nuuedscore.client.ui.person.LoginPanel;
+import com.nuuedscore.client.ui.person.LoginRegisterPanel;
 import com.nuuedscore.client.ui.person.PersonListPanel;
 import com.nuuedscore.shared.dto.Person;
 
@@ -38,9 +38,12 @@ public class NuuEdScore implements EntryPoint {
 	
 	private static String HOST;
 	private static Person USER;
-	
+
+	private Button 
+		loginButton, 
+		registerButton;
 	private static CenterPanel centerPanel = new CenterPanel();
-	private static LoginPanel loginPanel = new LoginPanel();
+	private static LoginRegisterPanel loginPanel = new LoginRegisterPanel();
 	private static Label poweredByRAILabel = new Label("Powered by R AI");
 	private static Image 
 		centerImg,
@@ -110,6 +113,11 @@ public class NuuEdScore implements EntryPoint {
 		logoImg.setStyleName("logoImg");
 		//logoImg.setPixelSize(400, 75);
 
+		loginButton = new Button("LOGIN");
+		registerButton = new Button("Register");
+		loginButton.setVisible(false);
+		registerButton.setVisible(false);
+
 		RootPanel.get().add(topPanel, 0, 0);
 		
 		topPanel.add(logoImg);
@@ -125,28 +133,48 @@ public class NuuEdScore implements EntryPoint {
 		Window.addResizeHandler(new ResizeHandler() {
 			@Override
 			public void onResize(ResizeEvent event) {
-				resize();				
+				resize();
 			}
 		});
 		
-		doLogin();
+		loginButton.addClickHandler(event -> {
+			loginButton.setVisible(false);
+			registerButton.setVisible(true);
+			loginPanel.setRegister(false);
+		});
+		registerButton.addClickHandler(event -> {
+			loginButton.setVisible(true);
+			registerButton.setVisible(false);
+			loginPanel.setRegister(true);
+		});
+		
 		RootPanel.get().add(centerPanel, 0, 150);
 
 		String userEmail = getCookie();
 		if (userEmail == null) {
 			GWT.log("NOT Logged In");
-			doLogin();
+			viewLogin(false);
 		} else {
-			GWT.log("NOT Logged In as:" + userEmail);
-			USER = new Person(userEmail);
-			letsGo(USER.getEmail());			
+			GWT.log("Logged In as:" + userEmail);
+			viewLogin(false);
+			//USER = new Person(userEmail);
+			//letsGo(USER.getEmail());			
 		} 
 	}
 	
-	private static void resize() {
+	private void resize() {
+		RootPanel.get().add(loginButton, Window.getClientWidth()-175, 15);
+		RootPanel.get().add(registerButton, Window.getClientWidth()-175, 15);
 	}
 
-	private void doLogin() {
+	/**
+	 * login: false
+	 * register: true
+	 */
+	private void viewLogin(boolean register) {
+		loginButton.setVisible(register);
+		registerButton.setVisible(!register);
+		loginPanel.setRegister(register);
 		centerPanel.add(loginPanel);
 		centerPanel.setCellVerticalAlignment(loginPanel, HasVerticalAlignment.ALIGN_TOP);
 		centerPanel.setCellHorizontalAlignment(loginPanel, HasHorizontalAlignment.ALIGN_CENTER);

@@ -28,6 +28,10 @@ public interface IPersonService extends RestService {
 	public void userExists(@BeanParam Email email, MethodCallback<Person> callback);
 
 	@POST
+	@Path("/register")
+	public void register(@BeanParam Person user, MethodCallback<Person> callback);
+	
+	@POST
 	@Path("/login")
 	public void login(@BeanParam Person user, MethodCallback<String> callback);
 	

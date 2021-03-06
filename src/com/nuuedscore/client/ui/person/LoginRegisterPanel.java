@@ -1,7 +1,5 @@
 package com.nuuedscore.client.ui.person;
 
-import java.util.logging.Logger;
-
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 
@@ -9,8 +7,9 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
-import com.google.gwt.event.logical.shared.ResizeEvent;
-import com.google.gwt.event.logical.shared.ResizeHandler;
+import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.json.client.JSONParser;
+import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
@@ -35,34 +34,35 @@ import com.nuuedscore.shared.dto.Person;
  * @since Mar 2021
  * 
  */
-public class LoginPanel extends VerticalPanel {
+public class LoginRegisterPanel extends VerticalPanel {
 	
 	private static Image imageLogo = new Image("images/Logo_New_WEBSITE.svg");
 	private VerticalPanel
 		loginInnerPanel;
 	private Button 
 		loginButton, 
-		createAccountButton,
+		registerButton,
 		dialogCloseButton;
 	private Label
 		viewTitleLabel,
-		//nameLbl, 
+		firstNameLabel,
+		lastNameLabel,
 		emailLabel, 
 		passwordLabel, 
-		//reenterPasswordLbl, 
+		confirmPasswordLabel, 
 		textToServerLabel, 
 		errorLabel;
 	private TextBox 
-		//nameField, 
+		firstNameValue,
+		lastNameValue,
 		emailValue;
 	private PasswordTextBox 
-		passwordValue/*, 
-		reenterPasswordField*/
-		;
+		passwordValue, 
+		confirmPasswordValue;
 	private HTML serverResponseLabel;
 	private DialogBox dialogBox;
 
-	public LoginPanel() {
+	public LoginRegisterPanel() {
 		this.setStyleName("centerPanels");
 		this.setSpacing(5);
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
@@ -77,8 +77,11 @@ public class LoginPanel extends VerticalPanel {
 		viewTitleLabel = new Label("LOGIN");
 		viewTitleLabel.setStyleName("viewTitleLabel");
 		
-		//nameLbl = new Label("Enter Name:");
-		//nameField = new TextBox();
+		firstNameLabel = new Label("First Name");
+		firstNameValue = new TextBox();
+
+		lastNameLabel = new Label("Last Name");
+		lastNameValue = new TextBox();
 
 		emailLabel = new Label("Email Address");
 		emailValue = new TextBox();
@@ -92,17 +95,17 @@ public class LoginPanel extends VerticalPanel {
 					errorLabel.setText("");
 			    }
 			});
-/*
-		reenterPasswordLbl = new Label("Renter Password:");
-		reenterPasswordField = new PasswordTextBox();
-		reenterPasswordField.addFocusHandler(
+
+		confirmPasswordLabel = new Label("Confirm Password:");
+		confirmPasswordValue = new PasswordTextBox();
+		confirmPasswordValue.addFocusHandler(
 			new FocusHandler() {
 				@Override
 				public void onFocus(FocusEvent event) {
-					errorLbl.setText("");
+					errorLabel.setText("");
 				}
 			});
-*/
+
 		emailValue.setFocus(true);
 		emailValue.selectAll();
 		
@@ -112,7 +115,7 @@ public class LoginPanel extends VerticalPanel {
 		createDialogBox();
 
 		loginButton = new Button("LOGIN");
-		createAccountButton = new Button("Create Account");
+		registerButton = new Button("Register");
 		
 		loginButton.addClickHandler(event -> {
 			if (emailValue.getText().equals("")) {
@@ -121,49 +124,73 @@ public class LoginPanel extends VerticalPanel {
 			else if (passwordValue.getText().equals("")) {
 				errorLabel.setText("Password cannot be empty!");
 			}
-/*			
-			else if (!passwordField.getText().equals(reenterPasswordField.getText())) {
-				errorLbl.setText("Passwords must match!");
+			else if (!passwordValue.getText().equals(confirmPasswordValue.getText())) {
+				errorLabel.setText("Passwords must match!");
 			} 
-*/			
 			else {
 				textToServerLabel.setText(emailValue.getText());
-				//callLoginService();
-				
-				NuuEdScore.letsGo(emailValue.getText());				
+				callRegisterService();
+			}
+		});
+		registerButton.addClickHandler(event -> {
+			if (emailValue.getText().equals("")) {
+				errorLabel.setText("Email cannot be empty!");
+			}
+			else if (passwordValue.getText().equals("")) {
+				errorLabel.setText("Password cannot be empty!");
+			}
+			else if (!passwordValue.getText().equals(confirmPasswordValue.getText())) {
+				errorLabel.setText("Passwords must match!");
+			} 
+			else {
+				textToServerLabel.setText(emailValue.getText());
+				callRegisterService();
 			}
 		});
 		
-		createAccountButton.addClickHandler(event -> {
-			CreateAccountDialog createAccountDialog = new CreateAccountDialog(
-				emailValue.getText(),
-				passwordValue.getText()
-			);
-			createAccountDialog.show();
-		});
-
 		this.add(imageLogo);
 		imageLogo.setPixelSize(400, 75);
 		
 		this.add(viewTitleLabel);
 		
 		this.add(loginInnerPanel);
+		loginInnerPanel.add(firstNameLabel);
+		loginInnerPanel.setCellHorizontalAlignment(firstNameLabel, HasHorizontalAlignment.ALIGN_LEFT);
+		loginInnerPanel.add(firstNameValue);
+		loginInnerPanel.add(lastNameLabel);
+		loginInnerPanel.setCellHorizontalAlignment(lastNameLabel, HasHorizontalAlignment.ALIGN_LEFT);
+		loginInnerPanel.add(lastNameValue);		
 		loginInnerPanel.add(emailLabel);
 		loginInnerPanel.setCellHorizontalAlignment(emailLabel, HasHorizontalAlignment.ALIGN_LEFT);
 		loginInnerPanel.add(emailValue);
 		loginInnerPanel.add(passwordLabel);
 		loginInnerPanel.setCellHorizontalAlignment(passwordLabel, HasHorizontalAlignment.ALIGN_LEFT);
 		loginInnerPanel.add(passwordValue);
-//		innerPanel.add(reenterPasswordLbl);
-//		innerPanel.add(reenterPasswordField);
+		loginInnerPanel.add(confirmPasswordLabel);
+		loginInnerPanel.setCellHorizontalAlignment(confirmPasswordLabel, HasHorizontalAlignment.ALIGN_LEFT);
+		loginInnerPanel.add(confirmPasswordValue);
 		loginInnerPanel.add(errorLabel);
 		
 		this.add(loginButton);
-//		this.add(createAccountButton);
+		this.add(registerButton);
 	}
 
 	public void clear() {
 //		reenterPasswordField.setText("");
+	}
+
+	public void setRegister(boolean register) {
+		viewTitleLabel.setText(register ? "REGISTER" : "LOGIN");
+
+		firstNameLabel.setVisible(register);
+		lastNameLabel.setVisible(register);
+		confirmPasswordLabel.setVisible(register); 
+		firstNameValue.setVisible(register);
+		lastNameValue.setVisible(register);
+		confirmPasswordValue.setVisible(register);
+		
+		loginButton.setVisible(!register);
+		registerButton.setVisible(register);
 	}
 	
 	private void createDialogBox() {
@@ -210,7 +237,7 @@ public class LoginPanel extends VerticalPanel {
 	}
 	
 	private void callLoginService() {
-		//Window.alert("callLoginService");
+		Window.alert("callLoginService");
 		
 		loginButton.getElement().getStyle().setCursor(Cursor.WAIT);
 		RootPanel.getBodyElement().getStyle().setCursor(Cursor.WAIT);
@@ -226,6 +253,7 @@ public class LoginPanel extends VerticalPanel {
 			public void onSuccess(Method method, String response) {
 				
 				//Window.alert(response);
+				GWT.log(response);
 				
 				loginButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
 				RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
@@ -244,24 +272,79 @@ public class LoginPanel extends VerticalPanel {
 				loginButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
 				RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
 				
+				GWT.log("Login FAILURE:" + method.getResponse().getText());
 				//Window.alert(method.getResponse().getText());
 				//Window.alert("Login FAILURE");
 
-				NuuEdScore.letsGo(method.getResponse().getText());
+				//NuuEdScore.letsGo(method.getResponse().getText());
 				
-				/*
 				serverResponseLabel.addStyleName("errorLbl");
 				//showDialogBox("Login  - FAILURE", method.getResponse().getText());
 				
 				JSONValue responseValue = JSONParser.parse(method.getResponse().getText());
 		        JSONObject responseObj = responseValue.isObject();
 		        
-		        errorLbl.setText(responseObj.get("message").isString().stringValue());
-		        */
+		        errorLabel.setText(responseObj.get("message").isString().stringValue());
+		        
+		      //NuuEdScore.letsGo(method.getResponse().getText());
 			}
 		});
 	}
 
+	private void callRegisterService() {
+		//Window.alert("callRegisterinService");
+		
+		loginButton.getElement().getStyle().setCursor(Cursor.WAIT);
+		RootPanel.getBodyElement().getStyle().setCursor(Cursor.WAIT);
+		
+		Person user = new Person();
+		user.setName("");
+		user.setEmail(emailValue.getText());
+		user.setPassword(passwordValue.getText());
+		
+		ServiceFactory.PERSON_SERVICE.register(user, new MethodCallback<Person>() {
+
+			@Override
+			public void onSuccess(Method method, Person response) {
+				
+				//Window.alert(response);
+				GWT.log(response.toString());
+				
+				loginButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
+				RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
+				
+				serverResponseLabel.removeStyleName("errorLbl");
+				
+				Window.alert("Login SUCCESS");
+				
+				//NuuEdScore.letsGo(response);
+			}
+
+			//TODO: Check why its FAILURE, do LOGIN_SUCCESS for now
+			@Override
+			public void onFailure(Method method, Throwable exception) {
+				loginButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
+				RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
+				
+				GWT.log("Login FAILURE:" + method.getResponse().getText());
+				//Window.alert(method.getResponse().getText());
+				//Window.alert("Login FAILURE");
+
+				//NuuEdScore.letsGo(method.getResponse().getText());
+				
+				serverResponseLabel.addStyleName("errorLbl");
+				//showDialogBox("Login  - FAILURE", method.getResponse().getText());
+				
+				JSONValue responseValue = JSONParser.parse(method.getResponse().getText());
+		        JSONObject responseObj = responseValue.isObject();
+		        
+		        errorLabel.setText(responseObj.get("message").isString().stringValue());
+		        
+		      //NuuEdScore.letsGo(method.getResponse().getText());
+			}
+		});
+	}
+	
 /*	
 	private void callLoadService() {
 		loadAllButton.getElement().getStyle().setCursor(Cursor.WAIT);
