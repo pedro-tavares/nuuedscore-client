@@ -17,10 +17,10 @@ public class Person implements Model {
 	
 	@QueryParam("id")
 	private Long id;
-	@QueryParam("name")
-	private String name;
-	@QueryParam("surname")
-	private String surname;
+	@QueryParam("first_name")
+	private String firstName;
+	@QueryParam("last_name")
+	private String lastName;
 	@QueryParam("email")
 	private String email;
 	@QueryParam("phone")
@@ -38,9 +38,9 @@ public class Person implements Model {
 		this.email = email;
 	}
 
-	public Person(String name, String surname, String email, String password) {
-		this.name = name;
-		this.surname = surname;
+	public Person(String firstName, String lastName, String email, String password) {
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.status = RefPersonStatus.ACTIVE.status();
@@ -54,20 +54,20 @@ public class Person implements Model {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return this.firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getSurname() {
-		return surname;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {

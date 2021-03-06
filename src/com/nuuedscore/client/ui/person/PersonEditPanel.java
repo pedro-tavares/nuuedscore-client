@@ -29,6 +29,8 @@ public class PersonEditPanel extends TitledPanel {
 	private Person person;
 	private PersonListPanel parent;
 	
+	private NameValuePanel panelFirstName;
+	private NameValuePanel panelLastName;
 	private NameValuePanel panelEmail;
 	private NameValuePanel panelPassword;
 	private NameValuePanel panelConfirmPassword;
@@ -58,12 +60,12 @@ public class PersonEditPanel extends TitledPanel {
 		HorizontalPanel panelNameSection = new HorizontalPanel();
 		panelNameSection.setSpacing(10);
 		
-		NameValuePanel panelFirstName = new NameValuePanel("Name", ModelType.STRING);
-		((TextBox)panelFirstName.getWidgetValue()).setText(person.getName());
+		panelFirstName = new NameValuePanel("First Name", ModelType.STRING);
+		((TextBox)panelFirstName.getWidgetValue()).setText(person.getFirstName());
 		panelNameSection.add(panelFirstName);
 
-		NameValuePanel panelLastName = new NameValuePanel("Surname", ModelType.STRING);
-		((TextBox)panelLastName.getWidgetValue()).setText(person.getSurname());
+		panelLastName = new NameValuePanel("Last Name", ModelType.STRING);
+		((TextBox)panelLastName.getWidgetValue()).setText(person.getLastName());
 		panelNameSection.add(panelLastName);
 		
 		this.add(panelNameSection);
@@ -96,15 +98,15 @@ public class PersonEditPanel extends TitledPanel {
 				return;
 			}
 			
-			person.setName(((TextBox)panelFirstName.getWidgetValue()).getText());
-			person.setSurname(((TextBox)panelLastName.getWidgetValue()).getText());
+			person.setFirstName(((TextBox)panelFirstName.getWidgetValue()).getText());
+			person.setLastName(((TextBox)panelLastName.getWidgetValue()).getText());
 			person.setEmail(((TextBox)panelEmail.getWidgetValue()).getText());
 			person.setPassword(((TextBox)panelPassword.getWidgetValue()).getText());
 						
 			callPersonSaveService();
 		});
-//TODO activate
-saveButton.setEnabled(false);		
+
+		//saveButton.setEnabled(false);		
 		this.add(saveButton);
 
 		msgLabel.setStyleName("errorLbl");
@@ -112,6 +114,14 @@ saveButton.setEnabled(false);
 	}
 		
 	private boolean validate() {
+		if (((TextBox)panelFirstName.getWidgetValue()).getText().equals("")) {
+			this.msgLabel.setText("First Name cannot be empty!");
+			return false;
+		}
+		if (((TextBox)panelLastName.getWidgetValue()).getText().equals("")) {
+			this.msgLabel.setText("Last Name cannot be empty!");
+			return false;
+		}
 		if (((TextBox)panelEmail.getWidgetValue()).getText().equals("")) {
 			this.msgLabel.setText("Email cannot be empty!");
 			return false;

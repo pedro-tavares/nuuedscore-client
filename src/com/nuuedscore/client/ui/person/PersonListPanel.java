@@ -71,18 +71,18 @@ public class PersonListPanel extends TitledPanel {
 		  TextColumn<Person> nameColumn = new TextColumn<Person>() {
 		     @Override
 		     public String getValue(Person object) {
-		        return object.getName() != null ? object.getName().toString() : "";
+		        return object.getFirstName() != null ? object.getFirstName().toString() : "";
 		     }
 		  };
-		  table.addColumn(nameColumn, "Name");
+		  table.addColumn(nameColumn, "First Name");
 
 		  TextColumn<Person> lastNameColumn = new TextColumn<Person>() {
 		     @Override
 		     public String getValue(Person object) {
-		        return object.getSurname() != null ? object.getSurname().toString() : "";
+		        return object.getLastName() != null ? object.getLastName().toString() : "";
 		     }
 		  };
-		  table.addColumn(lastNameColumn, "Surname");
+		  table.addColumn(lastNameColumn, "Last Name");
 		  
 		  TextColumn<Person> emailColumn = new TextColumn<Person>() {
 		     @Override
