@@ -156,10 +156,10 @@ public class LoginPanel extends VerticalPanel {
 		loginInnerPanel.add(passwordValue);
 //		innerPanel.add(reenterPasswordLbl);
 //		innerPanel.add(reenterPasswordField);
+		loginInnerPanel.add(errorLabel);
 		
 		this.add(loginButton);
 //		this.add(createAccountButton);
-		this.add(errorLabel);
 	}
 
 	public void clear() {

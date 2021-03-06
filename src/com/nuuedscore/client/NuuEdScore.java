@@ -3,6 +3,7 @@ package com.nuuedscore.client;
 import java.util.Date;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.Cookies;
@@ -120,8 +121,7 @@ public class NuuEdScore implements EntryPoint {
 		poweredByRAILabel.setStyleName("poweredByRAILabel");
 		RootPanel.get().add(poweredByRAILabel, 110, 45);
 		
-		resize();
-		
+		resize();		
 		Window.addResizeHandler(new ResizeHandler() {
 			@Override
 			public void onResize(ResizeEvent event) {
@@ -129,34 +129,29 @@ public class NuuEdScore implements EntryPoint {
 			}
 		});
 		
-		createCenterPanel();
-	}
-	
-	private void createCenterPanel() {
+		doLogin();
 		RootPanel.get().add(centerPanel, 0, 150);
-/*		
-		//String userEmail = getCookie();
-		String userEmail = "The Architect";
-		
-		if (userEmail != null) {
-			USER = new User();
-			USER.setEmail(userEmail);
-		
-			letsGo(USER.getEmail());
-			
-		} else {
-			topPanel.add(loginPanel);
-		}
-*/		
 
-		centerPanel.add(loginPanel);
-		centerPanel.setCellVerticalAlignment(loginPanel, HasVerticalAlignment.ALIGN_TOP);
-		centerPanel.setCellHorizontalAlignment(loginPanel, HasHorizontalAlignment.ALIGN_CENTER);
+		String userEmail = getCookie();
+		if (userEmail == null) {
+			GWT.log("NOT Logged In");
+			doLogin();
+		} else {
+			GWT.log("NOT Logged In as:" + userEmail);
+			USER = new Person(userEmail);
+			letsGo(USER.getEmail());			
+		} 
 	}
 	
 	private static void resize() {
 	}
-	
+
+	private void doLogin() {
+		centerPanel.add(loginPanel);
+		centerPanel.setCellVerticalAlignment(loginPanel, HasVerticalAlignment.ALIGN_TOP);
+		centerPanel.setCellHorizontalAlignment(loginPanel, HasHorizontalAlignment.ALIGN_CENTER);
+	}
+		
 	public static void letsGo(String email) {
 		
 		USER = new Person(email);
