@@ -18,10 +18,11 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.nuuedscore.IConstants;
 import com.nuuedscore.client.ui.CenterPanel;
+import com.nuuedscore.client.ui.LeftNavigationPanel;
 import com.nuuedscore.client.ui.MenuPanel;
-import com.nuuedscore.client.ui.person.LoggedinPanel;
+import com.nuuedscore.client.ui.person.LoggedInPanel;
 import com.nuuedscore.client.ui.person.LoginRegisterPanel;
-import com.nuuedscore.client.ui.person.PersonListPanel;
+import com.nuuedscore.client.ui.person.PersonPanel;
 import com.nuuedscore.shared.dto.Person;
 
 /**
@@ -38,7 +39,10 @@ public class NuuEdScore implements EntryPoint {
 	
 	private static String HOST;
 	private static Person USER;
-
+	private static boolean LOGGED_IN;
+	
+	private int MENU_WIDTH = 45;
+	
 	private Button 
 		loginButton, 
 		registerButton;
@@ -49,9 +53,10 @@ public class NuuEdScore implements EntryPoint {
 		centerImg,
 		centerImgLoggedIn;
 	private static HorizontalPanel topPanel;
-	private static LoggedinPanel loggedinPanel;	
-	private static MenuPanel menuPanel = new MenuPanel();
+	private static LoggedInPanel loggedinPanel;	
 	private static Panel lastViewPanel;
+	private static MenuPanel menuPanel = new MenuPanel(); // TODO remove
+	private static LeftNavigationPanel leftMenuPanel;
 	
 	@Override
 	public void onModuleLoad() {
@@ -85,13 +90,13 @@ public class NuuEdScore implements EntryPoint {
 		//Window.alert(HOST);
 	}
 
-	private PersonListPanel personPanel;
+	private PersonPanel personPanel;
 	
 	private void prototypeUI() {
 		Button testBtn = new Button("LOGIN");
 		testBtn.addClickHandler(event -> {
 			if (personPanel == null) {
-				personPanel = new PersonListPanel();
+				personPanel = new PersonPanel();
 			}
 			NuuEdScore.GET().showView(personPanel);
 
@@ -106,7 +111,7 @@ public class NuuEdScore implements EntryPoint {
 		
 		topPanel = new HorizontalPanel();
 		topPanel.setStyleName("topPanel");
-		//topPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
+		topPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 		topPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		
 		Image logoImg = new Image("images/NuLogo_Small.jpg");
@@ -165,6 +170,11 @@ public class NuuEdScore implements EntryPoint {
 	private void resize() {
 		RootPanel.get().add(loginButton, Window.getClientWidth()-175, 15);
 		RootPanel.get().add(registerButton, Window.getClientWidth()-175, 15);
+		if (!LOGGED_IN) {
+			topPanel.setWidth("100%");
+		} else {
+			topPanel.setWidth((Window.getClientWidth()-50) + "px");
+		}
 	}
 
 	/**
@@ -183,28 +193,37 @@ public class NuuEdScore implements EntryPoint {
 	public void letsGo(Person person) {
 		GWT.log("letsGo:" + person.getEmail());
 				
+		LOGGED_IN = true;
 		USER = person;
 		setCookie();
 		
 		//AuditFactory.log(AuditEvent.LOGIN_SUCCESS);
-
+		RootPanel.get().add(poweredByRAILabel, 110+MENU_WIDTH, 45);
+		
 		loginButton.setVisible(false); 
 		registerButton.setVisible(false);
 
 		loginPanel.removeFromParent();
-
-		/*
 		centerImg.removeFromParent();
+		
+		/*
 		centerImgLoggedIn = new Image("images/background.jpg");
 		centerImgLoggedIn.setStyleName("centerImgLoggedin");
 		RootPanel.get().add(centerImgLoggedIn, 0, 0);
 		*/
 
-		loggedinPanel = new LoggedinPanel(USER);
+		loggedinPanel = new LoggedInPanel(USER);
 		loggedinPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 		topPanel.add(loggedinPanel);
 		
-		//doMenu();
+		doMenu();
+	}
+	
+	private void doMenu() {
+		leftMenuPanel = new LeftNavigationPanel();
+		RootPanel.get().add(leftMenuPanel, 0, 0);
+		RootPanel.get().add(topPanel, MENU_WIDTH, 0);		 
+		resize();
 	}
 	
 	public static void logOut() {
@@ -251,11 +270,6 @@ public class NuuEdScore implements EntryPoint {
 		}
 	}
 	
-	private static void doMenu() {
-		RootPanel.get().add(menuPanel, 400, 12);
-//		 resize();
-	}
-
 	public void showView(Panel viewPanel) {		
 		if (centerImgLoggedIn != null) {
 			centerImgLoggedIn.removeFromParent();
@@ -266,11 +280,7 @@ public class NuuEdScore implements EntryPoint {
 		//Window.alert("showView:\n" + viewPanel.toString());
 		lastViewPanel = viewPanel;
 		//viewPanel.setPixelSize(Window.getClientWidth()-200, Window.getClientHeight()-75);
-		if (topPanel != null) {
-			RootPanel.get().add(viewPanel, 0, 76);
-		} else {
-			RootPanel.get().add(viewPanel, 0, 0);
-		}
+		RootPanel.get().add(viewPanel, MENU_WIDTH+1, 76);
 	}
 
 	// EXPERIMENTS *************************************************************************************************

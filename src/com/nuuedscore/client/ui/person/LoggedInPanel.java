@@ -16,21 +16,27 @@ import com.nuuedscore.shared.dto.Person;
  * Logged In Panel
  * 
  * @author PATavares
- * @since Feb 2021
+ * @since Mar 2021
  * 
  */
-public class LoggedinPanel extends HorizontalPanel {
+public class LoggedInPanel extends HorizontalPanel {
 	
-	public LoggedinPanel(Person user) {
+	public LoggedInPanel(Person user) {
 		this.setStyleName("loggedinPanel");
+		this.setHorizontalAlignment(ALIGN_RIGHT);
 		this.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 
 		VerticalPanel loginLogoutPanel = new VerticalPanel();
 		
-		Label loggedinLabel = new Label("Logged in as: " + NuuEdScore.GET_USER().getEmail());
-		loggedinLabel.addStyleName("loggedinLabel");
+		//Label loggedinLabel = new Label("Logged in as: " + NuuEdScore.GET_USER().getFirstName() + " " + NuuEdScore.GET_USER().getLastName());
+		Label loggedinLabel = new Label("The Architect PPII-ESi7");
+		loggedinLabel.addStyleName("greenBoldlLabel");
 		loginLogoutPanel.add(loggedinLabel);
-
+		
+		Label namePersonLabel = new Label(NuuEdScore.GET_USER().getEmail());
+		loginLogoutPanel.add(namePersonLabel);
+		namePersonLabel.addStyleName("blueBoldLabel");
+		/*
 		Anchor logoutAnchor = new Anchor("Log out");
 		loginLogoutPanel.add(logoutAnchor);
 		logoutAnchor.addClickHandler(new ClickHandler() {
@@ -41,11 +47,12 @@ public class LoggedinPanel extends HorizontalPanel {
 				}
 			}
 	      });
-		
+		*/
 		this.add(loginLogoutPanel);
 		
-		Image userAvatarImage = new Image("images/woman_avatar.jpg");
-		userAvatarImage.setPixelSize(50, 40);
+		//TODO get USER avatar
+		Image userAvatarImage = new Image("images/the_architect.png");
+		userAvatarImage.setPixelSize(50, 50);
 		this.add(userAvatarImage);
 	}
 }
