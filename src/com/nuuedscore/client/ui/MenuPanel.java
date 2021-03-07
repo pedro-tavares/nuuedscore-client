@@ -3,7 +3,7 @@ package com.nuuedscore.client.ui;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.nuuedscore.client.NuuEdScore;
-import com.nuuedscore.client.ui.person.PersonListPanel;
+import com.nuuedscore.client.ui.person.PersonPanel;
 
 /**
  * Menu Panel
@@ -15,7 +15,7 @@ import com.nuuedscore.client.ui.person.PersonListPanel;
 public class MenuPanel extends HorizontalPanel {
 
 	private Button accountsButton;
-	private PersonListPanel personPanel;
+	private PersonPanel personPanel;
 	
 	public MenuPanel() {
 		super();
@@ -29,7 +29,7 @@ public class MenuPanel extends HorizontalPanel {
 		accountsButton = new Button("Accounts");
 		accountsButton.addClickHandler(event -> {
 			if (personPanel == null) {
-				personPanel = new PersonListPanel();
+				personPanel = new PersonPanel();
 			}
 			NuuEdScore.GET().showView(personPanel);
 		});

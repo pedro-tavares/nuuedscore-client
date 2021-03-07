@@ -20,8 +20,13 @@ h1 {
 .poweredByRAILabel {
 	z-index: 999;
 }
-.loggedinLabel {
+.greenBoldlLabel {
 	font-weight: bold;
+	color: var(--green);
+}
+.blueBoldLabel {
+	font-weight: bold;
+	color: var(--blue);
 }
 .viewTitleLabel {
 	color: var(--blue);
@@ -35,10 +40,12 @@ h1 {
 	color: var(--blue);
 }
 .titledPanelLabel {
+	color: var(--blue);
 	font-size: 25px;
 	font-weight: bold;
 }
 .subTitledPanelLabel {
+	color: var(--blue);
 	font-size: 15px;
 	font-weight: bold;
 }
@@ -77,6 +84,11 @@ h1 {
 .menuPanel {
 	z-index: 1;
 }
+.leftMenuPanel {
+	width: 20px;
+	height: 100%;
+	background-color: var(--blue);
+}
 .centerPanel {
 	width: 100%;
 	height: 100%;
@@ -96,6 +108,16 @@ h1 {
 }
 .titledPanel {
 	background-color: white;	
+}
+.subTitledPanel {
+	border: 2px solid var(--blue);
+  	border-radius: 10px;
+  	-moz-border-radius: 10px;
+}
+.tabelPanel {
+	border: 2px solid var(--green);
+  	border-radius: 10px;
+  	-moz-border-radius: 10px;
 }
 .bottomPanel {
 	width: 100%;
@@ -137,7 +159,6 @@ h1 {
 
 /** BUTTON */
 button.gwt-Button {
-	/*z-index: 999;*/
   background: var(--blue);
   border: none;
   border-radius: 10px;
@@ -153,6 +174,13 @@ button.gwt-Button[selected] {
 }
 button.gwt-Button[disabled] {
 	background: lightgrey;
+}
+.menuButton {
+  background: yellow;/*var(--green);*/
+  border: none;
+  font-size: 10px;
+  color: white;
+  cursor: pointer;
 }
 
 /** DIALOG **/

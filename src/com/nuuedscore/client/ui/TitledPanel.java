@@ -12,7 +12,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
  */
 public class TitledPanel extends VerticalPanel {
 
-	private Label titleLabel;
+	protected Label titleLabel;
 	
 	public TitledPanel(String title) {
 		this.setStyleName("titledPanel");

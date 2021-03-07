@@ -27,7 +27,7 @@ public class PersonEditPanel extends TitledPanel {
 	private boolean isNew;
 	
 	private Person person;
-	private PersonListPanel parent;
+	private PersonPanel parent;
 	
 	private NameValuePanel panelFirstName;
 	private NameValuePanel panelLastName;
@@ -38,12 +38,14 @@ public class PersonEditPanel extends TitledPanel {
 	private Button saveButton = new Button("Save");
 	private Label msgLabel = new Label("");
 	
-	public PersonEditPanel(PersonListPanel parent, Person person) {
-		super(person == null ? "New Account" : "Edit Account");
+	public PersonEditPanel(PersonPanel parent, Person person) {
+		super(person == null ? "New Person" : "Edit Person");
 
 		this.parent = parent;
 		this.person = person;
 	
+		this.setStyleName("subTitledPanel");
+		this.titleLabel.setStyleName("subTitledPanelLabel");
 		this.setSpacing(10);
 		
 		init();
