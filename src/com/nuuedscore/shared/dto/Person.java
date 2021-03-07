@@ -21,6 +21,8 @@ public class Person implements Model {
 	private String firstName;
 	@QueryParam("last_name")
 	private String lastName;
+	@QueryParam("username")
+	private String username; 
 	@QueryParam("email")
 	private String email;
 	@QueryParam("phone")
@@ -35,12 +37,14 @@ public class Person implements Model {
 	}
 	
 	public Person(String email) {
+		this.username = email; 
 		this.email = email;
 	}
 
 	public Person(String firstName, String lastName, String email, String password) {
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.username = email; 
 		this.email = email;
 		this.password = password;
 		this.status = RefPersonStatus.ACTIVE.status();
@@ -75,6 +79,7 @@ public class Person implements Model {
 	}
 
 	public void setEmail(String email) {
+		this.username =  email;
 		this.email = email;
 	}
 

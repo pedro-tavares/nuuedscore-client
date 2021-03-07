@@ -70,9 +70,11 @@ public class LoginRegisterPanel extends VerticalPanel {
 
 		emailLabel = new Label("Email Address");
 		emailValue = new TextBox();
+emailValue.setText("pedro.javalabs@gmail.com");
 
 		passwordLabel = new Label("Password");
 		passwordValue = new PasswordTextBox();
+passwordValue.setText("password");
 		passwordValue.addFocusHandler(new FocusHandler() {
 			@Override
 			public void onFocus(FocusEvent event) {
@@ -93,7 +95,7 @@ public class LoginRegisterPanel extends VerticalPanel {
 		emailValue.selectAll();
 
 		errorLabel = new Label();
-		errorLabel.setStyleName("errorLbl");
+		errorLabel.setStyleName("errorLabel");
 
 		createDialogBox();
 
@@ -208,7 +210,9 @@ public class LoginRegisterPanel extends VerticalPanel {
 		dialogCloseButton = new Button("Close");
 		dialogCloseButton.getElement().setId("closeButton");
 		textToServerLabel = new Label();
+		
 		serverResponseLabel = new HTML();
+		serverResponseLabel.setStyleName("infoLabel");
 
 		VerticalPanel dialogVPanel = new VerticalPanel();
 		dialogVPanel.addStyleName("dialogVPanel");
@@ -243,39 +247,6 @@ public class LoginRegisterPanel extends VerticalPanel {
 		loginButton.click();
 	}
 
-	private void callLoginService(Person person) {
-		GWT.log("callLoginService");
-
-		loginButton.getElement().getStyle().setCursor(Cursor.WAIT);
-		RootPanel.getBodyElement().getStyle().setCursor(Cursor.WAIT);
-
-		ServiceFactory.PERSON_SERVICE.login(person, new MethodCallback<String>() {
-			@Override
-			public void onSuccess(Method method, String response) {
-				GWT.log(response);
-				Window.alert("Login SUCCESS");
-
-				loginButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
-				RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
-
-				serverResponseLabel.removeStyleName("errorLbl");
-				
-				NuuEdScore.letsGo(response);
-			}
-
-			@Override
-			public void onFailure(Method method, Throwable exception) {
-				loginButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
-				RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
-
-				GWT.log("PERSON_SERVICE.login FAILURE:" + method.getResponse().getText());
-				Window.alert("PERSON_SERVICE.login FAILURE:" + method.getResponse().getText());
-
-				serverResponseLabel.addStyleName("errorLbl");
-			}
-		});
-	}
-
 	private void callRegisterService() {
 		GWT.log("callRegisterService");
 
@@ -285,6 +256,7 @@ public class LoginRegisterPanel extends VerticalPanel {
 		Person person = this.getPerson();
 
 		ServiceFactory.PERSON_SERVICE.register(person, new MethodCallback<String>() {
+		
 			@Override
 			public void onSuccess(Method method, String response) {
 				loginButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
@@ -293,11 +265,12 @@ public class LoginRegisterPanel extends VerticalPanel {
 				GWT.log(response.toString());
 				Window.alert("PERSON_SERVICE.registerS:" + response);
 
-				serverResponseLabel.removeStyleName("errorLbl");
+///				serverResponseLabel.removeStyleName("errorLabel");
 				serverResponseLabel.setText(response);
 				
-				// AUTO LOGIN
-				//callLoginService(response);
+				if (response.indexOf("OK") != -1) {
+					setRegister(false);
+				}
 			}
 
 			@Override
@@ -308,12 +281,55 @@ public class LoginRegisterPanel extends VerticalPanel {
 				String response = method.getResponse().getText();
 				GWT.log("PERSON_SERVICE.registerF:" + response);
 
-				serverResponseLabel.removeStyleName("errorLbl");
+//				serverResponseLabel.removeStyleName("errorLabel");
 				serverResponseLabel.setText(response);
+				
+				if (response.indexOf("OK") != -1) {
+					setRegister(false);
+				}
 			}
 		});
 	}
 
+	private void callLoginService(Person person) {
+		GWT.log("callLoginService");
+
+		loginButton.getElement().getStyle().setCursor(Cursor.WAIT);
+		RootPanel.getBodyElement().getStyle().setCursor(Cursor.WAIT);
+
+		ServiceFactory.PERSON_SERVICE.login(person, new MethodCallback<String>() {
+			
+			@Override
+			public void onSuccess(Method method, String response) {
+				GWT.log("PERSON_SERVICE.loginS:" + response);
+
+				loginButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
+				RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
+
+//				serverResponseLabel.removeStyleName("errorLabel");
+				serverResponseLabel.setText("Login Successful for:" + person.getEmail());
+				
+				NuuEdScore.GET().letsGo(person);
+			}
+
+			@Override
+			public void onFailure(Method method, Throwable exception) {
+				loginButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
+				RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
+
+				GWT.log("PERSON_SERVICE.loginF:" + method.getResponse().getText());
+				String response = method.getResponse().getText();
+				
+//				serverResponseLabel.addStyleName("errorLabel");
+				serverResponseLabel.setText(response);
+				
+				if (response.indexOf("OK") != -1) {
+					NuuEdScore.GET().letsGo(person);
+				}
+			}
+		});
+	}
+	
 	/*
 	 * private void callLoadService() {
 	 * loadAllButton.getElement().getStyle().setCursor(Cursor.WAIT);
@@ -325,7 +341,7 @@ public class LoginRegisterPanel extends VerticalPanel {
 	 * loadAllButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
 	 * RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
 	 * 
-	 * serverResponseLabel.removeStyleName("errorLbl"); String names =
+	 * serverResponseLabel.removeStyleName("errorLabel"); String names =
 	 * response.stream() .map(e -> "<li>" + "User name:" + e.getName() +
 	 * ", User email:" + e.getEmail() + ", ID: " + e.getId() + "</li>")
 	 * .collect(Collectors.joining("")); showDialogBox("REST endpoint call", "<ul>"
@@ -335,7 +351,7 @@ public class LoginRegisterPanel extends VerticalPanel {
 	 * loadAllButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
 	 * RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
 	 * 
-	 * serverResponseLabel.addStyleName("errorLbl");
+	 * serverResponseLabel.addStyleName("errorLabel");
 	 * showDialogBox("REST endpoint call - Failure", IUIConstants.SERVER_ERROR); }
 	 * }); }
 	 */

@@ -32,7 +32,7 @@ h1 {
 }
 .fileStatusLabel {
 	font-weight: bold;
-	color: blue;
+	color: var(--blue);
 }
 .titledPanelLabel {
 	font-size: 25px;
@@ -42,9 +42,9 @@ h1 {
 	font-size: 15px;
 	font-weight: bold;
 }
-.infoLbl {
+.infoLabel {
 	font-weight: bold;
- 	color: blue;
+ 	color: var(--blue);
 }
 .errorLbl {
 	font-weight: bold;

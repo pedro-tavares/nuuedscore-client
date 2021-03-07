@@ -180,14 +180,17 @@ public class NuuEdScore implements EntryPoint {
 		centerPanel.setCellHorizontalAlignment(loginPanel, HasHorizontalAlignment.ALIGN_CENTER);
 	}
 		
-	public static void letsGo(String email) {
-		
-		USER = new Person(email);
-		//Window.alert("USER: " + USER.toString());
+	public void letsGo(Person person) {
+		GWT.log("letsGo:" + person.getEmail());
+				
+		USER = person;
 		setCookie();
 		
 		//AuditFactory.log(AuditEvent.LOGIN_SUCCESS);
-		
+
+		loginButton.setVisible(false); 
+		registerButton.setVisible(false);
+
 		loginPanel.removeFromParent();
 
 		/*
@@ -196,18 +199,12 @@ public class NuuEdScore implements EntryPoint {
 		centerImgLoggedIn.setStyleName("centerImgLoggedin");
 		RootPanel.get().add(centerImgLoggedIn, 0, 0);
 		*/
-		
-		topPanel.removeFromParent();
-		topPanel.setStyleName("topPanel");
-		topPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
-		topPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
-		//RootPanel.get().add(topPanel, 0, 0);
-		
+
 		loggedinPanel = new LoggedinPanel(USER);
 		loggedinPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 		topPanel.add(loggedinPanel);
 		
-		doMenu();
+		//doMenu();
 	}
 	
 	public static void logOut() {
