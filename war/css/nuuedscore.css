@@ -2,6 +2,7 @@
   --green: #46BC61;
   --blue: #0074B9;
   --white: #ffffff;
+  --grey: #9B9B9B;
 }
 body {
 	background-color: white;
@@ -116,10 +117,27 @@ h1 {
 	width: 96%;
 	background-color: white;
 }
-.subTitledPanel {
+.subTitledPanel-green {
+	border: 2px solid var(--green);
+  	border-radius: 10px;
+  	-moz-border-radius: 10px;
+}
+.subTitledPanel-blue {
 	border: 2px solid var(--blue);
   	border-radius: 10px;
   	-moz-border-radius: 10px;
+}
+.highTitledPanel {
+	border: 2px solid var(--green);
+  	border-radius: 10px;
+  	-moz-border-radius: 10px;
+  	width: 100%;
+}
+.lowTitledPanel {
+	border: 2px solid var(--blue);
+  	border-radius: 10px;
+  	-moz-border-radius: 10px;
+  	width: 100%;
 }
 .tabelPanel {
 	border: 2px solid var(--green);
@@ -137,6 +155,20 @@ h1 {
 }
 .dialogVPanel {
   margin: 5px;
+}
+.lowAptitudePanel {
+	/*border-right: 2px solid var(--green);*/
+}
+.highAptitudePanel {
+	/*border-left: 2px solid var(--green);*/
+}
+.skillsMasterPanel {
+}
+.skillsPanel {
+	border-left: 2px solid var(--green);
+	border-right: 2px solid var(--green);	
+	height: 200px;;
+	border-bottom: 3px solid var(--green);
 }
 
 /** TEXTBOX **/
@@ -178,6 +210,17 @@ button.gwt-Button {
 }
 button.gwt-Button-green {
   background: var(--green);
+  border: none;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 10px 50px;
+  font-size: 18px;
+  letter-spacing: 0.8;
+  color: white;
+  cursor: pointer;
+}
+button.gwt-Button-grey {
+  background: var(--grey);
   border: none;
   border-radius: 10px;
   -moz-border-radius: 10px;
