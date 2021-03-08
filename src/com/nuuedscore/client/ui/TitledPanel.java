@@ -1,5 +1,6 @@
 package com.nuuedscore.client.ui;
 
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -16,8 +17,10 @@ public class TitledPanel extends VerticalPanel {
 	
 	public TitledPanel(String title) {
 		this.setStyleName("titledPanel");
+		
 		this.titleLabel = new Label(title);
 		this.titleLabel.setStyleName("titledPanelLabel");
+		this.titleLabel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
 		this.add(titleLabel);
 	}
 	

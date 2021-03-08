@@ -33,7 +33,6 @@ import com.nuuedscore.shared.dto.Person;
  */
 public class PersonPanel extends TitledPanel {
 
-	// CellTable custom UI resource
 	private CellTable.Resources NuuEdScoreCellTableResources = GWT.create(NuuEdScoreCellTable.class);
 
 	private List<Person> PERSON_DATA;
@@ -48,7 +47,7 @@ public class PersonPanel extends TitledPanel {
 	private Date endDate;
 
 	public PersonPanel() {
-		super("Person admin");
+		super("Person Administration");
 
 		this.setSpacing(20);
 		this.init();
