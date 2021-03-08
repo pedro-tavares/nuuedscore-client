@@ -2,7 +2,6 @@ package com.nuuedscore.client.ui.dashboard;
 
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.nuuedscore.client.ui.ScoresPanel;
 import com.nuuedscore.shared.dto.refdata.RefScore;
 
 /**
