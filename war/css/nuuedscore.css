@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'Proxima Nova Regular';
+    src: url('../fonts/ProximaNovaRegular.otf') format('truetype');
+}
 :root {
   --green: #46BC61;
   --blue: #0074B9;
@@ -7,7 +11,7 @@
 body {
 	background-color: white;
     font-size: 0.875em;
-    font-family: "Proxima Nova";
+    font-family: "Proxima Nova Regular";
     overflow-x: hidden !important;
 }
 h1 {
@@ -17,6 +21,7 @@ h1 {
   margin: 40px 0px 70px;
   text-align: center;
 }
+
 /** LABEL **/
 .poweredByRAILabel {
 	z-index: 999;
@@ -60,6 +65,18 @@ h1 {
 .errorLbl {
 	font-weight: bold;
  	color: red;
+}
+.skillsLabel {
+	font-weight: bold;
+	color: var(--grey);
+	width: 100%;
+	text-align: middle;
+}
+
+/** IMAGE */
+.gaugeImage {
+	width: 300px;
+	height: 300px;	
 }
 
 /** PANEL */
@@ -157,18 +174,26 @@ h1 {
   margin: 5px;
 }
 .lowAptitudePanel {
-	/*border-right: 2px solid var(--green);*/
 }
 .highAptitudePanel {
-	/*border-left: 2px solid var(--green);*/
 }
 .skillsMasterPanel {
-}
-.skillsPanel {
 	border-left: 2px solid var(--green);
 	border-right: 2px solid var(--green);	
-	height: 200px;;
+}
+.skillsPanel {
 	border-bottom: 3px solid var(--green);
+}
+.skillsLegendPanel {
+	background-color: #F8F8F8;
+	border: 2px solid var(--green);
+  	border-radius: 10px;
+  	-moz-border-radius: 10px;
+}
+.skillsLegendEntryPanel {
+	width: 170px;
+ 	font-size: 10px;
+  	color: var(--grey);
 }
 
 /** TEXTBOX **/
