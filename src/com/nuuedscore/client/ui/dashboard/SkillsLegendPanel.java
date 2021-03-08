@@ -25,8 +25,6 @@ public class SkillsLegendPanel extends VerticalPanel {
 	
 	private void init() {	
 		switch (REF_SKILL) {
-		case HARD:
-			break;
 		case SOFT:
 			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Communication Icon.svg", "Communication Skills"));
 			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Leadership Icon.svg", "Leadership Skills"));
@@ -38,6 +36,20 @@ public class SkillsLegendPanel extends VerticalPanel {
 			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Flexibility.svg", "Flexibility Skills"));
 			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Negotiation.svg", "Negotiation Skills"));
 			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Decisiveness.svg", "Decisiveness Skills"));
+			break;
+		case HARD:
+			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Technical.svg", "Technical Skills"));
+			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Office.svg", "Office Skills"));
+			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Marketing.svg", "Marketing Skills"));
+			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Management.svg", "Management Skills"));
+			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Writing.svg", "Writing Skills"));
+			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Design.svg", "Design Skills"));
+			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Computer.svg", "Computer Skills"));
+			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Analytical.svg", "Analytical Skills"));
+			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Presentation.svg", "Presentation Skills"));
+			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Project Mgmt.svg", "Project Mgmt Skills"));
+			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Language.svg", "Language Skills"));
+			this.add(new SkillsLegendEntryPanel("images/graphx/gauges/Mechanical.svg", "Mechanical Skills"));
 			break;
 		default:
 			break;		
