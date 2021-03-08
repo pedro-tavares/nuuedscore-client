@@ -40,9 +40,11 @@ public class PersonPanel extends TitledPanel {
 
 	private HorizontalPanel tablePanel = new HorizontalPanel();
 	private CellTable<Person> table;
-	private PersonEditPanel panelPersonEdit;
-	private Button buttonNewPerson, buttonDeletePerson;
-	private Label labelFectchInfo = new Label("Fetching...");
+	private PersonEditPanel personEditPanel;
+	private Button 
+		newPersonButton, 
+		deletePersonButton;
+	private Label fectchInfoLabel = new Label("Fetching...");
 	private Date startDate;
 	private Date endDate;
 
@@ -116,7 +118,7 @@ public class PersonPanel extends TitledPanel {
 					// Window.alert("You selected: " + selected.getId());
 					selectedPerson = selected;
 					initModelPanel(selected);
-					buttonDeletePerson.setEnabled(true);
+					deletePersonButton.setEnabled(true);
 				}
 			}
 		});
@@ -130,20 +132,20 @@ public class PersonPanel extends TitledPanel {
 		// this.add(labelFectchInfo);
 
 		// Buttons
-		buttonNewPerson = new Button("New Person");
-		buttonNewPerson.setStyleName("gwt-Button-green");
-		buttonNewPerson.addClickHandler(event -> {
+		newPersonButton = new Button("New Person");
+		newPersonButton.setStyleName("gwt-Button-green");
+		newPersonButton.addClickHandler(event -> {
 			initModelPanelNewUser();
 		});
 
-		buttonDeletePerson = new Button("Delete Person");
-		buttonDeletePerson.addClickHandler(event -> {
+		deletePersonButton = new Button("Delete Person");
+		deletePersonButton.addClickHandler(event -> {
 			callDeletePersonService();
 		});
 
 		HorizontalPanel panelButtons = new HorizontalPanel();
 		panelButtons.setSpacing(10);
-		panelButtons.add(buttonNewPerson);
+		panelButtons.add(newPersonButton);
 //		  panelButtons.add(buttonDeleteUser);
 
 		this.add(panelButtons);
@@ -152,20 +154,20 @@ public class PersonPanel extends TitledPanel {
 	}
 
 	private void initModelPanelNewUser() {
-		if (panelPersonEdit != null) {
-			panelPersonEdit.removeFromParent();
+		if (personEditPanel != null) {
+			personEditPanel.removeFromParent();
 		}
 
-		panelPersonEdit = new PersonEditPanel(this, null);
-		tablePanel.add(panelPersonEdit);
+		personEditPanel = new PersonEditPanel(this, null);
+		tablePanel.add(personEditPanel);
 	}
 
 	private void initModelPanel(Person user) {
-		if (panelPersonEdit != null) {
-			panelPersonEdit.removeFromParent();
+		if (personEditPanel != null) {
+			personEditPanel.removeFromParent();
 		}
-		panelPersonEdit = new PersonEditPanel(this, user);
-		this.add(panelPersonEdit);
+		personEditPanel = new PersonEditPanel(this, user);
+		this.add(personEditPanel);
 	}
 
 	public void setModel(List<Person> model) {

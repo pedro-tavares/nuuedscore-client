@@ -44,7 +44,7 @@ public class PersonEditPanel extends TitledPanel {
 		this.parent = parent;
 		this.person = person;
 	
-		this.setStyleName("subTitledPanel");
+		this.setStyleName("subTitledPanel-blue");
 		this.titleLabel.setStyleName("subTitledPanelLabel");
 		this.setSpacing(10);
 		
