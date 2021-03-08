@@ -84,10 +84,14 @@ h1 {
 .menuPanel {
 	z-index: 1;
 }
-.leftMenuPanel {
-	width: 20px;
+.leftNavigationPanel {
+	width: 42px;
 	height: 100%;
 	background-color: var(--blue);
+}
+.leftNavigationGraphx {
+	margin: 0px;
+	cursor: pointer;
 }
 .centerPanel {
 	width: 100%;
@@ -160,6 +164,17 @@ h1 {
 /** BUTTON */
 button.gwt-Button {
   background: var(--blue);
+  border: none;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 10px 50px;
+  font-size: 18px;
+  letter-spacing: 0.8;
+  color: white;
+  cursor: pointer;
+}
+button.gwt-Button-green {
+  background: var(--green);
   border: none;
   border-radius: 10px;
   -moz-border-radius: 10px;
