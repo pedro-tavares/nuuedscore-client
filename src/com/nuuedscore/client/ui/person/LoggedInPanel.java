@@ -28,8 +28,7 @@ public class LoggedInPanel extends HorizontalPanel {
 
 		VerticalPanel loginLogoutPanel = new VerticalPanel();
 		
-		//Label loggedinLabel = new Label("Logged in as: " + NuuEdScore.GET_USER().getFirstName() + " " + NuuEdScore.GET_USER().getLastName());
-		Label loggedinLabel = new Label("The Architect PPII-ESi7");
+		Label loggedinLabel = new Label("Logged in as: " + NuuEdScore.GET_USER().getFirstName() + " " + NuuEdScore.GET_USER().getLastName());
 		loggedinLabel.addStyleName("greenBoldlLabel");
 		loginLogoutPanel.add(loggedinLabel);
 		

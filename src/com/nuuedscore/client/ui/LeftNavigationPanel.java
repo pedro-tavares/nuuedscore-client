@@ -1,10 +1,9 @@
 package com.nuuedscore.client.ui;
 
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.NuuEdScore;
+import com.nuuedscore.client.ui.dashboard.DashboardPanel;
 import com.nuuedscore.client.ui.person.PersonPanel;
 
 /**
@@ -25,6 +24,7 @@ public class LeftNavigationPanel extends VerticalPanel {
 		taskListImage,
 		presentImage,
 		signOutImage;
+	private DashboardPanel dashboardPanel;
 	private PersonPanel personPanel;
 	
 	public LeftNavigationPanel() {
@@ -58,6 +58,7 @@ public class LeftNavigationPanel extends VerticalPanel {
 		homeImage = new Image("images/graphx/navigation/navigation_home.png");
 		homeImage.setStyleName("leftNavigationGraphx");
 		homeImage.addClickHandler(event -> {
+			showDefaultView();
 		});
 		innerPanel.add(homeImage);
 		
@@ -86,5 +87,12 @@ public class LeftNavigationPanel extends VerticalPanel {
 		innerPanel.add(signOutImage);
 		
 		this.add(innerPanel);
+	}
+	
+	public void showDefaultView() {
+		if (dashboardPanel == null) {
+			dashboardPanel = new DashboardPanel();
+		}
+		NuuEdScore.GET().showView(dashboardPanel);		
 	}
 }

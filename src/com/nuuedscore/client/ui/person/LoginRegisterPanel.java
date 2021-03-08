@@ -291,6 +291,16 @@ passwordValue.setText("password");
 		});
 	}
 
+//TODO return Person from service
+private Person ARCHITECT_PERSON() {
+	Person person = new Person();
+	person.setFirstName("The Architect");
+	person.setLastName("PPII-ESi7");
+	person.setEmail("pedro.javalabs@gmail.com");
+	person.setPassword("password");
+	return person;
+}
+
 	private void callLoginService(Person person) {
 		GWT.log("callLoginService");
 
@@ -309,7 +319,7 @@ passwordValue.setText("password");
 //				serverResponseLabel.removeStyleName("errorLabel");
 				serverResponseLabel.setText("Login Successful for:" + person.getEmail());
 				
-				NuuEdScore.GET().letsGo(person);
+				NuuEdScore.GET().letsGo(/*person*/ARCHITECT_PERSON());
 			}
 
 			@Override
@@ -324,7 +334,7 @@ passwordValue.setText("password");
 				serverResponseLabel.setText(response);
 				
 				if (response.indexOf("OK") != -1) {
-					NuuEdScore.GET().letsGo(person);
+					NuuEdScore.GET().letsGo(/*person*/ARCHITECT_PERSON());
 				}
 			}
 		});

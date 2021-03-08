@@ -40,9 +40,12 @@ h1 {
 	color: var(--blue);
 }
 .titledPanelLabel {
+	text-align: center;
+	width: 100%;
 	color: var(--blue);
 	font-size: 25px;
 	font-weight: bold;
+	border-bottom: 3px solid var(--green);
 }
 .subTitledPanelLabel {
 	color: var(--blue);
@@ -63,8 +66,7 @@ h1 {
 	height: 75px;
 	width: 100%;
 	background-color: white;
-	border-bottom: 3px solid var(--green);
-	/*z-index: 1;*/
+	border-bottom: 2px solid var(--green);
 	padding-right: 10px;
 }
 .loginInnerPanel {
@@ -111,7 +113,8 @@ h1 {
   	filter: alpha(opacity=75); 
 }
 .titledPanel {
-	background-color: white;	
+	width: 96%;
+	background-color: white;
 }
 .subTitledPanel {
 	border: 2px solid var(--blue);

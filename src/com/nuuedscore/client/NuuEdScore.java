@@ -46,17 +46,17 @@ public class NuuEdScore implements EntryPoint {
 	private Button 
 		loginButton, 
 		registerButton;
-	private static CenterPanel centerPanel = new CenterPanel();
-	private static LoginRegisterPanel loginPanel = new LoginRegisterPanel();
-	private static Label poweredByRAILabel = new Label("Powered by R AI");
-	private static Image 
+	private CenterPanel centerPanel = new CenterPanel();
+	private LoginRegisterPanel loginPanel = new LoginRegisterPanel();
+	private Label poweredByRAILabel = new Label("Powered by R AI");
+	private Image 
 		centerImg,
 		centerImgLoggedIn;
-	private static HorizontalPanel topPanel;
-	private static LoggedInPanel loggedinPanel;	
-	private static Panel lastViewPanel;
-	private static MenuPanel menuPanel = new MenuPanel(); // TODO remove
-	private static LeftNavigationPanel leftMenuPanel;
+	private HorizontalPanel topPanel;
+	private LoggedInPanel loggedinPanel;	
+	private Panel lastViewPanel;
+	private MenuPanel menuPanel = new MenuPanel(); // TODO remove
+	private LeftNavigationPanel leftNavigationPanel;
 	
 	@Override
 	public void onModuleLoad() {
@@ -90,18 +90,8 @@ public class NuuEdScore implements EntryPoint {
 		//Window.alert(HOST);
 	}
 
-	private PersonPanel personPanel;
-	
 	private void prototypeUI() {
-		Button testBtn = new Button("LOGIN");
-		testBtn.addClickHandler(event -> {
-			if (personPanel == null) {
-				personPanel = new PersonPanel();
-			}
-			NuuEdScore.GET().showView(personPanel);
-
-		});
-		RootPanel.get().add(testBtn, 50, 75);
+		
 	}
 	
 	private void createUI() {
@@ -216,17 +206,19 @@ public class NuuEdScore implements EntryPoint {
 		loggedinPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 		topPanel.add(loggedinPanel);
 		
-		doMenu();
+		createNavigation();
 	}
 	
-	private void doMenu() {
-		leftMenuPanel = new LeftNavigationPanel();
-		RootPanel.get().add(leftMenuPanel, 0, 0);
+	private void createNavigation() {
+		leftNavigationPanel = new LeftNavigationPanel();
+		RootPanel.get().add(leftNavigationPanel, 0, 0);
 		RootPanel.get().add(topPanel, MENU_WIDTH, 0);		 
 		resize();
+		
+		leftNavigationPanel.showDefaultView();
 	}
 	
-	public static void logOut() {
+	public void logOut() {
 		//deleteCookie();
 		
 		/*
