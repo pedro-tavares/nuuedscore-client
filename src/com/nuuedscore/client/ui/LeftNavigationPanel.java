@@ -1,7 +1,8 @@
 package com.nuuedscore.client.ui;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.ui.person.PersonPanel;
@@ -15,26 +16,75 @@ import com.nuuedscore.client.ui.person.PersonPanel;
  */
 public class LeftNavigationPanel extends VerticalPanel {
 
-	private Button personButton;
+	private VerticalPanel innerPanel = new VerticalPanel();
+	private Image 
+		responsiveImage,
+		personImage,
+		homeImage,
+		scoresImage,
+		taskListImage,
+		presentImage,
+		signOutImage;
 	private PersonPanel personPanel;
 	
 	public LeftNavigationPanel() {
 		super();
 		
-		this.setStyleName("leftMenuPanel");
-		this.setSpacing(10);		
+		innerPanel.setSpacing(0);
+		
+		this.setStyleName("leftNavigationPanel");
+		this.setSpacing(0);
+		
 		this.init();
 	}
 	
 	private void init() {
-		personButton = new Button("P");
-		personButton.setStyleName("menuButton");
-		personButton.addClickHandler(event -> {
+		responsiveImage = new Image("images/graphx/navigation/navigation_responsive.png");
+		responsiveImage.setStyleName("leftNavigationGraphx");
+		responsiveImage.addClickHandler(event -> {
+		});
+		innerPanel.add(responsiveImage);
+
+		personImage = new Image("images/graphx/navigation/navigation_person.png");
+		personImage.setStyleName("leftNavigationGraphx");
+		personImage.addClickHandler(event -> {
 			if (personPanel == null) {
 				personPanel = new PersonPanel();
 			}
 			NuuEdScore.GET().showView(personPanel);
 		});
-		this.add(personButton);
+		innerPanel.add(personImage);
+		
+		homeImage = new Image("images/graphx/navigation/navigation_home.png");
+		homeImage.setStyleName("leftNavigationGraphx");
+		homeImage.addClickHandler(event -> {
+		});
+		innerPanel.add(homeImage);
+		
+		scoresImage = new Image("images/graphx/navigation/navigation_scores.png");
+		scoresImage.setStyleName("leftNavigationGraphx");
+		scoresImage.addClickHandler(event -> {
+		});
+		innerPanel.add(scoresImage);
+
+		taskListImage = new Image("images/graphx/navigation/navigation_task_list.png");
+		taskListImage.setStyleName("leftNavigationGraphx");
+		taskListImage.addClickHandler(event -> {
+		});
+		innerPanel.add(taskListImage);
+
+		presentImage = new Image("images/graphx/navigation/navigation_present.png");
+		presentImage.setStyleName("leftNavigationGraphx");
+		presentImage.addClickHandler(event -> {
+		});
+		innerPanel.add(taskListImage);
+
+		signOutImage = new Image("images/graphx/navigation/navigation_sign_out.png");
+		signOutImage.setStyleName("leftNavigationGraphx");
+		signOutImage.addClickHandler(event -> {
+		});
+		innerPanel.add(signOutImage);
+		
+		this.add(innerPanel);
 	}
 }

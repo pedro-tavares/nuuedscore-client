@@ -41,7 +41,7 @@ public class NuuEdScore implements EntryPoint {
 	private static Person USER;
 	private static boolean LOGGED_IN;
 	
-	private int MENU_WIDTH = 45;
+	private int MENU_WIDTH = 42;
 	
 	private Button 
 		loginButton, 

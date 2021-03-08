@@ -132,11 +132,10 @@ public class PersonPanel extends TitledPanel {
 
 		// Buttons
 		buttonNewPerson = new Button("New Person");
+		buttonNewPerson.setStyleName("gwt-Button-green");
 		buttonNewPerson.addClickHandler(event -> {
 			initModelPanelNewUser();
 		});
-		// TODO activate
-		buttonNewPerson.setEnabled(false);
 
 		buttonDeletePerson = new Button("Delete Person");
 		buttonDeletePerson.addClickHandler(event -> {
@@ -173,7 +172,7 @@ public class PersonPanel extends TitledPanel {
 	public void setModel(List<Person> model) {
 		PERSON_DATA = model;
 
-		GWT.log("USER_DATA.size: " + PERSON_DATA.size());
+		GWT.log("PERSON_DATA.size: " + PERSON_DATA.size());
 
 		table.setPageSize(50);
 		table.setRowData(0, PERSON_DATA);
