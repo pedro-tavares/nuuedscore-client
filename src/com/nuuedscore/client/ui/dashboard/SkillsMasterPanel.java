@@ -21,7 +21,7 @@ public class SkillsMasterPanel extends VerticalPanel {
 	public SkillsMasterPanel() {
 		
 		this.setStyleName("skillsMasterPanel");
-		this.setSpacing(20);
+		this.setSpacing(10);
 		init();
 	}
 	
