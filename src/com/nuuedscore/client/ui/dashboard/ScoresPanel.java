@@ -1,6 +1,7 @@
-package com.nuuedscore.client.ui;
+package com.nuuedscore.client.ui.dashboard;
 
 import com.google.gwt.user.client.ui.Label;
+import com.nuuedscore.client.ui.TitledPanel;
 import com.nuuedscore.shared.dto.refdata.RefScore;
 
 /**
