@@ -284,8 +284,8 @@ passwordValue.setText("password");
 //				serverResponseLabel.removeStyleName("errorLabel");
 				serverResponseLabel.setText(response);
 				
-				if (response.indexOf("OK") != -1) {
-					setRegister(false);
+				if (response.indexOf("ERROR") == -1) {
+					setRegister(false); // commute to LOGIN
 				}
 			}
 		});
@@ -329,12 +329,12 @@ private Person ARCHITECT_PERSON() {
 
 				GWT.log("PERSON_SERVICE.loginF:" + method.getResponse().getText());
 				String response = method.getResponse().getText();
-				
-//				serverResponseLabel.addStyleName("errorLabel");
-				serverResponseLabel.setText(response);
-				
-				if (response.indexOf("OK") != -1) {
+								
+				if (response.indexOf("ERROR:") == -1) {
 					NuuEdScore.GET().letsGo(/*person*/ARCHITECT_PERSON());
+				} else {
+					serverResponseLabel.setStyleName("errorLabel");					
+					serverResponseLabel.setText(response);				
 				}
 			}
 		});
