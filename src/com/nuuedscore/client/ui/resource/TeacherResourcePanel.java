@@ -7,23 +7,26 @@ import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.BrowserEvents;
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy;
 import com.google.gwt.user.cellview.client.TextColumn;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ButtonBase;
+import com.google.gwt.user.client.ui.DecoratedPopupPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.view.client.CellPreviewEvent;
+import com.google.gwt.view.client.CellPreviewEvent.Handler;
 import com.google.gwt.view.client.SelectionChangeEvent;
 import com.google.gwt.view.client.SingleSelectionModel;
 import com.nuuedscore.client.service.ServiceFactory;
 import com.nuuedscore.client.ui.TitledPanel;
 //import com.nuuedscore.client.ui.TeacherResource.TeacherResourceEditPanel;
 import com.nuuedscore.client.ui.style.NuuEdScoreCellTable;
-import com.nuuedscore.shared.dto.TeacherResource;
 import com.nuuedscore.shared.dto.TeacherResource;
 
 /**
@@ -42,6 +45,7 @@ public class TeacherResourcePanel extends TitledPanel {
 
 	private HorizontalPanel tablePanel = new HorizontalPanel();
 	private CellTable<TeacherResource> table;
+	private DecoratedPopupPanel resourcePreviewPopup;
 	//private TeacherResourceEditPanel teacherResourceEditPanel;
 	private Button newTeacherResourceButton, deleteTeacherResourceButton;
 	private Label fetchInfoLabel = new Label("Fetching...");
@@ -76,24 +80,24 @@ public class TeacherResourcePanel extends TitledPanel {
 			}
 		};
 		table.addColumn(topicColumn, "Topic");
-/*
-		TextColumn<TeacherResource> learningPersonalityColumn = new TextColumn<TeacherResource>() {
-			@Override
-			public String getValue(TeacherResource object) {
-				return object.getLearningPersonality() != null ? object.getLearningPersonality().toString() : "";
-			}
-		};
-		table.addColumn(learningPersonalityColumn, "Learning Personality");
-*/
-/*
-		TextColumn<TeacherResource> bloomColumn = new TextColumn<TeacherResource>() {
-			@Override
-			public String getValue(TeacherResource object) {
-				return object.getBloom().toString();
-			}
-		};
-		table.addColumn(bloomColumn, "Bloom");
-*/
+		/*
+				TextColumn<TeacherResource> learningPersonalityColumn = new TextColumn<TeacherResource>() {
+					@Override
+					public String getValue(TeacherResource object) {
+						return object.getLearningPersonality() != null ? object.getLearningPersonality().toString() : "";
+					}
+				};
+				table.addColumn(learningPersonalityColumn, "Learning Personality");
+		*/
+		/*
+				TextColumn<TeacherResource> bloomColumn = new TextColumn<TeacherResource>() {
+					@Override
+					public String getValue(TeacherResource object) {
+						return object.getBloom().toString();
+					}
+				};
+				table.addColumn(bloomColumn, "Bloom");
+		*/
 		TextColumn<TeacherResource> subjectColumn = new TextColumn<TeacherResource>() {
 			@Override
 			public String getValue(TeacherResource object) {
@@ -117,7 +121,7 @@ public class TeacherResourcePanel extends TitledPanel {
 			}
 		};
 		table.addColumn(resourceColumn, "Resource");
-
+		
 		TextColumn<TeacherResource> createdOnColumn = new TextColumn<TeacherResource>() {
 			@Override
 			public String getValue(TeacherResource object) {
@@ -125,6 +129,8 @@ public class TeacherResourcePanel extends TitledPanel {
 			}
 		};
 		table.addColumn(createdOnColumn, "Created on");
+
+		initPreview();
 
 		/*
 		 * SimplePager.Resources resources = GWT.create(SimplePager.Resources.class);
@@ -151,7 +157,7 @@ public class TeacherResourcePanel extends TitledPanel {
 		// panel.setBorderWidth(1);
 
 		this.add(fetchInfoLabel);
-		
+
 		tablePanel.setStyleName("tabelPanel");
 		tablePanel.setSpacing(10);
 		tablePanel.add(table);
@@ -171,11 +177,33 @@ public class TeacherResourcePanel extends TitledPanel {
 		HorizontalPanel panelButtons = new HorizontalPanel();
 		panelButtons.setSpacing(10);
 		panelButtons.add(newTeacherResourceButton);
-		//		  panelButtons.add(buttonDeleteUser);
+		//panelButtons.add(buttonDeleteUser);
 
 		this.add(panelButtons);
 
 		this.add(tablePanel);
+	}
+	
+	private void showPreviewPopup(CellPreviewEvent<TeacherResource> event) {
+		resourcePreviewPopup = new DecoratedPopupPanel(true);
+		resourcePreviewPopup.setWidth("150px");
+		resourcePreviewPopup.setWidget(new ResourcePreviewPanel(event.getValue().getResource()));
+		resourcePreviewPopup.setPopupPosition(event.getNativeEvent().getClientX(), event.getNativeEvent().getClientY());
+		resourcePreviewPopup.show();
+	}
+
+	private void initPreview() {
+		table.addCellPreviewHandler(new Handler<TeacherResource>() {
+			@Override
+			public void onCellPreview(CellPreviewEvent<TeacherResource> event) {
+				//GWT.log(event.getValue().getResource());
+				if (BrowserEvents.MOUSEOVER.equals(event.getNativeEvent().getType())) {
+					showPreviewPopup(event);
+				} else if (BrowserEvents.MOUSEOUT.equals(event.getNativeEvent().getType())) {
+					resourcePreviewPopup.hide();
+		        }				
+			}
+		});
 	}
 
 	private void initModelPanelNew() {
