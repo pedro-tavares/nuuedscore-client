@@ -62,7 +62,7 @@ h1 {
 	font-weight: bold;
  	color: var(--blue);
 }
-.errorLbl {
+.errorLabel {
 	font-weight: bold;
  	color: red;
 }
