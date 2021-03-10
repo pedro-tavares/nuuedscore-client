@@ -1,10 +1,12 @@
 package com.nuuedscore.client.ui;
 
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.ui.dashboard.DashboardPanel;
 import com.nuuedscore.client.ui.person.PersonPanel;
+import com.nuuedscore.client.ui.resource.TeacherResourcePanel;
 
 /**
  * Left Navigation Panel
@@ -26,6 +28,7 @@ public class LeftNavigationPanel extends VerticalPanel {
 		signOutImage;
 	private DashboardPanel dashboardPanel;
 	private PersonPanel personPanel;
+	private TeacherResourcePanel teacherResourcePanel;
 	
 	public LeftNavigationPanel() {
 		super();
@@ -42,6 +45,10 @@ public class LeftNavigationPanel extends VerticalPanel {
 		responsiveImage = new Image("images/graphx/navigation/navigation_responsive.png");
 		responsiveImage.setStyleName("leftNavigationGraphx");
 		responsiveImage.addClickHandler(event -> {
+			if (teacherResourcePanel == null) {
+				teacherResourcePanel = new TeacherResourcePanel();
+			}
+			NuuEdScore.GET().showView(teacherResourcePanel);
 		});
 		innerPanel.add(responsiveImage);
 

@@ -12,5 +12,6 @@ import com.google.gwt.core.client.GWT;
 public class ServiceFactory {
 
 	public static final IPersonService PERSON_SERVICE = GWT.create(IPersonService.class);
+	public static final ITeacherResourceService TEACHER_RESOURCE_SERVICE = GWT.create(ITeacherResourceService.class);
 
 }
