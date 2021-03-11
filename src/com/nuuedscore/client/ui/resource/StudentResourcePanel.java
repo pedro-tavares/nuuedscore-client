@@ -14,119 +14,125 @@ import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSe
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DecoratedPopupPanel;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.CellPreviewEvent;
 import com.google.gwt.view.client.CellPreviewEvent.Handler;
 import com.google.gwt.view.client.SelectionChangeEvent;
 import com.google.gwt.view.client.SingleSelectionModel;
 import com.nuuedscore.client.service.ServiceFactory;
 import com.nuuedscore.client.ui.TitledPanel;
-//import com.nuuedscore.client.ui.TeacherResource.TeacherResourceEditPanel;
+//import com.nuuedscore.client.ui.StudentResource.StudentResourceEditPanel;
 import com.nuuedscore.client.ui.style.NuuEdScoreCellTable;
-import com.nuuedscore.shared.dto.TeacherResource;
+import com.nuuedscore.shared.dto.StudentResource;
 
 /**
- * TeacherResource Panel
+ * Student Resource Panel
  * 
  * @author PATavares
- * @since Feb 2021
+ * @since Mar 2021
  * 
  */
-public class TeacherResourcePanel extends TitledPanel {
+public class StudentResourcePanel extends TitledPanel {
 
 	private CellTable.Resources NuuEdScoreCellTableResources = GWT.create(NuuEdScoreCellTable.class);
 
-	private List<TeacherResource> TEACHER_RESOURCE_DATA;
-	private TeacherResource selectedTeacherResource;
+	private List<StudentResource> STUDENT_RESOURCE_DATA;
+	private StudentResource selectedStudentResource;
 
 	private HorizontalPanel tablePanel = new HorizontalPanel();
-	private CellTable<TeacherResource> table;
+	private CellTable<StudentResource> table;
 	private DecoratedPopupPanel resourcePreviewPopup;
-	//private TeacherResourceEditPanel teacherResourceEditPanel;
-	private Button newTeacherResourceButton, deleteTeacherResourceButton;
+	//private StudentResourceEditPanel StudentResourceEditPanel;
+	private Button newStudentResourceButton, deleteStudentResourceButton;
 	private Label fetchInfoLabel = new Label("Fetching...");
 	private Date startDate;
 	private Date endDate;
 
-	public TeacherResourcePanel() {
-		super("Teacher Resources");
+	public StudentResourcePanel() {
+		super("Student Resources");
 
 		this.setSpacing(20);
 		this.init();
 
-		callGetTeacherResourceService();
+		callGetStudentResourceService();
 	}
 
 	private void init() {
-		table = new CellTable<TeacherResource>(10, NuuEdScoreCellTableResources);
+		table = new CellTable<StudentResource>(10, NuuEdScoreCellTableResources);
 		table.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.ENABLED);
 
-		TextColumn<TeacherResource> idColumn = new TextColumn<TeacherResource>() {
+		TextColumn<StudentResource> idColumn = new TextColumn<StudentResource>() {
 			@Override
-			public String getValue(TeacherResource object) {
+			public String getValue(StudentResource object) {
 				return object.getId() != null ? object.getId().toString() : "";
 			}
 		};
 		table.addColumn(idColumn, "ID");
 
-		TextColumn<TeacherResource> topicColumn = new TextColumn<TeacherResource>() {
+		TextColumn<StudentResource> topicColumn = new TextColumn<StudentResource>() {
 			@Override
-			public String getValue(TeacherResource object) {
+			public String getValue(StudentResource object) {
 				return object.getTopic() != null ? object.getTopic().toString() : "";
 			}
 		};
 		table.addColumn(topicColumn, "Topic");
 		
 		/*
-				TextColumn<TeacherResource> learningPersonalityColumn = new TextColumn<TeacherResource>() {
+				TextColumn<StudentResource> learningPersonalityColumn = new TextColumn<StudentResource>() {
 					@Override
-					public String getValue(TeacherResource object) {
+					public String getValue(StudentResource object) {
 						return object.getLearningPersonality() != null ? object.getLearningPersonality().toString() : "";
 					}
 				};
 				table.addColumn(learningPersonalityColumn, "Learning Personality");
 		*/
 		/*
-				TextColumn<TeacherResource> bloomColumn = new TextColumn<TeacherResource>() {
+				TextColumn<StudentResource> bloomColumn = new TextColumn<StudentResource>() {
 					@Override
-					public String getValue(TeacherResource object) {
+					public String getValue(StudentResource object) {
 						return object.getBloom().toString();
 					}
 				};
 				table.addColumn(bloomColumn, "Bloom");
 		*/
 		
-		TextColumn<TeacherResource> subjectColumn = new TextColumn<TeacherResource>() {
+		TextColumn<StudentResource> subjectColumn = new TextColumn<StudentResource>() {
 			@Override
-			public String getValue(TeacherResource object) {
+			public String getValue(StudentResource object) {
 				return object.getSubject() != null ? object.getSubject().toString() : "";
 			}
 		};
 		table.addColumn(subjectColumn, "Subject");
 
-		TextColumn<TeacherResource> nameColumn = new TextColumn<TeacherResource>() {
+		TextColumn<StudentResource> scoreColumn = new TextColumn<StudentResource>() {
 			@Override
-			public String getValue(TeacherResource object) {
+			public String getValue(StudentResource object) {
+				return object.getSubject() != null ? object.getSubject().toString() : "";
+			}
+		};
+		table.addColumn(scoreColumn, "Score");
+		
+		TextColumn<StudentResource> nameColumn = new TextColumn<StudentResource>() {
+			@Override
+			public String getValue(StudentResource object) {
 				return object.getName() != null ? object.getName().toString() : "";
 			}
 		};
 		table.addColumn(nameColumn, "Name");
 
-		TextColumn<TeacherResource> resourceColumn = new TextColumn<TeacherResource>() {
+		TextColumn<StudentResource> resourceColumn = new TextColumn<StudentResource>() {
 			@Override
-			public String getValue(TeacherResource object) {
+			public String getValue(StudentResource object) {
 				return object.getResource() != null ? object.getResource().toString() : "";
 			}
 		};
 		table.addColumn(resourceColumn, "Resource");
 
-		TextColumn<TeacherResource> createdOnColumn = new TextColumn<TeacherResource>() {
+		TextColumn<StudentResource> createdOnColumn = new TextColumn<StudentResource>() {
 			@Override
-			public String getValue(TeacherResource object) {
+			public String getValue(StudentResource object) {
 				return object.getCreatedOn() != null ? object.getCreatedOn().toString() : "";
 			}
 		};
@@ -144,17 +150,17 @@ public class TeacherResourcePanel extends TitledPanel {
 		 * this.add(simplePager);
 		 */
 
-		// Add a selection model to handle TeacherResource selection.
-		final SingleSelectionModel<TeacherResource> selectionModel = new SingleSelectionModel<TeacherResource>();
+		// Add a selection model to handle StudentResource selection.
+		final SingleSelectionModel<StudentResource> selectionModel = new SingleSelectionModel<StudentResource>();
 		table.setSelectionModel(selectionModel);
 		selectionModel.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
 			public void onSelectionChange(SelectionChangeEvent event) {
-				TeacherResource selected = selectionModel.getSelectedObject();
+				StudentResource selected = selectionModel.getSelectedObject();
 				if (selected != null) {
 					// Window.alert("You selected: " + selected.getId());
-					selectedTeacherResource = selected;
+					selectedStudentResource = selected;
 					initModelPanel(selected);
-					deleteTeacherResourceButton.setEnabled(true);
+					deleteStudentResourceButton.setEnabled(true);
 				}
 			}
 		});
@@ -168,20 +174,20 @@ public class TeacherResourcePanel extends TitledPanel {
 		tablePanel.add(table);
 
 		// Buttons
-		newTeacherResourceButton = new Button("New Teacher Resource");
-		newTeacherResourceButton.setStyleName("gwt-Button-green");
-		newTeacherResourceButton.addClickHandler(event -> {
+		newStudentResourceButton = new Button("New Student Resource");
+		newStudentResourceButton.setStyleName("gwt-Button-green");
+		newStudentResourceButton.addClickHandler(event -> {
 			initModelPanelNew();
 		});
 
-		deleteTeacherResourceButton = new Button("Delete Teacher Resource");
-		deleteTeacherResourceButton.addClickHandler(event -> {
-			//callDeleteTeacherResourceService();
+		deleteStudentResourceButton = new Button("Delete Student Resource");
+		deleteStudentResourceButton.addClickHandler(event -> {
+			//callDeleteStudentResourceService();
 		});
 
 		HorizontalPanel panelButtons = new HorizontalPanel();
 		panelButtons.setSpacing(10);
-		panelButtons.add(newTeacherResourceButton);
+		panelButtons.add(newStudentResourceButton);
 		//panelButtons.add(buttonDeleteUser);
 
 		this.add(panelButtons);
@@ -189,7 +195,7 @@ public class TeacherResourcePanel extends TitledPanel {
 		this.add(tablePanel);
 	}
 
-	private void showPreviewPopup(CellPreviewEvent<TeacherResource> event) {
+	private void showPreviewPopup(CellPreviewEvent<StudentResource> event) {
 		resourcePreviewPopup = new DecoratedPopupPanel(true);
 		resourcePreviewPopup.setWidth("150px");
 		resourcePreviewPopup.setWidget(new ResourcePreviewPanel(event.getValue().getResource()));
@@ -198,9 +204,9 @@ public class TeacherResourcePanel extends TitledPanel {
 	}
 
 	private void initPreview() {
-		table.addCellPreviewHandler(new Handler<TeacherResource>() {
+		table.addCellPreviewHandler(new Handler<StudentResource>() {
 			@Override
-			public void onCellPreview(CellPreviewEvent<TeacherResource> event) {
+			public void onCellPreview(CellPreviewEvent<StudentResource> event) {
 				//GWT.log(event.getValue().getResource());
 				if (BrowserEvents.MOUSEOVER.equals(event.getNativeEvent().getType())) {
 					showPreviewPopup(event);
@@ -213,38 +219,38 @@ public class TeacherResourcePanel extends TitledPanel {
 
 	private void initModelPanelNew() {
 		/*
-		if (TeacherResourceEditPanel != null) {
-			TeacherResourceEditPanel.removeFromParent();
+		if (StudentResourceEditPanel != null) {
+			StudentResourceEditPanel.removeFromParent();
 		}
 		
-		TeacherResourceEditPanel = new TeacherResourceEditPanel(this, null);
-		tablePanel.add(TeacherResourceEditPanel);
+		StudentResourceEditPanel = new StudentResourceEditPanel(this, null);
+		tablePanel.add(StudentResourceEditPanel);
 		*/
 	}
 
-	private void initModelPanel(TeacherResource teacherResource) {
+	private void initModelPanel(StudentResource StudentResource) {
 		/*
-		if (TeacherResourceEditPanel != null) {
-			TeacherResourceEditPanel.removeFromParent();
+		if (StudentResourceEditPanel != null) {
+			StudentResourceEditPanel.removeFromParent();
 		}
-		TeacherResourceEditPanel = new TeacherResourceEditPanel(this, teacherResource);
-		this.add(TeacherResourceEditPanel);
+		StudentResourceEditPanel = new StudentResourceEditPanel(this, StudentResource);
+		this.add(StudentResourceEditPanel);
 		*/
 	}
 
-	public void setModel(List<TeacherResource> model) {
-		TEACHER_RESOURCE_DATA = model;
+	public void setModel(List<StudentResource> model) {
+		STUDENT_RESOURCE_DATA = model;
 
-		GWT.log("TeacherResource_DATA.size: " + TEACHER_RESOURCE_DATA.size());
+		GWT.log("StudentResource_DATA.size: " + STUDENT_RESOURCE_DATA.size());
 
 		table.setPageSize(50);
-		table.setRowData(0, TEACHER_RESOURCE_DATA);
-		table.setRowCount(TEACHER_RESOURCE_DATA.size(), true);
+		table.setRowData(0, STUDENT_RESOURCE_DATA);
+		table.setRowCount(STUDENT_RESOURCE_DATA.size(), true);
 	}
 
-	public boolean teacherResourceExists(String resource) {
-		for (TeacherResource TeacherResource : TEACHER_RESOURCE_DATA) {
-			if (TeacherResource.getResource().equals(resource)) {
+	public boolean StudentResourceExists(String resource) {
+		for (StudentResource StudentResource : STUDENT_RESOURCE_DATA) {
+			if (StudentResource.getResource().equals(resource)) {
 				return true;
 			}
 		}
@@ -253,25 +259,25 @@ public class TeacherResourcePanel extends TitledPanel {
 	}
 
 	public void refresh() {
-		callGetTeacherResourceService();
+		callGetStudentResourceService();
 	}
 
-	private void callGetTeacherResourceService() {
+	private void callGetStudentResourceService() {
 		RootPanel.getBodyElement().getStyle().setCursor(Cursor.WAIT);
 
 		startDate = new Date();
-		ServiceFactory.TEACHER_RESOURCE_SERVICE.list(new MethodCallback<List<TeacherResource>>() {
+		ServiceFactory.STUDENT_RESOURCE_SERVICE.list(new MethodCallback<List<StudentResource>>() {
 
 			@Override
-			public void onSuccess(Method method, List<TeacherResource> response) {
+			public void onSuccess(Method method, List<StudentResource> response) {
 				RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
 
-				GWT.log("callGetTeacherResourceService - SUCCESS:\n" + response.toString());
+				GWT.log("callGetStudentResourceService - SUCCESS:\n" + response.toString());
 
 				setModel(response);
 
 				endDate = new Date();
-				fetchInfoLabel.setText("Fetched " + response.size() + " Teacher Resources in "
+				fetchInfoLabel.setText("Fetched " + response.size() + " Student Resources in "
 						+ (endDate.getTime() - startDate.getTime()) + "ms");
 			}
 
@@ -279,7 +285,7 @@ public class TeacherResourcePanel extends TitledPanel {
 			public void onFailure(Method method, Throwable exception) {
 				RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
 
-				GWT.log("callGetTeacherResourceService - FAILURE:\n" + method.getResponse().getText());
+				GWT.log("callGetStudentResourceService - FAILURE:\n" + method.getResponse().getText());
 			}
 		});
 	}

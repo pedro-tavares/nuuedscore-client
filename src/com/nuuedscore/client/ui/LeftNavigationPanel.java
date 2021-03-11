@@ -6,6 +6,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.ui.dashboard.DashboardPanel;
 import com.nuuedscore.client.ui.person.PersonPanel;
+import com.nuuedscore.client.ui.resource.StudentResourcePanel;
 import com.nuuedscore.client.ui.resource.TeacherResourcePanel;
 
 /**
@@ -29,6 +30,7 @@ public class LeftNavigationPanel extends VerticalPanel {
 	private DashboardPanel dashboardPanel;
 	private PersonPanel personPanel;
 	private TeacherResourcePanel teacherResourcePanel;
+	private StudentResourcePanel studentResourcePanel;
 	
 	public LeftNavigationPanel() {
 		super();
@@ -45,10 +47,6 @@ public class LeftNavigationPanel extends VerticalPanel {
 		responsiveImage = new Image("images/graphx/navigation/navigation_responsive.png");
 		responsiveImage.setStyleName("leftNavigationGraphx");
 		responsiveImage.addClickHandler(event -> {
-			if (teacherResourcePanel == null) {
-				teacherResourcePanel = new TeacherResourcePanel();
-			}
-			NuuEdScore.GET().showView(teacherResourcePanel);
 		});
 		innerPanel.add(responsiveImage);
 
@@ -92,6 +90,27 @@ public class LeftNavigationPanel extends VerticalPanel {
 		signOutImage.addClickHandler(event -> {
 		});
 		innerPanel.add(signOutImage);
+		
+		/* TODO DEV */
+		Button teacherResourceButton = new Button("T");
+		teacherResourceButton.setStyleName("devButton");
+		teacherResourceButton.addClickHandler(event -> {
+			if (teacherResourcePanel == null) {
+				teacherResourcePanel = new TeacherResourcePanel();
+			}
+			NuuEdScore.GET().showView(teacherResourcePanel);		
+		});		
+		innerPanel.add(teacherResourceButton);
+
+		Button studentResourceButton = new Button("S");
+		studentResourceButton.setStyleName("devButton");
+		studentResourceButton.addClickHandler(event -> {
+			if (studentResourcePanel == null) {
+				studentResourcePanel = new StudentResourcePanel();
+			}
+			NuuEdScore.GET().showView(studentResourcePanel);		
+		});		
+		innerPanel.add(studentResourceButton);
 		
 		this.add(innerPanel);
 	}
