@@ -1,4 +1,4 @@
-package com.nuuedscore.client.ui.dashboard;
+package com.nuuedscore.client.ui.dashboard.skills;
 
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;

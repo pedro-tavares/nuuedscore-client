@@ -1,10 +1,11 @@
-package com.nuuedscore.client.ui.dashboard;
+package com.nuuedscore.client.ui.dashboard.skills;
 
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.nuuedscore.client.ui.dashboard.GaugePanel;
 import com.nuuedscore.shared.dto.refdata.RefScore;
 import com.nuuedscore.shared.dto.refdata.RefSkill;
 
