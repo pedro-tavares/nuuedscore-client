@@ -1,4 +1,4 @@
-package com.nuuedscore.client.ui.dashboard;
+package com.nuuedscore.client.ui.dashboard.scores;
 
 import com.google.gwt.user.client.ui.Label;
 import com.nuuedscore.client.ui.TitledPanel;
