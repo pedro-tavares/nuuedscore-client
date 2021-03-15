@@ -1,4 +1,4 @@
-package com.nuuedscore.client.ui.dashboard.scores;
+package com.nuuedscore.client.ui.dashboard.score;
 
 import com.google.gwt.user.client.ui.Label;
 import com.nuuedscore.client.ui.TitledPanel;
@@ -29,6 +29,16 @@ public class ScoresPanel extends TitledPanel {
 		switch (REF_SCORE) {
 		case HIGH:
 			this.setStyleName("highTitledPanel");
+			
+			SubjectScorePanel ssp1Panel = new SubjectScorePanel(RefScore.HIGH, "MATHEMATICS", 1, 99);
+			this.add(ssp1Panel);
+			
+			SubjectScorePanel ssp2Panel = new SubjectScorePanel(RefScore.HIGH, "READING", 1, 76);
+			this.add(ssp2Panel);
+			
+			SubjectScorePanel ssp3Panel = new SubjectScorePanel(RefScore.HIGH, "SCIENCE", 1, 50);
+			this.add(ssp3Panel);
+			
 			break;
 		case LOW:
 			this.setStyleName("lowTitledPanel");			
@@ -37,7 +47,6 @@ public class ScoresPanel extends TitledPanel {
 			break;
 		}
 		
-		this.add(new Label(this.titleLabel.getText() + " content"));
 	}
 
 }
