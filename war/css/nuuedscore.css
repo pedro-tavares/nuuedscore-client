@@ -72,6 +72,16 @@ h1 {
 	width: 100%;
 	text-align: middle;
 }
+.subjectLabel {
+	font-weight: bold;
+	font-size: 10px;
+	color: var(--blue);
+}
+.levelLabel {
+	font-weight: bold;
+	font-size: 10px;
+	color: var(--green);
+}
 
 /** IMAGE */
 .gaugeImage {
@@ -194,6 +204,27 @@ h1 {
 	width: 170px;
  	font-size: 10px;
   	color: var(--grey);
+}
+.subjectScorePanel {
+	/*width: 100%;*/
+}
+.subjectScoreBarPanel {
+	width: 100%;
+	background-color: #F5F5F5;
+}
+.subjectScoreBarPanel-score {
+	color: white;
+	font-weight: bold;
+	padding: 5px;
+	text-align: right;
+	background-color: var(--green);
+}
+.subjectScoreBarPanel-remainder {
+	color: var(--green);
+	font-weight: bold;
+	padding: 5px;
+	text-align: right;
+	background-color: #F5F5F5;
 }
 
 /** TEXTBOX **/

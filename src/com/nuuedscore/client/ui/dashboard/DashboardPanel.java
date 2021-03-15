@@ -4,7 +4,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.ui.TitledPanel;
 import com.nuuedscore.client.ui.dashboard.aptitude.AptitudePanel;
-import com.nuuedscore.client.ui.dashboard.skills.SkillsMasterPanel;
+import com.nuuedscore.client.ui.dashboard.skill.SkillsMasterPanel;
 import com.nuuedscore.shared.dto.refdata.RefScore;
 
 /**

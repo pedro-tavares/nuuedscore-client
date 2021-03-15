@@ -56,8 +56,8 @@ public class GaugePanel extends VerticalPanel {
 		
 		innerPanel.add(gaugeImage);
 		
-		needleImage.setSize("100px", "100px");
-		innerPanel.add(needleImage, 110, 125);
+		needleImage.setSize("120px", "120px");
+		innerPanel.add(needleImage, 100, 110);
 		
 		this.add(innerPanel);
 		this.add(skillsLabel);
