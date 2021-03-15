@@ -48,7 +48,7 @@ public class NuuEdScore implements EntryPoint {
 		registerButton;
 	private CenterPanel centerPanel = new CenterPanel();
 	private LoginRegisterPanel loginPanel = new LoginRegisterPanel();
-	private Label poweredByRAILabel = new Label("Powered by R AI");
+	private Label poweredByRAILabel = new Label("Powered by R AI - " + new Date());
 	private Image 
 		centerImg,
 		centerImgLoggedIn;
