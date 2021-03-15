@@ -15,15 +15,13 @@ public class SubjectScoreBarPanel extends HorizontalPanel {
 	
 	private RefScore REF_SCORE;
 	private int score;
-	private Label 
-		scoreLabel,
-		remainderLabel;
+	private Label scoreLabel;
 	
 	public SubjectScoreBarPanel(RefScore refScore, int score) {
 		this.REF_SCORE = refScore;
 		this.score = score;
 		
-		this.setStyleName("subjectScoreBarPanel");
+		//this.setStyleName("subjectScoreBarPanel");
 		this.setWidth("100%");
 		//this.setSpacing(0);
 		
@@ -33,17 +31,20 @@ public class SubjectScoreBarPanel extends HorizontalPanel {
 	private void init() {
 
 		scoreLabel = new Label(Integer.toString(score) + "");
-		scoreLabel.setStyleName("subjectScoreBarPanel-score");
 		scoreLabel.setWidth(score + "%");
-
-		/*
-		remainderLabel = new Label("100");
-		remainderLabel.setStyleName("subjectScoreBarPanel-remainder");
-		remainderLabel.setWidth(100-score + "%");
-		*/
 		
+		switch (REF_SCORE) {
+		case HIGH:
+			scoreLabel.setStyleName("subjectScoreBarPanel-score-high");
+			break;
+		case LOW:
+			scoreLabel.setStyleName("subjectScoreBarPanel-score-low");
+			break;
+		default:
+			break;
+		}
+
 		this.add(scoreLabel);
-		//this.add(remainderLabel);
 	}
 	
 }

@@ -39,18 +39,6 @@ public class SubjectScorePanel extends VerticalPanel {
 	private void init() {
 		this.subjectLabel = new Label(subject);
 		this.subjectLabel.setStyleName("subjectLabel");
-
-		// style on bar
-		switch (REF_SCORE) {
-		case HIGH:
-			//scoreBarPanel.setStyleName("highTitledPanel");
-			break;
-		case LOW:
-			//scoreBarPanel.setStyleName("lowTitledPanel");			
-			break;
-		default:
-			break;
-		}
 		
 		this.subjectScoreBarPanel = new SubjectScoreBarPanel(this.REF_SCORE, this.score); 
 		this.subjectScoreBarPanel.setWidth("100%");

@@ -30,18 +30,28 @@ public class ScoresPanel extends TitledPanel {
 		case HIGH:
 			this.setStyleName("highTitledPanel");
 			
-			SubjectScorePanel ssp1Panel = new SubjectScorePanel(RefScore.HIGH, "MATHEMATICS", 1, 99);
+			SubjectScorePanel ssp1Panel = new SubjectScorePanel(RefScore.HIGH, "lah MATHEMATICS", 1, 99);
 			this.add(ssp1Panel);
 			
-			SubjectScorePanel ssp2Panel = new SubjectScorePanel(RefScore.HIGH, "READING", 1, 76);
+			SubjectScorePanel ssp2Panel = new SubjectScorePanel(RefScore.HIGH, "lah READING", 1, 76);
 			this.add(ssp2Panel);
 			
-			SubjectScorePanel ssp3Panel = new SubjectScorePanel(RefScore.HIGH, "SCIENCE", 1, 50);
+			SubjectScorePanel ssp3Panel = new SubjectScorePanel(RefScore.HIGH, "lah SCIENCE", 1, 50);
 			this.add(ssp3Panel);
 			
 			break;
 		case LOW:
 			this.setStyleName("lowTitledPanel");			
+			
+			SubjectScorePanel ssp4Panel = new SubjectScorePanel(RefScore.LOW, "lal HISTORY", 1, 72);
+			this.add(ssp4Panel);
+			
+			SubjectScorePanel ssp5Panel = new SubjectScorePanel(RefScore.LOW, "lal WRITING", 1, 60);
+			this.add(ssp5Panel);
+			
+			SubjectScorePanel ssp6Panel = new SubjectScorePanel(RefScore.LOW, "lal COMMUNICATIONS", 1, 40);
+			this.add(ssp6Panel);
+			
 			break;
 		default:
 			break;
