@@ -18,7 +18,7 @@ import com.nuuedscore.shared.dto.refdata.RefSkill;
 public class SkillsPanel extends VerticalPanel {
 
 	private RefSkill REF_SKILL;
-	private Button skillsButton;
+	private Button skillsTitleButton;
 	private HorizontalPanel innerPanel = new HorizontalPanel();
 	private VerticalPanel 
 		gaugePanel,
@@ -43,18 +43,18 @@ public class SkillsPanel extends VerticalPanel {
 		
 		switch (REF_SKILL) {
 		case SOFT:
-			skillsButton = new Button("SOFT SKILLS");
-			skillsButton.setStyleName("gwt-Button-grey");
-			skillsButton.setWidth("100%");
-			this.add(skillsButton);
+			skillsTitleButton = new Button("SOFT SKILLS");
+			skillsTitleButton.setStyleName("gwt-Button-grey");
+			skillsTitleButton.setWidth("100%");
+			this.add(skillsTitleButton);
 			gaugePanel.add(skillsSoftHighGaugePanel);
 			gaugePanel.add(skillsSoftLowGaugePanel);
 			break;
 		case HARD:
-			skillsButton = new Button("HARD SKILLS");
-			skillsButton.setStyleName("gwt-Button-grey");
-			skillsButton.setWidth("100%");
-			this.add(skillsButton);
+			skillsTitleButton = new Button("HARD SKILLS");
+			skillsTitleButton.setStyleName("gwt-Button-grey");
+			skillsTitleButton.setWidth("100%");
+			this.add(skillsTitleButton);
 			gaugePanel.add(skillsHardHighGaugePanel);
 			gaugePanel.add(skillsHardLowGaugePanel);			
 			break;
@@ -65,7 +65,6 @@ public class SkillsPanel extends VerticalPanel {
 		skillsLegendPanel = new SkillsLegendPanel(this.REF_SKILL);
 
 		this.add(innerPanel);
-		
 		innerPanel.add(gaugePanel);
 		innerPanel.add(skillsLegendPanel);
 	}
