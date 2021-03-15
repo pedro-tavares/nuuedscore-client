@@ -1,7 +1,8 @@
-package com.nuuedscore.client.ui.dashboard;
+package com.nuuedscore.client.ui.dashboard.aptitude;
 
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.nuuedscore.client.ui.dashboard.ScoresPanel;
 import com.nuuedscore.shared.dto.refdata.RefScore;
 
 /**
