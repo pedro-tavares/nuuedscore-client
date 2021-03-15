@@ -1,4 +1,4 @@
-package com.nuuedscore.client.ui.dashboard.skills;
+package com.nuuedscore.client.ui.dashboard.skill;
 
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.VerticalPanel;
