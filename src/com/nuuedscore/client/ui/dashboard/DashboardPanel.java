@@ -5,7 +5,7 @@ import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.ui.TitledPanel;
 import com.nuuedscore.client.ui.dashboard.aptitude.AptitudePanel;
 import com.nuuedscore.client.ui.dashboard.skill.SkillsMasterPanel;
-import com.nuuedscore.shared.dto.refdata.RefScore;
+import com.nuuedscore.shared.dto.refdata.RefAptitude;
 
 /**
  * Dashboard Panel
@@ -17,9 +17,9 @@ import com.nuuedscore.shared.dto.refdata.RefScore;
 public class DashboardPanel extends TitledPanel {
 
 	private HorizontalPanel innerPanel = new HorizontalPanel();
-	private AptitudePanel lowAptitudePanel = new AptitudePanel(RefScore.LOW);
+	private AptitudePanel lowAptitudePanel = new AptitudePanel(RefAptitude.LOW);
 	private SkillsMasterPanel skillsMasterPanel = new SkillsMasterPanel();
-	private AptitudePanel highAptitudePanel = new AptitudePanel(RefScore.HIGH);
+	private AptitudePanel highAptitudePanel = new AptitudePanel(RefAptitude.HIGH);
 	
 	public DashboardPanel() {
 		super(NuuEdScore.GET_USER().getFirstName() +  "'s Dashboard");

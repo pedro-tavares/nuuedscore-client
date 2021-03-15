@@ -3,6 +3,7 @@ package com.nuuedscore.client.ui.dashboard.aptitude;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.ui.dashboard.score.ScoresPanel;
+import com.nuuedscore.shared.dto.refdata.RefAptitude;
 import com.nuuedscore.shared.dto.refdata.RefScore;
 
 /**
@@ -14,13 +15,13 @@ import com.nuuedscore.shared.dto.refdata.RefScore;
  */
 public class AptitudePanel extends VerticalPanel {
 
-	private RefScore REF_SCORE;
+	private RefAptitude REF_APTITUDE;
 	private Button aptitudeButton;
 	private ScoresPanel highScoresPanel;
 	private ScoresPanel lowScoresPanel;
 	
-	public AptitudePanel(RefScore refScore) {
-		this.REF_SCORE = refScore;
+	public AptitudePanel(RefAptitude refAptitude) {
+		this.REF_APTITUDE = refAptitude;
 		
 		this.setSpacing(20);
 
@@ -28,7 +29,7 @@ public class AptitudePanel extends VerticalPanel {
 	}
 	
 	private void init() {
-		switch (REF_SCORE) {
+		switch (REF_APTITUDE) {
 		case LOW:
 			this.setStyleName("lowAptitudePanel");
 			aptitudeButton = new Button("LOW APTITUDE");
@@ -43,10 +44,10 @@ public class AptitudePanel extends VerticalPanel {
 		}
 		this.add(aptitudeButton);
 		
-		highScoresPanel = new ScoresPanel(RefScore.HIGH);
+		highScoresPanel = new ScoresPanel(this.REF_APTITUDE, RefScore.HIGH);
 		this.add(highScoresPanel);
 		
-		lowScoresPanel = new ScoresPanel(RefScore.LOW);
+		lowScoresPanel = new ScoresPanel(this.REF_APTITUDE, RefScore.LOW);
 		this.add(lowScoresPanel);
 		
 	}

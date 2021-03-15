@@ -212,19 +212,19 @@ h1 {
 	width: 100%;
 	background-color: #F5F5F5;
 }
-.subjectScoreBarPanel-score {
+.subjectScoreBarPanel-score-high {
 	color: white;
 	font-weight: bold;
 	padding: 5px;
 	text-align: right;
 	background-color: var(--green);
 }
-.subjectScoreBarPanel-remainder {
-	color: var(--green);
+.subjectScoreBarPanel-score-low {
+	color: white;
 	font-weight: bold;
 	padding: 5px;
 	text-align: right;
-	background-color: #F5F5F5;
+	background-color: var(--blue);
 }
 
 /** TEXTBOX **/
