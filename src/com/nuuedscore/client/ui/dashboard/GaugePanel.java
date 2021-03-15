@@ -1,5 +1,6 @@
 package com.nuuedscore.client.ui.dashboard;
 
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -34,9 +35,10 @@ public class GaugePanel extends VerticalPanel {
 		skillsGauge = new Image("images/graphx/gauges/" + REF_SKILL.value() + " " + REF_SCORE.value() + " Gauge.svg");
 		skillsGauge.setStyleName("gaugeImage");
 		
-		skillsLabel = new Label(REF_SKILL.value() + " " + REF_SCORE.value());
+		skillsLabel = new Label(/*REF_SKILL.value() + " " +*/ REF_SCORE.value());
 		skillsLabel.setStyleName("skillsLabel");
 		
+		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		this.add(skillsGauge);
 		this.add(skillsLabel);
 	}
