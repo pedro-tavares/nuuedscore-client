@@ -38,11 +38,12 @@ public class TeacherResource implements Model {
 
 	public TeacherResource() {}
 	
-    public TeacherResource(String topic, /*String score,*/ String learningPersonality, String bloom, String subject, String name, String resource) {
-    	this(topic, /*RefScore.get(score),*/ RefLearningPersonality.get(learningPersonality), RefBloom.get(bloom), subject, name, resource);
+    public TeacherResource(Long id, String topic, /*String score,*/ String learningPersonality, String bloom, String subject, String name, String resource) {
+    	this(id, topic, /*RefScore.get(score),*/ RefLearningPersonality.get(learningPersonality), RefBloom.get(bloom), subject, name, resource);
     }
     
-    public TeacherResource(String topic, /*RefScore score,*/ RefLearningPersonality learningPersonality, RefBloom bloom, String subject, String name, String resource) {
+    public TeacherResource(Long id, String topic, /*RefScore score,*/ RefLearningPersonality learningPersonality, RefBloom bloom, String subject, String name, String resource) {
+    	this.id =id;
     	this.topic = topic;
     	//this.score = score;
     	this.learningPersonality = learningPersonality;
@@ -51,6 +52,13 @@ public class TeacherResource implements Model {
     	this.name = name;
     	this.resource = resource;
     }
+
+	@Override
+	public String toString() {
+		return "TeacherResource [id=" + id + ", topic=" + topic + ", learningPersonality=" + learningPersonality
+				+ ", bloom=" + bloom + ", subject=" + subject + ", name=" + name + ", resource=" + resource
+				+ ", createdOn=" + createdOn + "]";
+	}
 
 	public Long getId() {
 		return id;
