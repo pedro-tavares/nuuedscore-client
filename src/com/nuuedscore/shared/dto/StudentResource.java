@@ -6,11 +6,10 @@ import javax.ws.rs.QueryParam;
 
 import com.nuuedscore.shared.dto.refdata.RefBloom;
 import com.nuuedscore.shared.dto.refdata.RefLearningPersonality;
-import com.nuuedscore.shared.dto.refdata.RefScore;
 
 /**
- * Student Resource
- * Any Learning Resource for a Student 
+ * Student Resource Model
+ * Any Resource for a Student 
  * 
  * @author PATavares
  * @since Mar 2021
@@ -18,14 +17,12 @@ import com.nuuedscore.shared.dto.refdata.RefScore;
  */
 public class StudentResource implements Model {
 	
-	private static final long serialVersionUID = -6185731271053302664L;
-
+	private static final long serialVersionUID = -9100127812169529898L;
+	
 	@QueryParam("id")
 	private Long id;	
 	@QueryParam("topic")
 	private String topic;
-	@QueryParam("score")
-	private RefScore score;
 	@QueryParam("learning_personality")
 	private RefLearningPersonality learningPersonality;
 	@QueryParam("bloom")
@@ -41,19 +38,27 @@ public class StudentResource implements Model {
 
 	public StudentResource() {}
 	
-    public StudentResource(String topic, String score, String learningPersonality, String bloom, String subject, String name, String resource) {
-    	this(topic, RefScore.get(score), RefLearningPersonality.get(learningPersonality), RefBloom.get(bloom), subject, name, resource);
+    public StudentResource(Long id, String topic, /*String score,*/ String learningPersonality, String bloom, String subject, String name, String resource) {
+    	this(id, topic, /*RefScore.get(score),*/ RefLearningPersonality.get(learningPersonality), RefBloom.get(bloom), subject, name, resource);
     }
     
-    public StudentResource(String topic, RefScore score, RefLearningPersonality learningPersonality, RefBloom bloom, String subject, String name, String resource) {
+    public StudentResource(Long id, String topic, /*RefScore score,*/ RefLearningPersonality learningPersonality, RefBloom bloom, String subject, String name, String resource) {
+    	this.id =id;
     	this.topic = topic;
-    	this.score = score;
+    	//this.score = score;
     	this.learningPersonality = learningPersonality;
     	this.bloom = bloom;
     	this.subject = subject;
     	this.name = name;
     	this.resource = resource;
     }
+
+	@Override
+	public String toString() {
+		return "StudentResource [id=" + id + ", topic=" + topic + ", learningPersonality=" + learningPersonality
+				+ ", bloom=" + bloom + ", subject=" + subject + ", name=" + name + ", resource=" + resource
+				+ ", createdOn=" + createdOn + "]";
+	}
 
 	public Long getId() {
 		return id;
@@ -69,14 +74,6 @@ public class StudentResource implements Model {
 
 	public void setTopic(String topic) {
 		this.topic = topic;
-	}
-
-	public RefScore getScore() {
-		return score;
-	}
-
-	public void setScore(RefScore score) {
-		this.score = score;
 	}
 
 	public RefLearningPersonality getLearningPersonality() {
@@ -123,12 +120,4 @@ public class StudentResource implements Model {
 		return createdOn;
 	}
 
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-    
 }

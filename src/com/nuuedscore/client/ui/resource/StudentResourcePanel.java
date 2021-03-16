@@ -14,9 +14,11 @@ import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSe
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DecoratedPopupPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.CellPreviewEvent;
 import com.google.gwt.view.client.CellPreviewEvent.Handler;
 import com.google.gwt.view.client.SelectionChangeEvent;
@@ -79,24 +81,21 @@ public class StudentResourcePanel extends TitledPanel {
 		};
 		table.addColumn(topicColumn, "Topic");
 		
-		/*
-				TextColumn<StudentResource> learningPersonalityColumn = new TextColumn<StudentResource>() {
-					@Override
-					public String getValue(StudentResource object) {
-						return object.getLearningPersonality() != null ? object.getLearningPersonality().toString() : "";
-					}
-				};
-				table.addColumn(learningPersonalityColumn, "Learning Personality");
-		*/
-		/*
-				TextColumn<StudentResource> bloomColumn = new TextColumn<StudentResource>() {
-					@Override
-					public String getValue(StudentResource object) {
-						return object.getBloom().toString();
-					}
-				};
-				table.addColumn(bloomColumn, "Bloom");
-		*/
+		TextColumn<StudentResource> learningPersonalityColumn = new TextColumn<StudentResource>() {
+			@Override
+			public String getValue(StudentResource object) {
+				return object.getLearningPersonality() != null ? object.getLearningPersonality().toString() : "";
+			}
+		};
+		table.addColumn(learningPersonalityColumn, "Learning Personality");
+		
+		TextColumn<StudentResource> bloomColumn = new TextColumn<StudentResource>() {
+			@Override
+			public String getValue(StudentResource object) {
+				return object.getBloom().toString();
+			}
+		};
+		table.addColumn(bloomColumn, "Bloom");
 		
 		TextColumn<StudentResource> subjectColumn = new TextColumn<StudentResource>() {
 			@Override
@@ -106,14 +105,6 @@ public class StudentResourcePanel extends TitledPanel {
 		};
 		table.addColumn(subjectColumn, "Subject");
 
-		TextColumn<StudentResource> scoreColumn = new TextColumn<StudentResource>() {
-			@Override
-			public String getValue(StudentResource object) {
-				return object.getSubject() != null ? object.getSubject().toString() : "";
-			}
-		};
-		table.addColumn(scoreColumn, "Score");
-		
 		TextColumn<StudentResource> nameColumn = new TextColumn<StudentResource>() {
 			@Override
 			public String getValue(StudentResource object) {
@@ -241,7 +232,7 @@ public class StudentResourcePanel extends TitledPanel {
 	public void setModel(List<StudentResource> model) {
 		STUDENT_RESOURCE_DATA = model;
 
-		GWT.log("StudentResource_DATA.size: " + STUDENT_RESOURCE_DATA.size());
+		GWT.log("STUDENT_RESOURCE_DATA.size: " + STUDENT_RESOURCE_DATA.size());
 
 		table.setPageSize(50);
 		table.setRowData(0, STUDENT_RESOURCE_DATA);
