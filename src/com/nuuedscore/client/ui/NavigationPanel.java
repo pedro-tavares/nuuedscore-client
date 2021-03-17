@@ -16,7 +16,7 @@ import com.nuuedscore.client.ui.resource.TeacherResourcePanel;
  * @since Feb 2021
  * 
  */
-public class LeftNavigationPanel extends VerticalPanel {
+public class NavigationPanel extends VerticalPanel {
 
 	private VerticalPanel innerPanel = new VerticalPanel();
 	private Image 
@@ -32,7 +32,7 @@ public class LeftNavigationPanel extends VerticalPanel {
 	private TeacherResourcePanel teacherResourcePanel;
 	private StudentResourcePanel studentResourcePanel;
 	
-	public LeftNavigationPanel() {
+	public NavigationPanel() {
 		super();
 		
 		innerPanel.setSpacing(0);
@@ -113,6 +113,12 @@ public class LeftNavigationPanel extends VerticalPanel {
 		innerPanel.add(studentResourceButton);
 		
 		this.add(innerPanel);
+	}
+	
+	public void createViews() {
+		if (studentResourcePanel == null) {
+			studentResourcePanel = new StudentResourcePanel();
+		}		
 	}
 	
 	public void showDefaultView() {

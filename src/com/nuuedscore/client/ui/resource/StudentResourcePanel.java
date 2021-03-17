@@ -88,7 +88,7 @@ public class StudentResourcePanel extends TitledPanel {
 			}
 		};
 		table.addColumn(scoreColumn, "Score");
-		
+
 		TextColumn<StudentResource> learningPersonalityColumn = new TextColumn<StudentResource>() {
 			@Override
 			public String getValue(StudentResource object) {
@@ -96,7 +96,7 @@ public class StudentResourcePanel extends TitledPanel {
 			}
 		};
 		table.addColumn(learningPersonalityColumn, "Learning Personality");
-		
+
 		TextColumn<StudentResource> bloomColumn = new TextColumn<StudentResource>() {
 			@Override
 			public String getValue(StudentResource object) {
@@ -104,7 +104,7 @@ public class StudentResourcePanel extends TitledPanel {
 			}
 		};
 		table.addColumn(bloomColumn, "Bloom");
-		
+
 		TextColumn<StudentResource> subjectColumn = new TextColumn<StudentResource>() {
 			@Override
 			public String getValue(StudentResource object) {
@@ -242,7 +242,7 @@ public class StudentResourcePanel extends TitledPanel {
 
 		GWT.log("STUDENT_RESOURCE_DATA.size: " + STUDENT_RESOURCE_DATA.size());
 
-		table.setPageSize(50);
+		table.setPageSize(STUDENT_RESOURCE_DATA.size());
 		table.setRowData(0, STUDENT_RESOURCE_DATA);
 		table.setRowCount(STUDENT_RESOURCE_DATA.size(), true);
 	}
@@ -276,8 +276,8 @@ public class StudentResourcePanel extends TitledPanel {
 				setModel(response);
 
 				endDate = new Date();
-				fetchInfoLabel.setText("Fetched " + response.size() + " Student Resources in "
-						+ (endDate.getTime() - startDate.getTime()) + "ms");
+				fetchInfoLabel.setText("Fetched " + response.size() + " Student Resources in " + (endDate.getTime()
+						- startDate.getTime()) + "ms");
 			}
 
 			@Override

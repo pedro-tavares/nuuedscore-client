@@ -18,7 +18,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.nuuedscore.IConstants;
 import com.nuuedscore.client.ui.CenterPanel;
-import com.nuuedscore.client.ui.LeftNavigationPanel;
+import com.nuuedscore.client.ui.NavigationPanel;
 import com.nuuedscore.client.ui.MenuPanel;
 import com.nuuedscore.client.ui.person.LoggedInPanel;
 import com.nuuedscore.client.ui.person.LoginRegisterPanel;
@@ -56,7 +56,7 @@ public class NuuEdScore implements EntryPoint {
 	private LoggedInPanel loggedinPanel;	
 	private Panel lastViewPanel;
 	private MenuPanel menuPanel = new MenuPanel(); // TODO remove
-	private LeftNavigationPanel leftNavigationPanel;
+	private NavigationPanel navigationPanel;
 	
 	@Override
 	public void onModuleLoad() {
@@ -210,12 +210,13 @@ public class NuuEdScore implements EntryPoint {
 	}
 	
 	private void createNavigation() {
-		leftNavigationPanel = new LeftNavigationPanel();
-		RootPanel.get().add(leftNavigationPanel, 0, 0);
+		navigationPanel = new NavigationPanel();
+		RootPanel.get().add(navigationPanel, 0, 0);
 		RootPanel.get().add(topPanel, MENU_WIDTH, 0);		 
 		resize();
 		
-		leftNavigationPanel.showDefaultView();
+		navigationPanel.createViews();
+		navigationPanel.showDefaultView();
 	}
 	
 	public void logOut() {
