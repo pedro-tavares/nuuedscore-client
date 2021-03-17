@@ -10,7 +10,7 @@ package com.nuuedscore.shared.dto.refdata;
  */
 public enum RefLearningPersonality {
 	
-	TODO("TODO"),
+	TODO_LEARNING_PERSONALITY("TODO_LEARNING_PERSONALITY"),
 	VISUAL("Visual"), 
 	AURAL("Aural"), 
 	VERBAL("Verbal"),
