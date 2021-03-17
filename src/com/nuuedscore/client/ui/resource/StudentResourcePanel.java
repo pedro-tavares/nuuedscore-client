@@ -80,6 +80,14 @@ public class StudentResourcePanel extends TitledPanel {
 			}
 		};
 		table.addColumn(topicColumn, "Topic");
+
+		TextColumn<StudentResource> scoreColumn = new TextColumn<StudentResource>() {
+			@Override
+			public String getValue(StudentResource object) {
+				return object.getScore() != null ? object.getScore().toString() : "";
+			}
+		};
+		table.addColumn(scoreColumn, "Score");
 		
 		TextColumn<StudentResource> learningPersonalityColumn = new TextColumn<StudentResource>() {
 			@Override

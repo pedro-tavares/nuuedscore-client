@@ -6,6 +6,7 @@ import javax.ws.rs.QueryParam;
 
 import com.nuuedscore.shared.dto.refdata.RefBloom;
 import com.nuuedscore.shared.dto.refdata.RefLearningPersonality;
+import com.nuuedscore.shared.dto.refdata.RefScore;
 
 /**
  * Student Resource Model
@@ -23,6 +24,8 @@ public class StudentResource implements Model {
 	private Long id;	
 	@QueryParam("topic")
 	private String topic;
+	@QueryParam("score")
+	private RefScore score;
 	@QueryParam("learning_personality")
 	private RefLearningPersonality learningPersonality;
 	@QueryParam("bloom")
@@ -38,14 +41,14 @@ public class StudentResource implements Model {
 
 	public StudentResource() {}
 	
-    public StudentResource(Long id, String topic, /*String score,*/ String learningPersonality, String bloom, String subject, String name, String resource) {
-    	this(id, topic, /*RefScore.get(score),*/ RefLearningPersonality.get(learningPersonality), RefBloom.get(bloom), subject, name, resource);
+    public StudentResource(Long id, String topic, String score, String learningPersonality, String bloom, String subject, String name, String resource) {
+    	this(id, topic, RefScore.get(score), RefLearningPersonality.get(learningPersonality), RefBloom.get(bloom), subject, name, resource);
     }
     
-    public StudentResource(Long id, String topic, /*RefScore score,*/ RefLearningPersonality learningPersonality, RefBloom bloom, String subject, String name, String resource) {
+    public StudentResource(Long id, String topic, RefScore score, RefLearningPersonality learningPersonality, RefBloom bloom, String subject, String name, String resource) {
     	this.id =id;
     	this.topic = topic;
-    	//this.score = score;
+    	this.score = score;
     	this.learningPersonality = learningPersonality;
     	this.bloom = bloom;
     	this.subject = subject;
@@ -76,6 +79,14 @@ public class StudentResource implements Model {
 		this.topic = topic;
 	}
 
+	public RefScore getScore() {
+		return score;
+	}
+
+	public void setScore(RefScore score) {
+		this.score = score;
+	}
+	
 	public RefLearningPersonality getLearningPersonality() {
 		return learningPersonality;
 	}
