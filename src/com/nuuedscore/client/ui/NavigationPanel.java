@@ -27,7 +27,7 @@ public class NavigationPanel extends VerticalPanel {
 		taskListImage,
 		presentImage,
 		signOutImage;
-	private DashboardPanel dashboardPanel;
+	private DashboardPanel dashboardPanel = new DashboardPanel(); // MASTER
 	private PersonPanel personPanel;
 	private TeacherResourcePanel teacherResourcePanel;
 	private StudentResourcePanel studentResourcePanel;
@@ -106,7 +106,7 @@ public class NavigationPanel extends VerticalPanel {
 		studentResourceButton.setStyleName("devButton");
 		studentResourceButton.addClickHandler(event -> {
 			if (studentResourcePanel == null) {
-				studentResourcePanel = new StudentResourcePanel();
+				studentResourcePanel = new StudentResourcePanel(this.dashboardPanel);
 			}
 			NuuEdScore.GET().showView(studentResourcePanel);		
 		});		
@@ -117,14 +117,11 @@ public class NavigationPanel extends VerticalPanel {
 	
 	public void createViews() {
 		if (studentResourcePanel == null) {
-			studentResourcePanel = new StudentResourcePanel();
+			studentResourcePanel = new StudentResourcePanel(this.dashboardPanel);
 		}		
 	}
 	
 	public void showDefaultView() {
-		if (dashboardPanel == null) {
-			dashboardPanel = new DashboardPanel();
-		}
 		NuuEdScore.GET().showView(dashboardPanel);		
 	}
 }

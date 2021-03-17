@@ -1,10 +1,14 @@
 package com.nuuedscore.client.ui.dashboard;
 
+import java.util.List;
+
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.ui.TitledPanel;
 import com.nuuedscore.client.ui.dashboard.aptitude.AptitudePanel;
 import com.nuuedscore.client.ui.dashboard.skill.SkillsMasterPanel;
+import com.nuuedscore.shared.dto.StudentResource;
 import com.nuuedscore.shared.dto.refdata.RefAptitude;
 
 /**
@@ -35,5 +39,9 @@ public class DashboardPanel extends TitledPanel {
 		innerPanel.add(highAptitudePanel);
 		
 		this.add(innerPanel);
+	}
+	
+	public void listenToStudentResources(List<StudentResource> response) {
+		Window.alert("listenToStudentResources");
 	}
 }

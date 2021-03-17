@@ -14,17 +14,16 @@ import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSe
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DecoratedPopupPanel;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.CellPreviewEvent;
 import com.google.gwt.view.client.CellPreviewEvent.Handler;
 import com.google.gwt.view.client.SelectionChangeEvent;
 import com.google.gwt.view.client.SingleSelectionModel;
 import com.nuuedscore.client.service.ServiceFactory;
 import com.nuuedscore.client.ui.TitledPanel;
+import com.nuuedscore.client.ui.dashboard.DashboardPanel;
 //import com.nuuedscore.client.ui.StudentResource.StudentResourceEditPanel;
 import com.nuuedscore.client.ui.style.NuuEdScoreCellTable;
 import com.nuuedscore.shared.dto.StudentResource;
@@ -41,6 +40,7 @@ public class StudentResourcePanel extends TitledPanel {
 	private CellTable.Resources NuuEdScoreCellTableResources = GWT.create(NuuEdScoreCellTable.class);
 
 	private List<StudentResource> STUDENT_RESOURCE_DATA;
+	private DashboardPanel dashboardPanel;
 	private StudentResource selectedStudentResource;
 
 	private HorizontalPanel tablePanel = new HorizontalPanel();
@@ -52,9 +52,11 @@ public class StudentResourcePanel extends TitledPanel {
 	private Date startDate;
 	private Date endDate;
 
-	public StudentResourcePanel() {
+	public StudentResourcePanel(DashboardPanel dashboardPanel) {
 		super("Student Resources");
 
+		this.dashboardPanel = dashboardPanel;
+		
 		this.setSpacing(20);
 		this.init();
 
@@ -274,6 +276,7 @@ public class StudentResourcePanel extends TitledPanel {
 				GWT.log("callGetStudentResourceService - SUCCESS:\n" + response.toString());
 
 				setModel(response);
+				dashboardPanel.listenToStudentResources(response);
 
 				endDate = new Date();
 				fetchInfoLabel.setText("Fetched " + response.size() + " Student Resources in " + (endDate.getTime()
