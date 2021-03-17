@@ -152,8 +152,11 @@ public class NuuEdScore implements EntryPoint {
 		} else {
 			GWT.log("Logged In as:" + userEmail);
 			viewLogin(false);
+			
+			//TODO get Logged in Person and letsGo
+			
 			//USER = new Person(userEmail);
-			//letsGo(USER.getEmail());			
+			//letsGo(USER);			
 		} 
 	}
 	
