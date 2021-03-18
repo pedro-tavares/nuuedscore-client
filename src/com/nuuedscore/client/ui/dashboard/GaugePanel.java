@@ -38,7 +38,7 @@ public class GaugePanel extends VerticalPanel {
 	}
 	
 	private void init() {
-		gaugeImage = new Image("images/graphx/gauges/" + REF_SKILL.value() + " " + REF_SCORE.value() + " Gauge.svg");
+		gaugeImage = new Image("images/graphx/gauges/" + REF_SKILL.value() + " " + REF_SCORE.value() + " Gauge.png");
 		gaugeImage.setStyleName("gaugeImage");
 		
 		needleImage = new Image("images/graphx/gauges/" + "Needle Indicator.svg");
