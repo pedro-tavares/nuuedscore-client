@@ -32,7 +32,7 @@ public class GaugePanel extends VerticalPanel {
 		this.REF_SCORE = refScore;
 		
 		//this.setStyleName("");
-		//this.setSpacing(10);
+		this.setSpacing(20);
 		
 		init();
 	}
@@ -48,16 +48,17 @@ public class GaugePanel extends VerticalPanel {
 		skillsLabel.setStyleName("skillsLabel");
 
 		innerPanel = new AbsolutePanel();
-
+		innerPanel.setHeight("270px");
+		
 		this.add(innerPanel);
 		this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		
-		innerPanel.setSize("300px", "300px");
+		//innerPanel.setSize("300px", "300px");
 		
 		innerPanel.add(gaugeImage);
 		
-		needleImage.setSize("120px", "120px");
-		innerPanel.add(needleImage, 100, 110);
+		needleImage.setSize("200px", "200px");
+		innerPanel.add(needleImage, 150, 80);
 		
 		this.add(innerPanel);
 		this.add(skillsLabel);

@@ -85,8 +85,8 @@ h1 {
 
 /** IMAGE */
 .gaugeImage {
-	width: 300px;
-	height: 300px;	
+	width: 452px;
+	height: 233px;	
 }
 
 /** PANEL */
@@ -192,6 +192,7 @@ h1 {
 	border-right: 2px solid var(--green);	
 }
 .skillsPanel {
+	padding: 10px;
 	border-bottom: 3px solid var(--green);
 }
 .skillsLegendPanel {

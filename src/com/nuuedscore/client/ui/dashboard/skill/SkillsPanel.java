@@ -1,9 +1,8 @@
 package com.nuuedscore.client.ui.dashboard.skill;
 
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.ui.dashboard.GaugePanel;
 import com.nuuedscore.shared.dto.refdata.RefScore;
@@ -31,6 +30,8 @@ public class SkillsPanel extends VerticalPanel {
 		skillsHardLowGaugePanel = new GaugePanel(RefSkill.HARD, RefScore.LOW);
 	
 	public SkillsPanel(RefSkill refSkill) {
+		super();
+		
 		this.REF_SKILL = refSkill;
 		
 		this.setStyleName("skillsPanel");
@@ -62,11 +63,14 @@ public class SkillsPanel extends VerticalPanel {
 		default:
 			break;
 		}
-		
-		skillsLegendPanel = new SkillsLegendPanel(this.REF_SKILL);
 
 		this.add(innerPanel);
+		
 		innerPanel.add(gaugePanel);
+		
+		skillsLegendPanel = new SkillsLegendPanel(this.REF_SKILL);
 		innerPanel.add(skillsLegendPanel);
+	
+		this.add(innerPanel);
 	}
 }
