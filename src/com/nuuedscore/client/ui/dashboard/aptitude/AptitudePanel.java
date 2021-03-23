@@ -7,8 +7,10 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.flow.IStudentFlow;
 import com.nuuedscore.client.ui.dashboard.score.ScoresPanel;
+import com.nuuedscore.client.ui.portal.PortalPanel;
 import com.nuuedscore.shared.dto.StudentResource;
 import com.nuuedscore.shared.dto.refdata.RefAptitude;
 import com.nuuedscore.shared.dto.refdata.RefScore;
@@ -60,7 +62,8 @@ public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 	}
 	
 	List<String> topics = new ArrayList<String>();
-		
+	PortalPanel portalPanel;
+	
 	@Override
 	public void flow(List<StudentResource> studentResources) {
 		GWT.log("I AM Aptitude:" + this.REF_APTITUDE + ": Flow StudentResources:\n" + studentResources.toString());
@@ -70,6 +73,15 @@ public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 			if (topics.indexOf(topic) == -1) {
 				topics.add(topic);
 				Button topicButton = new Button(topic);
+				topicButton.addClickHandler(event -> {
+					Window.alert(this.REF_APTITUDE.value() + "\n" + studentResource);
+					
+					//TODO singleton
+					portalPanel = new PortalPanel(this.REF_APTITUDE, studentResources);
+					
+					NuuEdScore.GET().showView(portalPanel);
+				});
+				
 				if (RefScore.HIGH.equals(studentResource.getScore())) {
 					topicButton.setStyleName("gwt-Button-green-100");
 				}
