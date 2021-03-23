@@ -265,7 +265,31 @@ button.gwt-Button {
   color: white;
   cursor: pointer;
 }
+button.gwt-Button-blue-100 {
+	width: 100%;
+  background: var(--blue);
+  border: none;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 10px 50px;
+  font-size: 18px;
+  letter-spacing: 0.8;
+  color: white;
+  cursor: pointer;
+}
 button.gwt-Button-green {
+  background: var(--green);
+  border: none;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 10px 50px;
+  font-size: 18px;
+  letter-spacing: 0.8;
+  color: white;
+  cursor: pointer;
+}
+button.gwt-Button-green-100 {
+	width: 100%;
   background: var(--green);
   border: none;
   border-radius: 10px;

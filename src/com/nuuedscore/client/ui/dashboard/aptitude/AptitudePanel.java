@@ -3,6 +3,7 @@ package com.nuuedscore.client.ui.dashboard.aptitude;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -58,12 +59,23 @@ public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 	}
 	
 	List<String> topics = new ArrayList<String>();
-	
+		
 	@Override
 	public void flow(List<StudentResource> studentResources) {
-		Window.alert("I AM Aptitude:" + this.REF_APTITUDE + ": Flow listenToStudentResources");
+		GWT.log("I AM Aptitude:" + this.REF_APTITUDE + ": Flow StudentResources:\n" + studentResources.toString());
 		
-//		Button topicButton = new Button(studentResource.getTopic());
-
+		for (StudentResource studentResource: studentResources) {
+			String topic = studentResource.getTopic();
+			if (topics.indexOf(topic) == -1) {
+				topics.add(topic);
+				Button topicButton = new Button(topic);
+				if (RefScore.HIGH.equals(studentResource.getScore())) {
+					topicButton.setStyleName("gwt-Button-green-100");
+				}
+				topicButton.setStyleName(RefScore.LOW.equals(studentResource.getScore()) ? "gwt-Button-blue-100" : "gwt-Button-green-100");
+				this.add(topicButton);
+			}		
+		}
+		
 	}
 }

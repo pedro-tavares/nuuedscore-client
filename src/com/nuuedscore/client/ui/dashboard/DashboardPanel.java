@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.flow.IStudentFlow;
@@ -46,14 +47,14 @@ public class DashboardPanel extends TitledPanel implements IStudentFlow {
 	
 	@Override
 	public void flow(List<StudentResource> studentResources) {
-		Window.alert("I AM Dashboard: Flow listenToStudentResources");
+		//Window.alert("I AM Dashboard: Flow StudentResources");
 
 		List<StudentResource> lowAptitudes = new ArrayList<StudentResource>();
 		List<StudentResource> highAptitudes = new ArrayList<StudentResource>();
 		
 		for (StudentResource studentResource: studentResources) {
-			GWT.log("TOPIC:" + studentResource.getTopic() + ", SCORE:" + studentResource.getScore());
-
+			GWT.log("TOPIC:" + studentResource.getTopic() + ", APTITUDE:" + studentResource.getScore());
+			
 			switch(studentResource.getScore()) {
 			case LOW:
 				lowAptitudes.add(studentResource);
@@ -66,12 +67,9 @@ public class DashboardPanel extends TitledPanel implements IStudentFlow {
 			}
 		}
 		
-		Window.alert("LOW:\n" + lowAptitudes.toString());
-		Window.alert("HIGH:\n" + highAptitudes.toString());
-		
 		// Flow...
 		lowAptitudePanel.flow(lowAptitudes);
 		highAptitudePanel.flow(highAptitudes);
 	}
-	
+		
 }
