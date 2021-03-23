@@ -23,7 +23,7 @@ import com.nuuedscore.shared.dto.refdata.RefScore;
 public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 
 	private RefAptitude REF_APTITUDE;
-	private Button aptitudeButton;
+	private Button aptitudeHeaderButton;
 	private ScoresPanel lowScoresPanel;
 	private ScoresPanel highScoresPanel;
 	
@@ -39,17 +39,18 @@ public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 		switch (REF_APTITUDE) {
 		case LOW:
 			this.setStyleName("lowAptitudePanel");
-			aptitudeButton = new Button("LOW APTITUDE");
+			aptitudeHeaderButton = new Button("LOW APTITUDE");
+			aptitudeHeaderButton.setStyleName("gwt-Button-blue-100");
 			break;
 		case HIGH:
 			this.setStyleName("highAptitudePanel");
-			aptitudeButton = new Button("HIGH APTITUDE");
-			aptitudeButton.setStyleName("gwt-Button-green");
+			aptitudeHeaderButton = new Button("HIGH APTITUDE");
+			aptitudeHeaderButton.setStyleName("gwt-Button-green-100");
 			break;
 		default:
 			break;			
 		}
-		this.add(aptitudeButton);
+		this.add(aptitudeHeaderButton);
 
 		lowScoresPanel = new ScoresPanel(this.REF_APTITUDE, RefScore.LOW);
 		this.add(lowScoresPanel);
