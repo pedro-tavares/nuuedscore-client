@@ -1,8 +1,14 @@
 package com.nuuedscore.client.ui.dashboard.aptitude;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.nuuedscore.client.flow.IStudentFlow;
 import com.nuuedscore.client.ui.dashboard.score.ScoresPanel;
+import com.nuuedscore.shared.dto.StudentResource;
 import com.nuuedscore.shared.dto.refdata.RefAptitude;
 import com.nuuedscore.shared.dto.refdata.RefScore;
 
@@ -13,12 +19,12 @@ import com.nuuedscore.shared.dto.refdata.RefScore;
  * @since Feb 2021
  * 
  */
-public class AptitudePanel extends VerticalPanel {
+public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 
 	private RefAptitude REF_APTITUDE;
 	private Button aptitudeButton;
-	private ScoresPanel highScoresPanel;
 	private ScoresPanel lowScoresPanel;
+	private ScoresPanel highScoresPanel;
 	
 	public AptitudePanel(RefAptitude refAptitude) {
 		this.REF_APTITUDE = refAptitude;
@@ -43,12 +49,21 @@ public class AptitudePanel extends VerticalPanel {
 			break;			
 		}
 		this.add(aptitudeButton);
-		
-		highScoresPanel = new ScoresPanel(this.REF_APTITUDE, RefScore.HIGH);
-		this.add(highScoresPanel);
-		
+
 		lowScoresPanel = new ScoresPanel(this.REF_APTITUDE, RefScore.LOW);
 		this.add(lowScoresPanel);
 		
+		highScoresPanel = new ScoresPanel(this.REF_APTITUDE, RefScore.HIGH);
+		this.add(highScoresPanel);		
+	}
+	
+	List<String> topics = new ArrayList<String>();
+	
+	@Override
+	public void flow(List<StudentResource> studentResources) {
+		Window.alert("I AM Aptitude:" + this.REF_APTITUDE + ": Flow listenToStudentResources");
+		
+//		Button topicButton = new Button(studentResource.getTopic());
+
 	}
 }

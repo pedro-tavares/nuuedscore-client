@@ -1,10 +1,13 @@
 package com.nuuedscore.client.ui.dashboard;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.nuuedscore.client.NuuEdScore;
+import com.nuuedscore.client.flow.IStudentFlow;
 import com.nuuedscore.client.ui.TitledPanel;
 import com.nuuedscore.client.ui.dashboard.aptitude.AptitudePanel;
 import com.nuuedscore.client.ui.dashboard.skill.SkillsMasterPanel;
@@ -18,7 +21,7 @@ import com.nuuedscore.shared.dto.refdata.RefAptitude;
  * @since Feb 2021
  * 
  */
-public class DashboardPanel extends TitledPanel {
+public class DashboardPanel extends TitledPanel implements IStudentFlow {
 
 	private HorizontalPanel innerPanel = new HorizontalPanel();
 	private AptitudePanel lowAptitudePanel = new AptitudePanel(RefAptitude.LOW);
@@ -41,7 +44,34 @@ public class DashboardPanel extends TitledPanel {
 		this.add(innerPanel);
 	}
 	
-	public void listenToStudentResources(List<StudentResource> response) {
-		Window.alert("listenToStudentResources");
+	@Override
+	public void flow(List<StudentResource> studentResources) {
+		Window.alert("I AM Dashboard: Flow listenToStudentResources");
+
+		List<StudentResource> lowAptitudes = new ArrayList<StudentResource>();
+		List<StudentResource> highAptitudes = new ArrayList<StudentResource>();
+		
+		for (StudentResource studentResource: studentResources) {
+			GWT.log("TOPIC:" + studentResource.getTopic() + ", SCORE:" + studentResource.getScore());
+
+			switch(studentResource.getScore()) {
+			case LOW:
+				lowAptitudes.add(studentResource);
+				break;
+			case HIGH:
+				highAptitudes.add(studentResource);
+				break;
+			default:
+				break;
+			}
+		}
+		
+		Window.alert("LOW:\n" + lowAptitudes.toString());
+		Window.alert("HIGH:\n" + highAptitudes.toString());
+		
+		// Flow...
+		lowAptitudePanel.flow(lowAptitudes);
+		highAptitudePanel.flow(highAptitudes);
 	}
+	
 }

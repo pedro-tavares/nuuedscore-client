@@ -276,7 +276,7 @@ public class StudentResourcePanel extends TitledPanel {
 				GWT.log("callGetStudentResourceService - SUCCESS:\n" + response.toString());
 
 				setModel(response);
-				dashboardPanel.listenToStudentResources(response);
+				dashboardPanel.flow(response);
 
 				endDate = new Date();
 				fetchInfoLabel.setText("Fetched " + response.size() + " Student Resources in " + (endDate.getTime()
