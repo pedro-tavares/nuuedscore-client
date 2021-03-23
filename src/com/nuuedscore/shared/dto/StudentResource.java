@@ -58,9 +58,15 @@ public class StudentResource implements Model {
 
 	@Override
 	public String toString() {
-		return "StudentResource [id=" + id + ", topic=" + topic + ", learningPersonality=" + learningPersonality
-				+ ", bloom=" + bloom + ", subject=" + subject + ", name=" + name + ", resource=" + resource
-				+ ", createdOn=" + createdOn + "]";
+		return "StudentResource [id=" + id 
+				+ ", topic=" + topic
+				+ ", score=" + score
+				+ ", learningPersonality=" + learningPersonality
+				+ ", bloom=" + bloom 
+				+ ", subject=" + subject 
+				+ ", name=" + name + ", resource=" + resource
+				//+ ", createdOn=" + createdOn 
+				+ "]";
 	}
 
 	public Long getId() {
