@@ -53,6 +53,14 @@ h1 {
 	font-weight: bold;
 	border-bottom: 3px solid var(--green);
 }
+.titledPanelLabel-high {
+	text-align: center;
+	width: 100%;
+	color: var(--green);
+	font-size: 25px;
+	font-weight: bold;
+	border-bottom: 3px solid var(--blue);
+}
 .subTitledPanelLabel {
 	color: var(--blue);
 	font-size: 15px;
@@ -81,6 +89,11 @@ h1 {
 	font-weight: bold;
 	font-size: 10px;
 	color: var(--green);
+}
+.portalTopicLabel {
+	font-weight: bold;
+	font-size: 25px;
+	color: var(--grey);
 }
 
 /** IMAGE */
