@@ -38,10 +38,10 @@ public class GaugePanel extends VerticalPanel {
 	}
 	
 	private void init() {
-		gaugeImage = new Image("images/graphx/gauges/" + REF_SKILL.value() + " " + REF_SCORE.value() + " Gauge.png");
+		gaugeImage = new Image("images/gauges/" + REF_SKILL.value() + " " + REF_SCORE.value() + " Gauge.png");
 		gaugeImage.setStyleName("gaugeImage");
 		
-		needleImage = new Image("images/graphx/gauges/" + "Needle Indicator.svg");
+		needleImage = new Image("images/gauges/" + "Needle Indicator.svg");
 		needleImage.setStyleName("needleImage");
 		
 		skillsLabel = new Label(/*REF_SKILL.value() + " " +*/ REF_SCORE.value());
