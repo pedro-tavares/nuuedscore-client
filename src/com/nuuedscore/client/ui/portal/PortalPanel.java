@@ -38,7 +38,7 @@ public class PortalPanel extends TitledPanel {
 	}
 	
 	private void init() {
-		GWT.log("\n\n\n" + this.REF_APTITUDE.value() + "\n" + studentResources);
+		GWT.log("\n\nPortalPanel:" + this.REF_APTITUDE.value() + "\n" + studentResources);
 		
 		PortalTitlePanel titlePanel = new PortalTitlePanel(this.topic);
 		this.add(titlePanel);

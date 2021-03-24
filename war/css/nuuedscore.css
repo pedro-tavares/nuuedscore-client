@@ -95,6 +95,10 @@ h1 {
 	font-size: 25px;
 	color: var(--grey);
 }
+.portalTopicDescriptionLabel {
+	font-size: 15px;
+	color: var(--grey);
+}
 
 /** IMAGE */
 .gaugeImage {
