@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.NuuEdScore;
@@ -73,11 +72,11 @@ public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 			if (topics.indexOf(topic) == -1) {
 				topics.add(topic);
 				Button topicButton = new Button(topic);
-				topicButton.addClickHandler(event -> {
-					Window.alert(this.REF_APTITUDE.value() + "\n" + studentResource);
-					
-					//TODO singleton
-					portalPanel = new PortalPanel(this.REF_APTITUDE, studentResources);
+				topicButton.addClickHandler(event -> {					
+					//Student Resources for Topic
+					List<StudentResource> studentResourcesForTopic = getStudentResourcesForTopic(studentResources, topic);
+					//TODO maybe singleton
+					portalPanel = new PortalPanel(this.REF_APTITUDE, studentResourcesForTopic);
 					
 					NuuEdScore.GET().showView(portalPanel);
 				});
@@ -89,6 +88,15 @@ public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 				this.add(topicButton);
 			}		
 		}
-		
+	}
+	
+	public List<StudentResource> getStudentResourcesForTopic(List<StudentResource> resources, String topic) {
+		List<StudentResource> resourcesForTopic = new ArrayList<StudentResource>();
+		for (StudentResource studentResource: resources) {
+			if (studentResource.getTopic().equals(topic)) {
+				resourcesForTopic.add(studentResource);
+			}
+		}
+		return resourcesForTopic;
 	}
 }
