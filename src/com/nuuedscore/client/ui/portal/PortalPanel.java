@@ -3,6 +3,7 @@ package com.nuuedscore.client.ui.portal;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.nuuedscore.client.ui.TitledPanel;
 import com.nuuedscore.client.ui.dashboard.PortalTitlePanel;
 import com.nuuedscore.shared.dto.StudentResource;
@@ -42,6 +43,13 @@ public class PortalPanel extends TitledPanel {
 		
 		PortalTitlePanel titlePanel = new PortalTitlePanel(this.topic);
 		this.add(titlePanel);
+
+		HorizontalPanel innerPanel = new HorizontalPanel();
+		
+		LearningPersonalityNavigationPanel learningPersonalityNavigationPanel = new LearningPersonalityNavigationPanel();
+		innerPanel.add(learningPersonalityNavigationPanel);
+		
+		this.add(innerPanel);
 	}
 	
 }
