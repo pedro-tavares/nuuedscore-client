@@ -44,13 +44,13 @@ public class NavigationPanel extends VerticalPanel {
 	}
 	
 	private void init() {
-		responsiveImage = new Image("images/graphx/navigation/navigation_responsive.png");
+		responsiveImage = new Image("images/navigation/navigation_responsive.png");
 		responsiveImage.setStyleName("leftNavigationGraphx");
 		responsiveImage.addClickHandler(event -> {
 		});
 		innerPanel.add(responsiveImage);
 
-		personImage = new Image("images/graphx/navigation/navigation_person.png");
+		personImage = new Image("images/navigation/navigation_person.png");
 		personImage.setStyleName("leftNavigationGraphx");
 		personImage.addClickHandler(event -> {
 			if (personPanel == null) {
@@ -60,32 +60,32 @@ public class NavigationPanel extends VerticalPanel {
 		});
 		innerPanel.add(personImage);
 		
-		homeImage = new Image("images/graphx/navigation/navigation_home.png");
+		homeImage = new Image("images/navigation/navigation_home.png");
 		homeImage.setStyleName("leftNavigationGraphx");
 		homeImage.addClickHandler(event -> {
 			showDefaultView();
 		});
 		innerPanel.add(homeImage);
 		
-		scoresImage = new Image("images/graphx/navigation/navigation_scores.png");
+		scoresImage = new Image("images/navigation/navigation_scores.png");
 		scoresImage.setStyleName("leftNavigationGraphx");
 		scoresImage.addClickHandler(event -> {
 		});
 		innerPanel.add(scoresImage);
 
-		taskListImage = new Image("images/graphx/navigation/navigation_task_list.png");
+		taskListImage = new Image("images/navigation/navigation_task_list.png");
 		taskListImage.setStyleName("leftNavigationGraphx");
 		taskListImage.addClickHandler(event -> {
 		});
 		innerPanel.add(taskListImage);
 
-		presentImage = new Image("images/graphx/navigation/navigation_present.png");
+		presentImage = new Image("images/navigation/navigation_present.png");
 		presentImage.setStyleName("leftNavigationGraphx");
 		presentImage.addClickHandler(event -> {
 		});
 		innerPanel.add(taskListImage);
 
-		signOutImage = new Image("images/graphx/navigation/navigation_sign_out.png");
+		signOutImage = new Image("images/navigation/navigation_sign_out.png");
 		signOutImage.setStyleName("leftNavigationGraphx");
 		signOutImage.addClickHandler(event -> {
 		});

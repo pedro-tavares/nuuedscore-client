@@ -42,8 +42,6 @@ public class PortalPanel extends TitledPanel {
 		
 		PortalTitlePanel titlePanel = new PortalTitlePanel(this.topic);
 		this.add(titlePanel);
-		
-		
 	}
 	
 }

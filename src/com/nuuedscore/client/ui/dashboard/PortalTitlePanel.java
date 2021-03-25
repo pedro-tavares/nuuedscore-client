@@ -43,6 +43,4 @@ public class PortalTitlePanel extends HorizontalPanel {
 		this.add(topicTitlePanel);
 	}
 
-	
-	
 }
