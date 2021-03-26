@@ -1,4 +1,4 @@
-package com.nuuedscore.client.ui.dashboard;
+package com.nuuedscore.client.ui.portal;
 
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;

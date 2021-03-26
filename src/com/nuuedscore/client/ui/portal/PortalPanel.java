@@ -5,7 +5,6 @@ import java.util.List;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.nuuedscore.client.ui.TitledPanel;
-import com.nuuedscore.client.ui.dashboard.PortalTitlePanel;
 import com.nuuedscore.shared.dto.StudentResource;
 import com.nuuedscore.shared.dto.refdata.RefAptitude;
 
@@ -48,6 +47,9 @@ public class PortalPanel extends TitledPanel {
 		
 		LearningPersonalityNavigationPanel learningPersonalityNavigationPanel = new LearningPersonalityNavigationPanel();
 		innerPanel.add(learningPersonalityNavigationPanel);
+		
+		PortalTopicPanel portalTopicPanel = new PortalTopicPanel(this.topic);
+		innerPanel.add(portalTopicPanel);
 		
 		this.add(innerPanel);
 	}
