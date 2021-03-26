@@ -23,9 +23,7 @@ public class PortalAcademicsSubjectPanel extends VerticalPanel {
 	}
 	
 	protected void init() {
-		Window.alert(this.subject);
-		
-		Button header = new Button(subject);
+		Button header = new Button(subject.toUpperCase());
 		header.getElement().getStyle().setProperty("backgroundColor", UiUx.colourForSubject(subject));
 		this.add(header);
 		
