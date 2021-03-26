@@ -45,12 +45,18 @@ public class PortalPanel extends TitledPanel {
 
 		HorizontalPanel innerPanel = new HorizontalPanel();
 		
-		LearningPersonalityNavigationPanel learningPersonalityNavigationPanel = new LearningPersonalityNavigationPanel();
-		innerPanel.add(learningPersonalityNavigationPanel);
+		if (this.topic.equals("Academics")) { // Flow Subjects
+			LearningPersonalityNavigationPanel learningPersonalityNavigationPanel = new LearningPersonalityNavigationPanel();
+			innerPanel.add(learningPersonalityNavigationPanel);
+			
+			PortalTopicAcademicsPanel portalTopicPanel = new PortalTopicAcademicsPanel(this.topic);
+			innerPanel.add(portalTopicPanel);
+			
+		} else { // Flow just Student Resources
 		
-		PortalTopicPanel portalTopicPanel = new PortalTopicPanel(this.topic);
-		innerPanel.add(portalTopicPanel);
-		
+			
+		}
+
 		this.add(innerPanel);
 	}
 	

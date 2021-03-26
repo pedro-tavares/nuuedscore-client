@@ -33,10 +33,14 @@ public class PortalTopicPanel extends VerticalPanel {
 		
 		for (StudentResource studentResource: studentResources) {
 			if (!studentResource.getSubject().equals("Quotes")) {
-				Button header = new Button(studentResource.getSubject() + " - " + studentResource.getResource());
+				
+				// TODO Quotes go to DASH, Flow only Subjects
+				Button header = new Button(studentResource.getSubject() + " - " + studentResource.getName() /* + " - " + studentResource.getResource()*/);
 				header.getElement().getStyle().setProperty("backgroundColor", UiUx.colourForSubject(studentResource.getSubject()));
 				this.add(header);
-				// Flow to Student Resources ... 				
+							
+				PortalAcademicsSubjectPanel portalSubjectPanel = new PortalAcademicsSubjectPanel();
+				this.add(portalSubjectPanel);
 			}
 		}
 	}
