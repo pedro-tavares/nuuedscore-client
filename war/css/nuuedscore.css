@@ -205,6 +205,14 @@ h1 {
 }
 .highAptitudePanel {
 }
+.portalAcademicsSubjectPanel-inner {
+	width: 100%;
+	background-color: var(--lightgrey);
+	border: 2px solid var(--lightgrey);
+  	border-radius: 10px;
+  	-moz-border-radius: 10px;
+}
+
 .skillsMasterPanel {
 	border-left: 2px solid var(--green);
 	border-right: 2px solid var(--green);	
@@ -363,6 +371,18 @@ button.gwt-Button[disabled] {
 .devButton {
 	height: 40px;
 	width: 40px;
+}
+.resourceButton {
+	width: 100%;
+  background: var(--blue);
+  border: none;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 10px 50px;
+  font-size: 12px;
+  letter-spacing: 0.8;
+  color: white;
+  cursor: pointer;
 }
 
 /** DIALOG **/

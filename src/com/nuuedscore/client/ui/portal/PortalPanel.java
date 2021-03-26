@@ -52,7 +52,7 @@ public class PortalPanel extends TitledPanel {
 			PortalTopicAcademicsPanel portalTopicPanel = new PortalTopicAcademicsPanel(this.topic);
 			innerPanel.add(portalTopicPanel);
 			
-		} else { // Flow just Student Resources
+		} else { // Flow just Resources
 		
 			
 		}

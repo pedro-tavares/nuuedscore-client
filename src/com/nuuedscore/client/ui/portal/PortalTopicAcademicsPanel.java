@@ -1,6 +1,5 @@
 package com.nuuedscore.client.ui.portal;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +7,7 @@ import java.util.Map;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.nuuedscore.client.domain.DATA;
 import com.nuuedscore.shared.dto.StudentResource;
 
@@ -21,6 +21,7 @@ import com.nuuedscore.shared.dto.StudentResource;
 public class PortalTopicAcademicsPanel extends HorizontalPanel {
 
 	private String topic;
+	private PortalAcademicsSubjectPanel portalSubjectPanel;
 	
 	public PortalTopicAcademicsPanel(String topic) {
 		this.topic = topic;
@@ -47,13 +48,14 @@ public class PortalTopicAcademicsPanel extends HorizontalPanel {
 					GWT.log("NEW SUBJECT:" + subject);
 					
 					if (knownSubjects.indexOf(subject) != -1) { // if known
-						PortalAcademicsSubjectPanel portalSubjectPanel = new PortalAcademicsSubjectPanel(subject);
+						portalSubjectPanel = new PortalAcademicsSubjectPanel(subject);
 						studentResourcesForAcademics.put(subject, portalSubjectPanel);
 						this.add(portalSubjectPanel);
 					} 
-					
-					// TODO for the other resources
-				}
+				}				
+				
+				// and Flow the Resources for Subject...
+				portalSubjectPanel.add(studentResource); 
 			}
 		}
 	}
