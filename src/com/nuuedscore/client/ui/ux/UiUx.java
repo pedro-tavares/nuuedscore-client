@@ -1,5 +1,6 @@
 package com.nuuedscore.client.ui.ux;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Image;
 
 /**
@@ -18,15 +19,15 @@ public class UiUx {
 		return new Image("/images/topics/" + topic + ".png"); 
 	}
 	
-	static public String colourForTopic(String topic) {
-		switch(topic) {
+	static public String colourForSubject(String subject) {
+		switch(subject) {
 		case "Quotes": return "#0074B9";
 		case "Math": return "#953ED5";
 		case "Reading": return "#FF6F12";
 		case "Science": return "#9BDA46";
 		case "History": return "#E21A1A";
 		case "Writing": return "#F8D800";
-		default: return "#0078D7"; 
+		default: return "#7BDDEF"; 
 		}
 	}
 }

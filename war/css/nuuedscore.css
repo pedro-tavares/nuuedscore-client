@@ -7,6 +7,7 @@
   --blue: #0074B9;
   --white: #ffffff;
   --grey: #9B9B9B;
+  --lightgrey: #D8D8D8;
 }
 body {
 	background-color: white;
@@ -244,6 +245,22 @@ h1 {
 	text-align: right;
 	background-color: var(--blue);
 }
+.learningPersonalityNavigationPanel {
+	width: 50px;
+	padding: 10px;
+	text-align: center;
+	border-right: 2px solid var(--blue);	
+}
+.learningPersonalityNavigationPanel-text {
+	text-align: center;
+	color: var(--grey);	
+	width: 100%;
+	padding: 10px;
+	font-size: 15px;
+}
+.portalTopicPanel {
+	padding: 10px;
+}
 
 /** TEXTBOX **/
 .gwt-TextBox {
@@ -344,6 +361,29 @@ button.gwt-Button[disabled] {
 .devButton {
 	height: 40px;
 	width: 40px;
+}
+
+.quotesHeader {
+  background: "#953ED5";
+  border: none;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 10px 50px;
+  font-size: 18px;
+  letter-spacing: 0.8;
+  color: white;
+  cursor: pointer;
+}
+.mathHeader {
+  background: "#953ED5";
+  border: none;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 10px 50px;
+  font-size: 18px;
+  letter-spacing: 0.8;
+  color: white;
+  cursor: pointer;
 }
 
 /** DIALOG **/
