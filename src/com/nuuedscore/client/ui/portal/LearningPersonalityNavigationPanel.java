@@ -22,7 +22,7 @@ public class LearningPersonalityNavigationPanel extends VerticalPanel {
 	}
 	
 	protected void init() {
-		Button headerButton = new Button("Learning Style");
+		Button headerButton = new Button("Learning Personality");
 		headerButton.setStyleName("gwt-Button-grey");
 		this.add(headerButton);
 	

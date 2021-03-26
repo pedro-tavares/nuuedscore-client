@@ -27,6 +27,8 @@ public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 	private Button aptitudeHeaderButton;
 	private ScoresPanel lowScoresPanel;
 	private ScoresPanel highScoresPanel;
+	private List<String> topics = new ArrayList<String>();
+	private PortalPanel portalPanel;
 	
 	public AptitudePanel(RefAptitude refAptitude) {
 		this.REF_APTITUDE = refAptitude;
@@ -59,13 +61,10 @@ public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 		highScoresPanel = new ScoresPanel(this.REF_APTITUDE, RefScore.HIGH);
 		this.add(highScoresPanel);		
 	}
-	
-	List<String> topics = new ArrayList<String>();
-	PortalPanel portalPanel;
-	
+		
 	@Override
 	public void flow(List<StudentResource> studentResources) {
-		GWT.log("I AM Aptitude:" + this.REF_APTITUDE + ": Flow StudentResources:\n" + studentResources.toString());
+		GWT.log("APTITUDE:" + this.REF_APTITUDE + ": Flow StudentResources:\n" + studentResources.toString());
 		
 		for (StudentResource studentResource: studentResources) {
 			String topic = studentResource.getTopic();
@@ -75,9 +74,9 @@ public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 				topicButton.addClickHandler(event -> {					
 					//Student Resources for Topic
 					List<StudentResource> studentResourcesForTopic = getStudentResourcesForTopic(studentResources, topic);
-					//TODO maybe singleton
-					portalPanel = new PortalPanel(this.REF_APTITUDE, studentResourcesForTopic);
-					
+					if (portalPanel == null) {
+						portalPanel = new PortalPanel(this.REF_APTITUDE, studentResourcesForTopic);
+					}
 					NuuEdScore.GET().showView(portalPanel);
 				});
 				

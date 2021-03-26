@@ -12,6 +12,7 @@ import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy;
 import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DecoratedPopupPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -21,6 +22,7 @@ import com.google.gwt.view.client.CellPreviewEvent;
 import com.google.gwt.view.client.CellPreviewEvent.Handler;
 import com.google.gwt.view.client.SelectionChangeEvent;
 import com.google.gwt.view.client.SingleSelectionModel;
+import com.nuuedscore.client.domain.DATA;
 import com.nuuedscore.client.service.ServiceFactory;
 import com.nuuedscore.client.ui.TitledPanel;
 import com.nuuedscore.client.ui.dashboard.DashboardPanel;
@@ -39,7 +41,6 @@ public class StudentResourcePanel extends TitledPanel {
 
 	private CellTable.Resources NuuEdScoreCellTableResources = GWT.create(NuuEdScoreCellTable.class);
 
-	private List<StudentResource> STUDENT_RESOURCE_DATA;
 	private DashboardPanel dashboardPanel;
 	private StudentResource selectedStudentResource;
 
@@ -240,17 +241,17 @@ public class StudentResourcePanel extends TitledPanel {
 	}
 
 	public void setModel(List<StudentResource> model) {
-		STUDENT_RESOURCE_DATA = model;
+		DATA.STUDENT_RESOURCES = model;
 
-		GWT.log("STUDENT_RESOURCE_DATA.size: " + STUDENT_RESOURCE_DATA.size());
+		GWT.log("STUDENT_RESOURCE_DATA.size: " + DATA.STUDENT_RESOURCES.size());
 
-		table.setPageSize(STUDENT_RESOURCE_DATA.size());
-		table.setRowData(0, STUDENT_RESOURCE_DATA);
-		table.setRowCount(STUDENT_RESOURCE_DATA.size(), true);
+		table.setPageSize(DATA.STUDENT_RESOURCES.size());
+		table.setRowData(0, DATA.STUDENT_RESOURCES);
+		table.setRowCount(DATA.STUDENT_RESOURCES.size(), true);
 	}
 
 	public boolean StudentResourceExists(String resource) {
-		for (StudentResource StudentResource : STUDENT_RESOURCE_DATA) {
+		for (StudentResource StudentResource : DATA.STUDENT_RESOURCES) {
 			if (StudentResource.getResource().equals(resource)) {
 				return true;
 			}
