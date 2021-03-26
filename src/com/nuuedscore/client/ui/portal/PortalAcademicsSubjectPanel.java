@@ -1,5 +1,6 @@
 package com.nuuedscore.client.ui.portal;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.ui.ux.UiUx;
@@ -41,6 +42,10 @@ public class PortalAcademicsSubjectPanel extends VerticalPanel {
 	public void add(StudentResource studentResource) {
 		Button resourceButton = new Button(studentResource.getName());
 		resourceButton.setStyleName("resourceButton");
+		resourceButton.addClickHandler(event -> {
+			// TODO can do features on resource
+			Window.open(studentResource.getResource(), studentResource.getName(), "");
+		});
 		
 		this.innerPanel.add(resourceButton);
 	}
