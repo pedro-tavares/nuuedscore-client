@@ -259,7 +259,9 @@ h1 {
 	font-size: 15px;
 }
 .portalTopicPanel {
-	padding: 10px;
+}
+.portalAcademicsSubjectPanel {
+	padding: 10px;	
 }
 
 /** TEXTBOX **/
@@ -361,29 +363,6 @@ button.gwt-Button[disabled] {
 .devButton {
 	height: 40px;
 	width: 40px;
-}
-
-.quotesHeader {
-  background: "#953ED5";
-  border: none;
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  padding: 10px 50px;
-  font-size: 18px;
-  letter-spacing: 0.8;
-  color: white;
-  cursor: pointer;
-}
-.mathHeader {
-  background: "#953ED5";
-  border: none;
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  padding: 10px 50px;
-  font-size: 18px;
-  letter-spacing: 0.8;
-  color: white;
-  cursor: pointer;
 }
 
 /** DIALOG **/

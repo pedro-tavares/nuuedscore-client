@@ -46,11 +46,13 @@ public class PortalTopicAcademicsPanel extends HorizontalPanel {
 					
 					GWT.log("NEW SUBJECT:" + subject);
 					
-					if (knownSubjects.indexOf(subject) != -1) {
+					if (knownSubjects.indexOf(subject) != -1) { // if known
 						PortalAcademicsSubjectPanel portalSubjectPanel = new PortalAcademicsSubjectPanel(subject);
 						studentResourcesForAcademics.put(subject, portalSubjectPanel);
 						this.add(portalSubjectPanel);
 					} 
+					
+					// TODO for the other resources
 				}
 			}
 		}

@@ -1,6 +1,5 @@
 package com.nuuedscore.client.ui.portal;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.ui.ux.UiUx;
@@ -19,6 +18,8 @@ public class PortalAcademicsSubjectPanel extends VerticalPanel {
 	public PortalAcademicsSubjectPanel(String subject) {
 		this.subject = subject;
 		
+		this.setStyleName("portalAcademicsSubjectPanel");
+		
 		init();
 	}
 	
@@ -30,3 +31,4 @@ public class PortalAcademicsSubjectPanel extends VerticalPanel {
 	}
 	
 }
+
