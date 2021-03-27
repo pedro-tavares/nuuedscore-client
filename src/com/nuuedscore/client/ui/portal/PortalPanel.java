@@ -46,18 +46,18 @@ public class PortalPanel extends TitledPanel {
 		this.add(titlePanel);
 
 		HorizontalPanel academicsPanel = new HorizontalPanel();
-		academicsPanel.getElement().getStyle().setProperty("backgroundColor", "orange");
+		//academicsPanel.getElement().getStyle().setProperty("backgroundColor", "orange");
 		
 		if (this.topic.equals("Academics")) { // Flow Subjects
 			LearningPersonalityNavigationPanel learningPersonalityNavigationPanel = new LearningPersonalityNavigationPanel();
 			academicsPanel.add(learningPersonalityNavigationPanel);
 			
 			PortalTopicAcademicsPanel portalTopicPanel = new PortalTopicAcademicsPanel();
-			portalTopicPanel.getElement().getStyle().setProperty("backgroundColor", "yellow");
+			//portalTopicPanel.getElement().getStyle().setProperty("backgroundColor", "yellow");
 
 			ScrollPanel scrollPanel = new ScrollPanel(portalTopicPanel);
-			scrollPanel.getElement().getStyle().setProperty("backgroundColor", "green");
-		    scrollPanel.setSize("450px", "200px");
+			//scrollPanel.getElement().getStyle().setProperty("backgroundColor", "green");
+		    scrollPanel.setSize("1200px", "500px");
 			
 			//academicsPanel.add(portalTopicPanel);
 		    academicsPanel.add(scrollPanel);
