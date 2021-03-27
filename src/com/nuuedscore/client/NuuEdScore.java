@@ -60,7 +60,7 @@ public class NuuEdScore implements EntryPoint {
 	
 	@Override
 	public void onModuleLoad() {
-//		Window.alert("Powered by R AI");
+		//Window.alert("Powered by R AI");
 
 		INSTANCE = this;
 
@@ -155,8 +155,8 @@ public class NuuEdScore implements EntryPoint {
 			
 			//TODO get Logged in Person and letsGo
 			
-			//USER = new Person(userEmail);
-			//letsGo(USER);			
+			USER = new Person(userEmail);
+			letsGo(USER);			
 		} 
 	}
 	

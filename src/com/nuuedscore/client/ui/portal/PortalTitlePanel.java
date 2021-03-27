@@ -5,6 +5,7 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.ui.ux.UiUx;
+import com.nuuedscore.shared.dto.refdata.RefTopic;
 
 /**
  * Portal Title Panel
@@ -15,10 +16,10 @@ import com.nuuedscore.client.ui.ux.UiUx;
  */
 public class PortalTitlePanel extends HorizontalPanel {
 
-	String topic;
+	RefTopic topic;
 	HorizontalPanel titlePanel = new HorizontalPanel();
 	
-	public PortalTitlePanel(String topic) {
+	public PortalTitlePanel(RefTopic topic) {
 		this.topic = topic;
 		
 		this.setSpacing(10);
@@ -32,7 +33,7 @@ public class PortalTitlePanel extends HorizontalPanel {
 		
 		VerticalPanel topicTitlePanel = new VerticalPanel();
 		
-		Label topicLabel = new Label(topic);
+		Label topicLabel = new Label(topic.value());
 		topicLabel.setStyleName("portalTopicLabel");
 		topicTitlePanel.add(topicLabel);
 		

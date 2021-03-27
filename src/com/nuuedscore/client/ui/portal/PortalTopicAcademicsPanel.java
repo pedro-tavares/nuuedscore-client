@@ -19,7 +19,6 @@ import com.nuuedscore.shared.dto.StudentResource;
  */
 public class PortalTopicAcademicsPanel extends HorizontalPanel {
 
-	private ScrollPanel scrollPanel = new ScrollPanel();
 	private PortalAcademicsSubjectPanel portalSubjectPanel;
 	
 	public PortalTopicAcademicsPanel() {
