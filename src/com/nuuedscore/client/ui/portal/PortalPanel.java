@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.ScrollPanel;
 import com.nuuedscore.client.ui.TitledPanel;
 import com.nuuedscore.shared.dto.StudentResource;
 import com.nuuedscore.shared.dto.refdata.RefAptitude;
+import com.nuuedscore.shared.dto.refdata.RefScore;
 import com.nuuedscore.shared.dto.refdata.RefTopic;
 
 /**
@@ -79,9 +80,11 @@ public class PortalPanel extends TitledPanel {
 			
 			for (StudentResource studentResource: this.studentResources) {
 				if (!"You Tube".equals(studentResource.getName())) {
-					Button resourceButton = new Button(studentResource.getName());				
+					Button resourceButton = new Button(studentResource.getName());		
+					if (RefScore.HIGH.equals(studentResource.getScore())) {
+						resourceButton.setStyleName("gwt-Button-green");
+					}
 					resourceButton.getElement().getStyle().setProperty("margin", "10px");
-
 					resourceButton.addClickHandler(event -> {
 						// TODO can do features on resource
 						Window.open(studentResource.getResource(), studentResource.getName(), "");
