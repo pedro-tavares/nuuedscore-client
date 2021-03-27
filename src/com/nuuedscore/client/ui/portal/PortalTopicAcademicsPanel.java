@@ -1,13 +1,12 @@
 package com.nuuedscore.client.ui.portal;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.ScrollPanel;
 import com.nuuedscore.client.domain.DATA;
 import com.nuuedscore.shared.dto.StudentResource;
 
@@ -20,12 +19,11 @@ import com.nuuedscore.shared.dto.StudentResource;
  */
 public class PortalTopicAcademicsPanel extends HorizontalPanel {
 
-	private String topic;
+	private ScrollPanel scrollPanel = new ScrollPanel();
 	private PortalAcademicsSubjectPanel portalSubjectPanel;
 	
-	public PortalTopicAcademicsPanel(String topic) {
-		this.topic = topic;
-		
+	public PortalTopicAcademicsPanel() {
+
 		this.setStyleName("portalTopicPanel");
 		
 		init();
@@ -35,7 +33,6 @@ public class PortalTopicAcademicsPanel extends HorizontalPanel {
 		List<StudentResource> studentResources = DATA.STUDENT_RESOURCES;
 		
 		Map<String, PortalAcademicsSubjectPanel> studentResourcesForAcademics = new HashMap<String, PortalAcademicsSubjectPanel>();
-		List<String> knownSubjects = Arrays.asList("Math", "Reading", "Science", "History", "Writing"); 
 		
 		for (StudentResource studentResource: studentResources) {
 			if (studentResource.getSubject().equals("Quotes")) { // TODO Quotes go to DASH
@@ -47,11 +44,9 @@ public class PortalTopicAcademicsPanel extends HorizontalPanel {
 					
 					GWT.log("NEW SUBJECT:" + subject);
 					
-					if (knownSubjects.indexOf(subject) != -1) { // if known
-						portalSubjectPanel = new PortalAcademicsSubjectPanel(subject);
-						studentResourcesForAcademics.put(subject, portalSubjectPanel);
-						this.add(portalSubjectPanel);
-					} 
+					portalSubjectPanel = new PortalAcademicsSubjectPanel(subject);
+					studentResourcesForAcademics.put(subject, portalSubjectPanel);
+					this.add(portalSubjectPanel);
 				}				
 				
 				// and Flow the Resources for Subject...

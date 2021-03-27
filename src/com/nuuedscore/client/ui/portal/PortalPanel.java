@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.ScrollPanel;
 import com.nuuedscore.client.ui.TitledPanel;
+import com.nuuedscore.client.ui.ux.UiUx;
 import com.nuuedscore.shared.dto.StudentResource;
 import com.nuuedscore.shared.dto.refdata.RefAptitude;
 
@@ -43,21 +45,30 @@ public class PortalPanel extends TitledPanel {
 		PortalTitlePanel titlePanel = new PortalTitlePanel(this.topic);
 		this.add(titlePanel);
 
-		HorizontalPanel innerPanel = new HorizontalPanel();
+		HorizontalPanel academicsPanel = new HorizontalPanel();
+		academicsPanel.getElement().getStyle().setProperty("backgroundColor", "orange");
 		
 		if (this.topic.equals("Academics")) { // Flow Subjects
 			LearningPersonalityNavigationPanel learningPersonalityNavigationPanel = new LearningPersonalityNavigationPanel();
-			innerPanel.add(learningPersonalityNavigationPanel);
+			academicsPanel.add(learningPersonalityNavigationPanel);
 			
-			PortalTopicAcademicsPanel portalTopicPanel = new PortalTopicAcademicsPanel(this.topic);
-			innerPanel.add(portalTopicPanel);
+			PortalTopicAcademicsPanel portalTopicPanel = new PortalTopicAcademicsPanel();
+			portalTopicPanel.getElement().getStyle().setProperty("backgroundColor", "yellow");
+
+			ScrollPanel scrollPanel = new ScrollPanel(portalTopicPanel);
+			scrollPanel.getElement().getStyle().setProperty("backgroundColor", "green");
+		    scrollPanel.setSize("450px", "200px");
+			
+			//academicsPanel.add(portalTopicPanel);
+		    academicsPanel.add(scrollPanel);
+			
+			this.add(academicsPanel);
 			
 		} else { // Flow just Resources
-		
+					
 			
 		}
 
-		this.add(innerPanel);
 	}
 	
 }

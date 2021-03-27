@@ -20,7 +20,7 @@ public class PortalAcademicsSubjectPanel extends VerticalPanel {
 	
 	public PortalAcademicsSubjectPanel(String subject) {
 		this.subject = subject;
-		
+
 		this.setStyleName("");
 		this.setSpacing(10);
 		
