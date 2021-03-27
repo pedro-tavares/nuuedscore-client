@@ -4,10 +4,11 @@ import java.util.List;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.nuuedscore.client.ui.TitledPanel;
-import com.nuuedscore.client.ui.ux.UiUx;
 import com.nuuedscore.shared.dto.StudentResource;
 import com.nuuedscore.shared.dto.refdata.RefAptitude;
 import com.nuuedscore.shared.dto.refdata.RefTopic;
@@ -42,17 +43,20 @@ public class PortalPanel extends TitledPanel {
 	}
 	
 	private void init() {
-		GWT.log("\n\nI AM PortalPanel:" + this.REF_APTITUDE.value() + "\n"/* + studentResources*/);
+		GWT.log("\n\nI AM PortalPanel for:" + this.REF_TOPIC + " " + this.REF_APTITUDE.value() + "\n"/* + studentResources*/);
 		
 		PortalTitlePanel titlePanel = new PortalTitlePanel(this.REF_TOPIC);
 		this.add(titlePanel);
 
-		HorizontalPanel academicsPanel = new HorizontalPanel();
-		//academicsPanel.getElement().getStyle().setProperty("backgroundColor", "orange");
+		// I AM THE MATRIX
+		//this.add(new HTML(studentResources.toString()));
 		
 		// Flow Subjects
 		if (this.REF_TOPIC.equals(RefTopic.Academics)) { 
-			
+
+			HorizontalPanel academicsPanel = new HorizontalPanel();
+			//academicsPanel.getElement().getStyle().setProperty("backgroundColor", "orange");
+
 			LearningPersonalityNavigationPanel learningPersonalityNavigationPanel = new LearningPersonalityNavigationPanel();
 			academicsPanel.add(learningPersonalityNavigationPanel);
 			
@@ -69,17 +73,24 @@ public class PortalPanel extends TitledPanel {
 			this.add(academicsPanel);
 			
 		} 
-		// Flow just Resources ...
-		else if (this.REF_TOPIC.equals(RefTopic.Financial_Literacy)) {
-			// NO RESOURCES in Main Flow
-		}
-		else if (this.REF_TOPIC.equals(RefTopic.Hard_Skills)) {
-			// NO RESOURCES in Main Flow
-		}
 		else {
-			GWT.log("\n\n\nTODO topic:" + this.REF_TOPIC.value() + "\n\n\n");
-		}
+			FlowPanel flowPanel = new FlowPanel();
+			//flowPanel.getElement().getStyle().setProperty("padding", "10px");
+			
+			for (StudentResource studentResource: this.studentResources) {
+				if (!"You Tube".equals(studentResource.getName())) {
+					Button resourceButton = new Button(studentResource.getName());				
+					resourceButton.getElement().getStyle().setProperty("margin", "10px");
 
-	}
-	
+					resourceButton.addClickHandler(event -> {
+						// TODO can do features on resource
+						Window.open(studentResource.getResource(), studentResource.getName(), "");
+					});
+					
+					flowPanel.add(resourceButton);
+				}
+				this.add(flowPanel);
+			}
+		}
+	}	
 }

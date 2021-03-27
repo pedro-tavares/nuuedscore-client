@@ -71,10 +71,12 @@ public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 			String topic = studentResource.getTopic();
 			if (topics.indexOf(topic) == -1) {
 				topics.add(topic);
+				
 				Button topicButton = new Button(topic);
 				topicButton.addClickHandler(event -> {					
-					// TODO Map to singleton by Topic
+					// TODO Map to singleton by Topic	
 					List<StudentResource> studentResourcesForTopic = getStudentResourcesForTopic(studentResources, topic);
+					
 					if (portalPanel == null) {
 						portalPanel = new PortalPanel(this.REF_APTITUDE, studentResourcesForTopic);
 					}
@@ -98,7 +100,7 @@ public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 			}
 		}
 
-		Window.alert("getStudentResourcesForTopic:[" + topic + "]\n" + resourcesForTopic);
+		GWT.log("getStudentResourcesForTopic:[" + topic + "]\n" + resourcesForTopic);
 
 		return resourcesForTopic;
 	}

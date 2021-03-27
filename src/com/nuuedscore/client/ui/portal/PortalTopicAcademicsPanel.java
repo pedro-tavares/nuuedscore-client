@@ -6,7 +6,6 @@ import java.util.Map;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.ScrollPanel;
 import com.nuuedscore.client.domain.DATA;
 import com.nuuedscore.shared.dto.StudentResource;
 
@@ -22,7 +21,6 @@ public class PortalTopicAcademicsPanel extends HorizontalPanel {
 	private PortalAcademicsSubjectPanel portalSubjectPanel;
 	
 	public PortalTopicAcademicsPanel() {
-
 		this.setStyleName("portalTopicPanel");
 		
 		init();

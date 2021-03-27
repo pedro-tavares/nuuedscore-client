@@ -1,4 +1,4 @@
-package com.nuuedscore.client.ui;
+package com.nuuedscore.shared.dto.refdata;
 
 /**
  * Reference Data Model Type
