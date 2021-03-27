@@ -35,9 +35,9 @@ public class LearningPersonalityNavigationPanel extends VerticalPanel {
 		visualLabel.setStyleName("learningPersonalityNavigationPanel-text");
 		this.add(visualLabel);
 
-		Label kinesteticLabel = new Label(RefLearningPersonality.KINESTETIC.value());
-		kinesteticLabel.setStyleName("learningPersonalityNavigationPanel-text");
-		this.add(kinesteticLabel);
+		Label kinestheticLabel = new Label(RefLearningPersonality.KINESTHETIC.value());
+		kinestheticLabel.setStyleName("learningPersonalityNavigationPanel-text");
+		this.add(kinestheticLabel);
 		
 	}
 	
