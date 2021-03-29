@@ -100,8 +100,8 @@ public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 			}
 		}
 
-		GWT.log("getStudentResourcesForTopic:[" + topic + "]\n" + resourcesForTopic);
-
+		GWT.log("I AM AptitudePanel:" + this.REF_APTITUDE + ": getStudentResourcesForTopic:" + topic + "\n"/* + studentResources.toString()*/);	
+		
 		return resourcesForTopic;
 	}
 }
