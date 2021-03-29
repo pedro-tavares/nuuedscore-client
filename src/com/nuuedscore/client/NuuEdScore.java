@@ -155,8 +155,8 @@ public class NuuEdScore implements EntryPoint {
 			
 			//TODO get Logged in Person and letsGo
 			
-			USER = new Person(userEmail);
-			letsGo(USER);			
+			//USER = new Person(userEmail);
+			//letsGo(USER);			
 		} 
 	}
 	
