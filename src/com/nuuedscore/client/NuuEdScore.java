@@ -18,11 +18,11 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.nuuedscore.IConstants;
 import com.nuuedscore.client.ui.CenterPanel;
-import com.nuuedscore.client.ui.NavigationPanel;
 import com.nuuedscore.client.ui.MenuPanel;
+import com.nuuedscore.client.ui.NavigationPanel;
+import com.nuuedscore.client.ui.dashboard.DashboardPanel;
 import com.nuuedscore.client.ui.person.LoggedInPanel;
 import com.nuuedscore.client.ui.person.LoginRegisterPanel;
-import com.nuuedscore.client.ui.person.PersonPanel;
 import com.nuuedscore.shared.dto.Person;
 
 /**
@@ -45,7 +45,8 @@ public class NuuEdScore implements EntryPoint {
 	
 	private Button 
 		loginButton, 
-		registerButton;
+		registerButton,
+		backToDashboardButton;
 	private CenterPanel centerPanel = new CenterPanel();
 	private LoginRegisterPanel loginPanel = new LoginRegisterPanel();
 	private Label poweredByRAILabel = new Label("Powered by R AI - " + new Date());
@@ -155,8 +156,8 @@ public class NuuEdScore implements EntryPoint {
 			
 			//TODO get Logged in Person and letsGo
 			
-			//USER = new Person(userEmail);
-			//letsGo(USER);			
+			USER = new Person(userEmail);
+			letsGo(USER);			
 		} 
 	}
 	
@@ -208,6 +209,14 @@ public class NuuEdScore implements EntryPoint {
 		loggedinPanel = new LoggedInPanel(USER);
 		loggedinPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 		topPanel.add(loggedinPanel);
+
+		backToDashboardButton = new Button("MY DASHBOARD");		
+		backToDashboardButton.setStyleName("gwt-Button-green");
+		backToDashboardButton.getElement().getStyle().setProperty("zIndex", "999");
+		backToDashboardButton.addClickHandler(event -> {
+			NuuEdScore.GET().getNavigation().showDefaultView();
+		});
+		RootPanel.get().add(backToDashboardButton, RootPanel.get().getOffsetWidth() - 285, 80);
 		
 		createNavigation();
 	}
@@ -220,6 +229,10 @@ public class NuuEdScore implements EntryPoint {
 		
 		navigationPanel.createViews();
 		navigationPanel.showDefaultView();
+	}
+
+	public NavigationPanel getNavigation() {
+		return navigationPanel;
 	}
 	
 	public void logOut() {
@@ -277,8 +290,14 @@ public class NuuEdScore implements EntryPoint {
 		lastViewPanel = viewPanel;
 		//viewPanel.setPixelSize(Window.getClientWidth()-200, Window.getClientHeight()-75);
 		RootPanel.get().add(viewPanel, MENU_WIDTH+1, 76);
+		
+		if (viewPanel instanceof DashboardPanel) {
+			backToDashboardButton.setVisible(false);
+		} else {
+			backToDashboardButton.setVisible(true);
+		}
 	}
-
+	
 	// EXPERIMENTS *************************************************************************************************
 	private void doSTUFF() {
 		

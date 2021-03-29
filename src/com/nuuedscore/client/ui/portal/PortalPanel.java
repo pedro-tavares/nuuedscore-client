@@ -22,7 +22,7 @@ import com.nuuedscore.shared.dto.refdata.RefTopic;
  * 
  */
 public class PortalPanel extends TitledPanel {
-
+	
 	private RefAptitude REF_APTITUDE;
 	private RefTopic REF_TOPIC;
 	private List<StudentResource> studentResources;
@@ -45,7 +45,7 @@ public class PortalPanel extends TitledPanel {
 	
 	private void init() {
 		GWT.log("\n\nI AM PortalPanel for:" + this.REF_TOPIC + " " + this.REF_APTITUDE.value() + "\n"/* + studentResources*/);
-		
+				
 		PortalTitlePanel titlePanel = new PortalTitlePanel(this.REF_TOPIC);
 		this.add(titlePanel);
 
@@ -80,6 +80,7 @@ public class PortalPanel extends TitledPanel {
 			
 			for (StudentResource studentResource: this.studentResources) {
 				if (!"You Tube".equals(studentResource.getName())) {
+					
 					Button resourceButton = new Button(studentResource.getName());		
 					if (RefScore.HIGH.equals(studentResource.getScore())) {
 						resourceButton.setStyleName("gwt-Button-green");

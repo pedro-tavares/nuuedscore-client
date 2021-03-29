@@ -44,6 +44,7 @@ public class NavigationPanel extends VerticalPanel {
 	}
 	
 	private void init() {
+
 		responsiveImage = new Image("images/navigation/navigation_responsive.png");
 		responsiveImage.setStyleName("leftNavigationGraphx");
 		responsiveImage.addClickHandler(event -> {

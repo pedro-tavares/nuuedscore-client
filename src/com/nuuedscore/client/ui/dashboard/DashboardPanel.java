@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.flow.IStudentFlow;
 import com.nuuedscore.client.ui.TitledPanel;
@@ -30,7 +30,7 @@ public class DashboardPanel extends TitledPanel implements IStudentFlow {
 	private AptitudePanel highAptitudePanel = new AptitudePanel(RefAptitude.HIGH);
 	
 	public DashboardPanel() {
-		super(NuuEdScore.GET_USER().getFirstName() +  "'s Dashboard");
+		super(NuuEdScore.GET_USER().getFirstName() +  "'s Student Dashboard");
 
 		this.setSpacing(20);
 		this.init();
@@ -38,6 +38,7 @@ public class DashboardPanel extends TitledPanel implements IStudentFlow {
 	}
 
 	private void init() {
+		
 		innerPanel.add(lowAptitudePanel);
 		innerPanel.add(skillsMasterPanel);
 		innerPanel.add(highAptitudePanel);
