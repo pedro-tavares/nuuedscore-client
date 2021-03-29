@@ -65,7 +65,7 @@ public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 		
 	@Override
 	public void flow(List<StudentResource> studentResources) {
-		GWT.log("I AM AptitudePanel:" + this.REF_APTITUDE + ": Flow StudentResources:\n"/* + studentResources.toString()*/);
+		GWT.log("AptitudePanel:" + this.REF_APTITUDE + ": Flow StudentResources:\n"/* + studentResources.toString()*/);
 		
 		for (StudentResource studentResource: studentResources) {
 			String topic = studentResource.getTopic();
@@ -77,9 +77,8 @@ public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 					// TODO Map to singleton by Topic	
 					List<StudentResource> studentResourcesForTopic = getStudentResourcesForTopic(studentResources, topic);
 					
-					if (portalPanel == null) {
-						portalPanel = new PortalPanel(this.REF_APTITUDE, studentResourcesForTopic);
-					}
+					portalPanel = new PortalPanel(this.REF_APTITUDE, studentResourcesForTopic);
+					
 					NuuEdScore.GET().showView(portalPanel);
 				});
 				
@@ -100,7 +99,7 @@ public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 			}
 		}
 
-		GWT.log("I AM AptitudePanel:" + this.REF_APTITUDE + ": getStudentResourcesForTopic:" + topic + "\n"/* + studentResources.toString()*/);	
+		GWT.log("AptitudePanel:" + this.REF_APTITUDE + ": getStudentResourcesForTopic:" + topic + "\n"/* + studentResources.toString()*/);	
 		
 		return resourcesForTopic;
 	}

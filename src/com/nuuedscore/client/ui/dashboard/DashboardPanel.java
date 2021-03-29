@@ -48,7 +48,7 @@ public class DashboardPanel extends TitledPanel implements IStudentFlow {
 	
 	@Override
 	public void flow(List<StudentResource> studentResources) {
-		//Window.alert("I AM DashboardPanel: Flow StudentResources");
+		//Window.alert("DashboardPanel: Flow StudentResources");
 
 		List<StudentResource> lowAptitudes = new ArrayList<StudentResource>();
 		List<StudentResource> highAptitudes = new ArrayList<StudentResource>();
