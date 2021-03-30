@@ -46,6 +46,8 @@ public class NuuEdScore implements EntryPoint {
 	private Button 
 		loginButton, 
 		registerButton,
+		asTeacherButton,
+		asStudentButton,
 		backToDashboardButton;
 	private CenterPanel centerPanel = new CenterPanel();
 	private LoginRegisterPanel loginPanel = new LoginRegisterPanel();
@@ -161,13 +163,26 @@ public class NuuEdScore implements EntryPoint {
 		} 
 	}
 	
+	/**
+	 * I AM RESIZE
+	 */
 	private void resize() {
-		RootPanel.get().add(loginButton, Window.getClientWidth()-175, 15);
-		RootPanel.get().add(registerButton, Window.getClientWidth()-175, 15);
+		RootPanel.get().add(loginButton, Window.getClientWidth() - 175, 15);
+		RootPanel.get().add(registerButton, Window.getClientWidth() - 175, 15);
 		if (!LOGGED_IN) {
 			topPanel.setWidth("100%");
 		} else {
 			topPanel.setWidth((Window.getClientWidth()-50) + "px");
+		}
+		 
+		if (asTeacherButton != null) {
+			RootPanel.get().add(asTeacherButton, Window.getClientWidth() - 530, 80);
+		}
+		if (asStudentButton != null) {
+			RootPanel.get().add(asStudentButton, Window.getClientWidth() - 285, 80);
+		}
+		if (backToDashboardButton != null) {
+			RootPanel.get().add(backToDashboardButton, Window.getClientWidth() - 285, 80);
 		}
 	}
 
@@ -210,13 +225,27 @@ public class NuuEdScore implements EntryPoint {
 		loggedinPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 		topPanel.add(loggedinPanel);
 
+		asTeacherButton = new Button("I AM TEACHER");		
+		asTeacherButton.setStyleName("gwt-Button-green");
+		asTeacherButton.getElement().getStyle().setProperty("zIndex", "999");
+		asTeacherButton.addClickHandler(event -> {
+			// TODO
+			Window.alert("TEACHER DASHBOARD coming soon...");
+		});
+
+		asStudentButton = new Button("I AM STUDENT");		
+		asStudentButton.setStyleName("gwt-Button-green");
+		asStudentButton.getElement().getStyle().setProperty("zIndex", "999");
+		asStudentButton.addClickHandler(event -> {
+			// TODO
+		});
+		
 		backToDashboardButton = new Button("MY DASHBOARD");		
 		backToDashboardButton.setStyleName("gwt-Button-green");
 		backToDashboardButton.getElement().getStyle().setProperty("zIndex", "999");
 		backToDashboardButton.addClickHandler(event -> {
 			NuuEdScore.GET().getNavigation().showDefaultView();
 		});
-		RootPanel.get().add(backToDashboardButton, RootPanel.get().getOffsetWidth() - 285, 80);
 		
 		createNavigation();
 	}
@@ -292,8 +321,12 @@ public class NuuEdScore implements EntryPoint {
 		RootPanel.get().add(viewPanel, MENU_WIDTH+1, 76);
 		
 		if (viewPanel instanceof DashboardPanel) {
+			asTeacherButton.setVisible(true);
+			asStudentButton.setVisible(true);
 			backToDashboardButton.setVisible(false);
 		} else {
+			asTeacherButton.setVisible(false);
+			asStudentButton.setVisible(false);
 			backToDashboardButton.setVisible(true);
 		}
 	}
