@@ -1,4 +1,4 @@
-package com.nuuedscore.client.ui.dashboard.aptitude;
+package com.nuuedscore.client.ui.dashboard.student.aptitude;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.flow.IStudentFlow;
-import com.nuuedscore.client.ui.dashboard.score.ScoresPanel;
+import com.nuuedscore.client.ui.dashboard.student.score.ScoresPanel;
 import com.nuuedscore.client.ui.portal.PortalPanel;
 import com.nuuedscore.shared.dto.StudentResource;
 import com.nuuedscore.shared.dto.refdata.RefAptitude;

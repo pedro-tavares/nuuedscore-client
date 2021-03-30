@@ -1,4 +1,4 @@
-package com.nuuedscore.client.ui.dashboard.score;
+package com.nuuedscore.client.ui.dashboard.student.score;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Label;

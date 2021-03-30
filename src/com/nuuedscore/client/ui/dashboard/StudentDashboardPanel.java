@@ -9,8 +9,8 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.flow.IStudentFlow;
 import com.nuuedscore.client.ui.TitledPanel;
-import com.nuuedscore.client.ui.dashboard.aptitude.AptitudePanel;
-import com.nuuedscore.client.ui.dashboard.skill.SkillsMasterPanel;
+import com.nuuedscore.client.ui.dashboard.student.aptitude.AptitudePanel;
+import com.nuuedscore.client.ui.dashboard.student.skill.SkillsMasterPanel;
 import com.nuuedscore.shared.dto.StudentResource;
 import com.nuuedscore.shared.dto.refdata.RefAptitude;
 
@@ -47,7 +47,7 @@ public class StudentDashboardPanel extends TitledPanel implements IStudentFlow {
 	
 	@Override
 	public void flow(List<StudentResource> studentResources) {
-	GWT.log("StudentDashboardPanel: Flow StudentResources");
+		GWT.log("StudentDashboardPanel: Flow studentResources\n"/* + studentResources*/);
 
 		List<StudentResource> lowAptitudes = new ArrayList<StudentResource>();
 		List<StudentResource> highAptitudes = new ArrayList<StudentResource>();
