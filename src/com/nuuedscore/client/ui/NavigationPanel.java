@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.ui.dashboard.StudentDashboardPanel;
+import com.nuuedscore.client.ui.dashboard.TeacherDashboardPanel;
 import com.nuuedscore.client.ui.person.PersonPanel;
 import com.nuuedscore.client.ui.resource.StudentResourcePanel;
 import com.nuuedscore.client.ui.resource.TeacherResourcePanel;
@@ -30,6 +31,7 @@ public class NavigationPanel extends VerticalPanel {
 		taskListImage,
 		presentImage,
 		signOutImage;
+	private TeacherDashboardPanel teacherDashboardPanel;
 	private StudentDashboardPanel studentDashboardPanel;
 	private PersonPanel personPanel;
 	private TeacherResourcePanel teacherResourcePanel;
@@ -95,12 +97,11 @@ public class NavigationPanel extends VerticalPanel {
 		});
 		innerPanel.add(signOutImage);
 		
-		/* TODO DEV */
 		Button teacherResourceButton = new Button("T");
 		teacherResourceButton.setStyleName("devButton");
 		teacherResourceButton.addClickHandler(event -> {
 			if (teacherResourcePanel == null) {
-				teacherResourcePanel = new TeacherResourcePanel();
+				teacherResourcePanel = new TeacherResourcePanel(this.teacherDashboardPanel);
 			}
 			NuuEdScore.GET().showView(teacherResourcePanel);		
 		});		
@@ -120,21 +121,18 @@ public class NavigationPanel extends VerticalPanel {
 	}
 	
 	public void createViews() {
-		Window.alert("NavigationPanel: createViews: " + NuuEdScore.PERSON_ROLE);
+		GWT.log("NavigationPanel: createViews: " + NuuEdScore.PERSON_ROLE);
 		
 		/**
 		 * TEACHER Views
 		 */
 		if (NuuEdScore.PERSON_ROLE.equals(RefPersonRole.ROLE_TEACHER)) {
-			Window.alert("Get TEACHER Resources...");
-/*
 			if (teacherDashboardPanel == null) {
 				teacherDashboardPanel = new TeacherDashboardPanel();
 			}			
 			if (teacherResourcePanel == null) {
 				teacherResourcePanel = new TeacherResourcePanel(this.teacherDashboardPanel);
 			}		
-	*/
 		}
 		
 		/**
