@@ -1,4 +1,4 @@
-package com.nuuedscore.client.ui.portal;
+package com.nuuedscore.client.ui.portal.student;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.nuuedscore.client.ui.TitledPanel;
+import com.nuuedscore.client.ui.portal.PortalTitlePanel;
 import com.nuuedscore.shared.dto.StudentResource;
 import com.nuuedscore.shared.dto.refdata.RefAptitude;
 import com.nuuedscore.shared.dto.refdata.RefScore;

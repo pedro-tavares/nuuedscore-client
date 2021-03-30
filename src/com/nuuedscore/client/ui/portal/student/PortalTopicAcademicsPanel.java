@@ -1,4 +1,4 @@
-package com.nuuedscore.client.ui.portal;
+package com.nuuedscore.client.ui.portal.student;
 
 import java.util.HashMap;
 import java.util.List;

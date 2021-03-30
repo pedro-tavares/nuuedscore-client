@@ -10,7 +10,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.flow.IStudentFlow;
 import com.nuuedscore.client.ui.dashboard.student.score.ScoresPanel;
-import com.nuuedscore.client.ui.portal.PortalPanel;
+import com.nuuedscore.client.ui.portal.student.PortalPanel;
 import com.nuuedscore.shared.dto.StudentResource;
 import com.nuuedscore.shared.dto.refdata.RefAptitude;
 import com.nuuedscore.shared.dto.refdata.RefScore;

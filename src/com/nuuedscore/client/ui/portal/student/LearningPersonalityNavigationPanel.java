@@ -1,4 +1,4 @@
-package com.nuuedscore.client.ui.portal;
+package com.nuuedscore.client.ui.portal.student;
 
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
