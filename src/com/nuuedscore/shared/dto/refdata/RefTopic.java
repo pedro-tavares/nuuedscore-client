@@ -12,6 +12,17 @@ package com.nuuedscore.shared.dto.refdata;
  */
 public enum RefTopic {
 	
+	/**
+	 * TEACHER
+	 */
+	Personality_Test("Personality Test"),
+	Career_Aptitude("Career Aptitude"),
+	Learning_Styles("Learning Styles"),
+	Social_Emotional_Learning("Social Emotional Learning"),
+	Education_Loans("Education Loans"),
+	/**
+	 * STUDENT
+	 */
 	Academics("Academics"), 
 	Financial_Literacy("Financial Literacy"),
 	Hard_Skills("Hard Skills"),
