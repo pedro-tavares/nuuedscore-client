@@ -21,8 +21,10 @@ import com.google.gwt.view.client.CellPreviewEvent;
 import com.google.gwt.view.client.CellPreviewEvent.Handler;
 import com.google.gwt.view.client.SelectionChangeEvent;
 import com.google.gwt.view.client.SingleSelectionModel;
+import com.nuuedscore.client.domain.DATA;
 import com.nuuedscore.client.service.ServiceFactory;
 import com.nuuedscore.client.ui.TitledPanel;
+import com.nuuedscore.client.ui.dashboard.TeacherDashboardPanel;
 //import com.nuuedscore.client.ui.TeacherResource.TeacherResourceEditPanel;
 import com.nuuedscore.client.ui.style.NuuEdScoreCellTable;
 import com.nuuedscore.shared.dto.TeacherResource;
@@ -38,9 +40,9 @@ public class TeacherResourcePanel extends TitledPanel {
 
 	private CellTable.Resources NuuEdScoreCellTableResources = GWT.create(NuuEdScoreCellTable.class);
 
-	private List<TeacherResource> TEACHER_RESOURCE_DATA;
+	private TeacherDashboardPanel teacherDashboardPanel;
 	private TeacherResource selectedTeacherResource;
-
+	
 	private HorizontalPanel tablePanel = new HorizontalPanel();
 	private CellTable<TeacherResource> table;
 	private DecoratedPopupPanel resourcePreviewPopup;
@@ -50,9 +52,11 @@ public class TeacherResourcePanel extends TitledPanel {
 	private Date startDate;
 	private Date endDate;
 
-	public TeacherResourcePanel() {
+	public TeacherResourcePanel(TeacherDashboardPanel teacherDashboardPanel) {
 		super("Teacher Resources");
 
+		this.teacherDashboardPanel = teacherDashboardPanel;
+		
 		this.setSpacing(20);
 		this.init();
 
@@ -231,17 +235,17 @@ public class TeacherResourcePanel extends TitledPanel {
 	}
 
 	public void setModel(List<TeacherResource> model) {
-		TEACHER_RESOURCE_DATA = model;
-
-		GWT.log("TeacherResource_DATA.size: " + TEACHER_RESOURCE_DATA.size());
+		DATA.TEACHER_RESOURCES = model;
+		
+		GWT.log("TEACHER_RESOURCE_DATA.size: " + DATA.TEACHER_RESOURCES.size());
 
 		table.setPageSize(50);
-		table.setRowData(0, TEACHER_RESOURCE_DATA);
-		table.setRowCount(TEACHER_RESOURCE_DATA.size(), true);
+		table.setRowData(0, DATA.TEACHER_RESOURCES);
+		table.setRowCount(DATA.TEACHER_RESOURCES.size(), true);
 	}
 
 	public boolean teacherResourceExists(String resource) {
-		for (TeacherResource TeacherResource : TEACHER_RESOURCE_DATA) {
+		for (TeacherResource TeacherResource : DATA.TEACHER_RESOURCES) {
 			if (TeacherResource.getResource().equals(resource)) {
 				return true;
 			}
@@ -267,6 +271,7 @@ public class TeacherResourcePanel extends TitledPanel {
 				GWT.log("callGetTeacherResourceService - SUCCESS:\n" + response.toString());
 
 				setModel(response);
+				teacherDashboardPanel.flow(response);
 
 				endDate = new Date();
 				fetchInfoLabel.setText("Fetched " + response.size() + " Teacher Resources in "
