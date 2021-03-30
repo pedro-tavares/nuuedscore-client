@@ -233,6 +233,8 @@ public class NuuEdScore implements EntryPoint {
 
 			PERSON_ROLE = RefPersonRole.ROLE_TEACHER;
 			this.navigationPanel.createViews();
+			this.navigationPanel.showTeacherDashboard();
+			
 		});
 
 		asStudentButton = new Button("I AM STUDENT");		
@@ -242,13 +244,14 @@ public class NuuEdScore implements EntryPoint {
 			GWT.log("SHOW " + RefPersonRole.ROLE_STUDENT + " DASHBOARD");
 
 			PERSON_ROLE = RefPersonRole.ROLE_STUDENT;
+			this.navigationPanel.showStudentDashboard();
 		});
 		
 		backToDashboardButton = new Button("MY DASHBOARD");		
 		backToDashboardButton.setStyleName("gwt-Button-green");
 		backToDashboardButton.getElement().getStyle().setProperty("zIndex", "999");
 		backToDashboardButton.addClickHandler(event -> {
-			NuuEdScore.GET().getNavigation().showDefaultView();
+			this.navigationPanel.showDefaultView();
 		});
 		
 		createNavigation();

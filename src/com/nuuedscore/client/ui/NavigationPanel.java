@@ -147,6 +147,15 @@ public class NavigationPanel extends VerticalPanel {
 	}
 	
 	public void showDefaultView() {
-		NuuEdScore.GET().showView(studentDashboardPanel);		
+		showStudentDashboard();		
 	}
+
+	public void showTeacherDashboard() {
+		NuuEdScore.GET().showView(teacherDashboardPanel);
+	}
+	
+	public void showStudentDashboard() {
+		NuuEdScore.GET().showView(studentDashboardPanel);
+	}
+
 }
