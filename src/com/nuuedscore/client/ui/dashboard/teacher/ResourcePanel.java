@@ -63,6 +63,8 @@ public class ResourcePanel extends VerticalPanel implements ITeacherFlow {
 				topics.add(topic);
 			}
 		}
+		
+		flowMore();
 	}
 	
 	public List<TeacherResource> getTeacherResourcesForTopic(List<TeacherResource> resources, String topic) {
@@ -78,4 +80,13 @@ public class ResourcePanel extends VerticalPanel implements ITeacherFlow {
 		return resourcesForTopic;
 	}
 
+	private void flowMore() {
+		Button topicButton = new Button("ASSESSMENT SCORES");
+		topicButton.getElement().getStyle().setProperty("backgroundColor", "yellow");
+		topicButton.getElement().getStyle().setProperty("width", "100%");
+		topicButton.addClickHandler(event -> {
+			Window.alert("Assessment Scores coming soon...");
+		});
+		this.add(topicButton);		
+	}
 }
