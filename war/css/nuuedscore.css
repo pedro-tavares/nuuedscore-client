@@ -100,6 +100,12 @@ h1 {
 	font-size: 15px;
 	color: var(--grey);
 }
+.dashboardStudentNameLabel {
+	font-size: 25px;
+	font-weight: bold;
+	color: #5B5B5B;	
+	text-align: center;
+}
 
 /** IMAGE */
 .gaugeImage {
@@ -157,6 +163,12 @@ h1 {
 	font-weight: bold;
 	opacity: 0.75;
   	filter: alpha(opacity=75); 
+}
+.simpleBorderPanel-green {
+	background-color: #F8F8F8;
+	border: 2px solid var(--green);
+  	border-radius: 10px;
+  	-moz-border-radius: 10px;
 }
 .titledPanel {
 	width: 96%;
