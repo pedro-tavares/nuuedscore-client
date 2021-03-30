@@ -1,10 +1,11 @@
 package com.nuuedscore.client.ui;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.NuuEdScore;
-import com.nuuedscore.client.ui.dashboard.DashboardPanel;
+import com.nuuedscore.client.ui.dashboard.StudentDashboardPanel;
 import com.nuuedscore.client.ui.person.PersonPanel;
 import com.nuuedscore.client.ui.resource.StudentResourcePanel;
 import com.nuuedscore.client.ui.resource.TeacherResourcePanel;
@@ -27,7 +28,7 @@ public class NavigationPanel extends VerticalPanel {
 		taskListImage,
 		presentImage,
 		signOutImage;
-	private DashboardPanel dashboardPanel = new DashboardPanel(); // MASTER
+	private StudentDashboardPanel studentDashboardPanel;
 	private PersonPanel personPanel;
 	private TeacherResourcePanel teacherResourcePanel;
 	private StudentResourcePanel studentResourcePanel;
@@ -107,7 +108,7 @@ public class NavigationPanel extends VerticalPanel {
 		studentResourceButton.setStyleName("devButton");
 		studentResourceButton.addClickHandler(event -> {
 			if (studentResourcePanel == null) {
-				studentResourcePanel = new StudentResourcePanel(this.dashboardPanel);
+				studentResourcePanel = new StudentResourcePanel(this.studentDashboardPanel);
 			}
 			NuuEdScore.GET().showView(studentResourcePanel);		
 		});		
@@ -117,12 +118,23 @@ public class NavigationPanel extends VerticalPanel {
 	}
 	
 	public void createViews() {
+
+		/**
+		 * TEACHER Views
+		 */
+		
+		/**
+		 * STUDENT Views
+		 */
+		if (studentDashboardPanel == null) {
+			studentDashboardPanel = new StudentDashboardPanel();
+		}
 		if (studentResourcePanel == null) {
-			studentResourcePanel = new StudentResourcePanel(this.dashboardPanel);
-		}		
+			studentResourcePanel = new StudentResourcePanel(this.studentDashboardPanel);
+		}
 	}
 	
 	public void showDefaultView() {
-		NuuEdScore.GET().showView(dashboardPanel);		
+		NuuEdScore.GET().showView(studentDashboardPanel);		
 	}
 }

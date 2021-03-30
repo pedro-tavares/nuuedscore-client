@@ -20,10 +20,11 @@ import com.nuuedscore.IConstants;
 import com.nuuedscore.client.ui.CenterPanel;
 import com.nuuedscore.client.ui.MenuPanel;
 import com.nuuedscore.client.ui.NavigationPanel;
-import com.nuuedscore.client.ui.dashboard.DashboardPanel;
+import com.nuuedscore.client.ui.dashboard.StudentDashboardPanel;
 import com.nuuedscore.client.ui.person.LoggedInPanel;
 import com.nuuedscore.client.ui.person.LoginRegisterPanel;
 import com.nuuedscore.shared.dto.Person;
+import com.nuuedscore.shared.dto.refdata.RefPersonRole;
 
 /**
  * NuuEdScore
@@ -39,6 +40,7 @@ public class NuuEdScore implements EntryPoint {
 	
 	private static String HOST;
 	private static Person USER;
+	private static RefPersonRole ROLE = RefPersonRole.ROLE_STUDENT;
 	private static boolean LOGGED_IN;
 	
 	private int MENU_WIDTH = 42;
@@ -229,15 +231,18 @@ public class NuuEdScore implements EntryPoint {
 		asTeacherButton.setStyleName("gwt-Button-green");
 		asTeacherButton.getElement().getStyle().setProperty("zIndex", "999");
 		asTeacherButton.addClickHandler(event -> {
-			// TODO
-			Window.alert("TEACHER DASHBOARD coming soon...");
+			GWT.log("SHOW " + RefPersonRole.ROLE_TEACHER + " DASHBOARD");
+
+			ROLE = RefPersonRole.ROLE_TEACHER;
 		});
 
 		asStudentButton = new Button("I AM STUDENT");		
 		asStudentButton.setStyleName("gwt-Button-green");
 		asStudentButton.getElement().getStyle().setProperty("zIndex", "999");
 		asStudentButton.addClickHandler(event -> {
-			// TODO
+			GWT.log("SHOW " + RefPersonRole.ROLE_STUDENT + " DASHBOARD");
+
+			ROLE = RefPersonRole.ROLE_STUDENT;
 		});
 		
 		backToDashboardButton = new Button("MY DASHBOARD");		
@@ -320,7 +325,7 @@ public class NuuEdScore implements EntryPoint {
 		//viewPanel.setPixelSize(Window.getClientWidth()-200, Window.getClientHeight()-75);
 		RootPanel.get().add(viewPanel, MENU_WIDTH+1, 76);
 		
-		if (viewPanel instanceof DashboardPanel) {
+		if (viewPanel instanceof StudentDashboardPanel) {
 			asTeacherButton.setVisible(true);
 			asStudentButton.setVisible(true);
 			backToDashboardButton.setVisible(false);

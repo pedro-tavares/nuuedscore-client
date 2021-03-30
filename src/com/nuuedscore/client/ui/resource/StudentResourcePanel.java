@@ -25,7 +25,7 @@ import com.google.gwt.view.client.SingleSelectionModel;
 import com.nuuedscore.client.domain.DATA;
 import com.nuuedscore.client.service.ServiceFactory;
 import com.nuuedscore.client.ui.TitledPanel;
-import com.nuuedscore.client.ui.dashboard.DashboardPanel;
+import com.nuuedscore.client.ui.dashboard.StudentDashboardPanel;
 //import com.nuuedscore.client.ui.StudentResource.StudentResourceEditPanel;
 import com.nuuedscore.client.ui.style.NuuEdScoreCellTable;
 import com.nuuedscore.shared.dto.StudentResource;
@@ -41,7 +41,7 @@ public class StudentResourcePanel extends TitledPanel {
 
 	private CellTable.Resources NuuEdScoreCellTableResources = GWT.create(NuuEdScoreCellTable.class);
 
-	private DashboardPanel dashboardPanel;
+	private StudentDashboardPanel dashboardPanel;
 	private StudentResource selectedStudentResource;
 
 	private HorizontalPanel tablePanel = new HorizontalPanel();
@@ -53,7 +53,7 @@ public class StudentResourcePanel extends TitledPanel {
 	private Date startDate;
 	private Date endDate;
 
-	public StudentResourcePanel(DashboardPanel dashboardPanel) {
+	public StudentResourcePanel(StudentDashboardPanel dashboardPanel) {
 		super("Student Resources");
 
 		this.dashboardPanel = dashboardPanel;

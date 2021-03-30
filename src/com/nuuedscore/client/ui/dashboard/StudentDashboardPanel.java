@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.RootPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.flow.IStudentFlow;
 import com.nuuedscore.client.ui.TitledPanel;
@@ -16,20 +15,20 @@ import com.nuuedscore.shared.dto.StudentResource;
 import com.nuuedscore.shared.dto.refdata.RefAptitude;
 
 /**
- * Dashboard Panel
+ * STUDENT Dashboard Panel
  * 
  * @author PATavares
  * @since Feb 2021
  * 
  */
-public class DashboardPanel extends TitledPanel implements IStudentFlow {
+public class StudentDashboardPanel extends TitledPanel implements IStudentFlow {
 
 	private HorizontalPanel innerPanel = new HorizontalPanel();
 	private AptitudePanel lowAptitudePanel = new AptitudePanel(RefAptitude.LOW);
 	private SkillsMasterPanel skillsMasterPanel = new SkillsMasterPanel();
 	private AptitudePanel highAptitudePanel = new AptitudePanel(RefAptitude.HIGH);
 	
-	public DashboardPanel() {
+	public StudentDashboardPanel() {
 		super(NuuEdScore.GET_USER().getFirstName() +  "'s Student Dashboard");
 
 		this.setSpacing(20);
@@ -48,7 +47,7 @@ public class DashboardPanel extends TitledPanel implements IStudentFlow {
 	
 	@Override
 	public void flow(List<StudentResource> studentResources) {
-		//Window.alert("DashboardPanel: Flow StudentResources");
+	GWT.log("StudentDashboardPanel: Flow StudentResources");
 
 		List<StudentResource> lowAptitudes = new ArrayList<StudentResource>();
 		List<StudentResource> highAptitudes = new ArrayList<StudentResource>();
@@ -72,5 +71,5 @@ public class DashboardPanel extends TitledPanel implements IStudentFlow {
 		lowAptitudePanel.flow(lowAptitudes);
 		highAptitudePanel.flow(highAptitudes);
 	}
-		
+
 }
