@@ -1,5 +1,6 @@
 package com.nuuedscore.client.ui;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Image;
@@ -9,6 +10,7 @@ import com.nuuedscore.client.ui.dashboard.StudentDashboardPanel;
 import com.nuuedscore.client.ui.person.PersonPanel;
 import com.nuuedscore.client.ui.resource.StudentResourcePanel;
 import com.nuuedscore.client.ui.resource.TeacherResourcePanel;
+import com.nuuedscore.shared.dto.refdata.RefPersonRole;
 
 /**
  * Left Navigation Panel
@@ -118,10 +120,22 @@ public class NavigationPanel extends VerticalPanel {
 	}
 	
 	public void createViews() {
-
+		Window.alert("NavigationPanel: createViews: " + NuuEdScore.PERSON_ROLE);
+		
 		/**
 		 * TEACHER Views
 		 */
+		if (NuuEdScore.PERSON_ROLE.equals(RefPersonRole.ROLE_TEACHER)) {
+			Window.alert("Get TEACHER Resources...");
+/*
+			if (teacherDashboardPanel == null) {
+				teacherDashboardPanel = new TeacherDashboardPanel();
+			}			
+			if (teacherResourcePanel == null) {
+				teacherResourcePanel = new TeacherResourcePanel(this.teacherDashboardPanel);
+			}		
+	*/
+		}
 		
 		/**
 		 * STUDENT Views

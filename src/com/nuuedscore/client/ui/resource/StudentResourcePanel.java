@@ -41,7 +41,7 @@ public class StudentResourcePanel extends TitledPanel {
 
 	private CellTable.Resources NuuEdScoreCellTableResources = GWT.create(NuuEdScoreCellTable.class);
 
-	private StudentDashboardPanel dashboardPanel;
+	private StudentDashboardPanel studentDashboardPanel;
 	private StudentResource selectedStudentResource;
 
 	private HorizontalPanel tablePanel = new HorizontalPanel();
@@ -53,10 +53,10 @@ public class StudentResourcePanel extends TitledPanel {
 	private Date startDate;
 	private Date endDate;
 
-	public StudentResourcePanel(StudentDashboardPanel dashboardPanel) {
+	public StudentResourcePanel(StudentDashboardPanel studentDashboardPanel) {
 		super("Student Resources");
 
-		this.dashboardPanel = dashboardPanel;
+		this.studentDashboardPanel = studentDashboardPanel;
 		
 		this.setSpacing(20);
 		this.init();
@@ -277,7 +277,7 @@ public class StudentResourcePanel extends TitledPanel {
 				GWT.log("callGetStudentResourceService - SUCCESS:\n" + response.toString());
 
 				setModel(response);
-				dashboardPanel.flow(response);
+				studentDashboardPanel.flow(response);
 
 				endDate = new Date();
 				fetchInfoLabel.setText("Fetched " + response.size() + " Student Resources in " + (endDate.getTime()

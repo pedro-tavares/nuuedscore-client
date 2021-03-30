@@ -37,14 +37,8 @@ import com.nuuedscore.shared.dto.refdata.RefPersonRole;
 public class NuuEdScore implements EntryPoint {
 
 	private static NuuEdScore INSTANCE;
-	
-	private static String HOST;
-	private static Person USER;
-	private static RefPersonRole ROLE = RefPersonRole.ROLE_STUDENT;
-	private static boolean LOGGED_IN;
-	
+	private static String HOST;	
 	private int MENU_WIDTH = 42;
-	
 	private Button 
 		loginButton, 
 		registerButton,
@@ -63,6 +57,10 @@ public class NuuEdScore implements EntryPoint {
 	private MenuPanel menuPanel = new MenuPanel(); // TODO remove
 	private NavigationPanel navigationPanel;
 	
+	public static Person PERSON;
+	public static RefPersonRole PERSON_ROLE = RefPersonRole.ROLE_STUDENT;
+	public static boolean LOGGED_IN;
+
 	@Override
 	public void onModuleLoad() {
 		//Window.alert("Powered by R AI");
@@ -83,7 +81,7 @@ public class NuuEdScore implements EntryPoint {
 	}
 
 	public static Person GET_USER() {
-		return USER;
+		return PERSON;
 	}
 	
 	public static String GET_HOST() {
@@ -160,8 +158,8 @@ public class NuuEdScore implements EntryPoint {
 			
 			//TODO get Logged in Person and letsGo
 			
-			USER = new Person(userEmail);
-			letsGo(USER);			
+			PERSON = new Person(userEmail);
+			letsGo(PERSON);			
 		} 
 	}
 	
@@ -205,7 +203,7 @@ public class NuuEdScore implements EntryPoint {
 		GWT.log("letsGo:" + person.getEmail());
 				
 		LOGGED_IN = true;
-		USER = person;
+		PERSON = person;
 		setCookie();
 		
 		//AuditFactory.log(AuditEvent.LOGIN_SUCCESS);
@@ -223,7 +221,7 @@ public class NuuEdScore implements EntryPoint {
 		RootPanel.get().add(centerImgLoggedIn, 0, 0);
 		*/
 
-		loggedinPanel = new LoggedInPanel(USER);
+		loggedinPanel = new LoggedInPanel(PERSON);
 		loggedinPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 		topPanel.add(loggedinPanel);
 
@@ -233,7 +231,8 @@ public class NuuEdScore implements EntryPoint {
 		asTeacherButton.addClickHandler(event -> {
 			GWT.log("SHOW " + RefPersonRole.ROLE_TEACHER + " DASHBOARD");
 
-			ROLE = RefPersonRole.ROLE_TEACHER;
+			PERSON_ROLE = RefPersonRole.ROLE_TEACHER;
+			this.navigationPanel.createViews();
 		});
 
 		asStudentButton = new Button("I AM STUDENT");		
@@ -242,7 +241,7 @@ public class NuuEdScore implements EntryPoint {
 		asStudentButton.addClickHandler(event -> {
 			GWT.log("SHOW " + RefPersonRole.ROLE_STUDENT + " DASHBOARD");
 
-			ROLE = RefPersonRole.ROLE_STUDENT;
+			PERSON_ROLE = RefPersonRole.ROLE_STUDENT;
 		});
 		
 		backToDashboardButton = new Button("MY DASHBOARD");		
@@ -296,7 +295,7 @@ public class NuuEdScore implements EntryPoint {
 			final long DURATION = 1000 * 60 * 60 * 24 * 7; //duration remembering login - 1 week
 			Date expires = new Date(System.currentTimeMillis() + DURATION);
 	
-			Cookies.setCookie(IConstants.NUUEDSCORE_COOKIE_NAME, USER.getEmail(), expires, null, "/", false);
+			Cookies.setCookie(IConstants.NUUEDSCORE_COOKIE_NAME, PERSON.getEmail(), expires, null, "/", false);
 		}
 	}
 	
