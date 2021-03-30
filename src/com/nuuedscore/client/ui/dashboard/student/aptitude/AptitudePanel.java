@@ -78,7 +78,6 @@ public class AptitudePanel extends VerticalPanel implements IStudentFlow {
 					List<StudentResource> studentResourcesForTopic = getStudentResourcesForTopic(studentResources, topic);
 					
 					portalPanel = new PortalPanel(this.REF_APTITUDE, studentResourcesForTopic);
-					
 					NuuEdScore.GET().showView(portalPanel);
 				});
 				
