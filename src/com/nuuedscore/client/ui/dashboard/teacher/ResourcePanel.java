@@ -50,6 +50,7 @@ public class ResourcePanel extends VerticalPanel implements ITeacherFlow {
 				topicButton.getElement().getStyle().setProperty("backgroundColor", UiUx.colourForItem(topic));
 				topicButton.getElement().getStyle().setProperty("width", "100%");
 				topicButton.addClickHandler(event -> {
+					
 					// TODO Map to singleton by Topic	
 					List<TeacherResource> teacherResourcesForTopic = getTeacherResourcesForTopic(teacherResources, topic);
 					

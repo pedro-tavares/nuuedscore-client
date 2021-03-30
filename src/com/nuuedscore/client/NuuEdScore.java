@@ -225,7 +225,7 @@ public class NuuEdScore implements EntryPoint {
 		loggedinPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
 		topPanel.add(loggedinPanel);
 
-		asTeacherButton = new Button("I AM TEACHER");		
+		asTeacherButton = new Button("I AM A TEACHER");		
 		asTeacherButton.setStyleName("gwt-Button-green");
 		asTeacherButton.getElement().getStyle().setProperty("zIndex", "999");
 		asTeacherButton.addClickHandler(event -> {
@@ -237,7 +237,7 @@ public class NuuEdScore implements EntryPoint {
 			
 		});
 
-		asStudentButton = new Button("I AM STUDENT");		
+		asStudentButton = new Button("I AM A STUDENT");		
 		asStudentButton.setStyleName("gwt-Button-green");
 		asStudentButton.getElement().getStyle().setProperty("zIndex", "999");
 		asStudentButton.addClickHandler(event -> {
