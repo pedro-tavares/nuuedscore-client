@@ -23,8 +23,8 @@ public class UiUx {
 		}
 	}
 	
-	static public String colourForSubject(String subject) {
-		switch(subject) {
+	static public String colourForItem(String item) {
+		switch(item) {
 		case "Quotes": return "#0074B9";
 		case "Math": return "#953ED5";
 		case "Reading": return "#FF6F12";
@@ -35,7 +35,12 @@ public class UiUx {
 		case "Technical Skills": return "#800080";
 		case "Office Skills": return "#FF5E13";
 		case "Writing": return "#F8D800";
-		default: return "#7BDDEF"; 
+		case "Personality Test": return "#0E8D18";
+		case "Career Aptitude": return "#00649C";
+		case "Learning Styles": return "#FF6E11";
+		case "Social Emotional Learning": return "#FFA800";
+		case "Education Loans": return "#9EEC00";
+		default: return "#0074B9"; 
 		}
 	}
 }
