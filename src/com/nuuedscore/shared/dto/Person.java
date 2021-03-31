@@ -32,6 +32,12 @@ public class Person implements Model {
 	@QueryParam("status")
 	private String status;
 	
+	@Override
+	public String toString() {
+		return "Person [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
+				+ ", email=" + email + ", phone=" + phone + ", status=" + status + "]";
+	}
+	
 	public Person() {
 		this("", "", "", "");
 	}
@@ -52,6 +58,22 @@ public class Person implements Model {
 
 	public Long getId() {
 		return id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public void setId(Long id) {

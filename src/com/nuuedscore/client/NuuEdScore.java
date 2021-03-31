@@ -17,6 +17,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.nuuedscore.IConstants;
+import com.nuuedscore.client.domain.DATA;
 import com.nuuedscore.client.ui.CenterPanel;
 import com.nuuedscore.client.ui.MenuPanel;
 import com.nuuedscore.client.ui.NavigationPanel;
@@ -157,8 +158,9 @@ public class NuuEdScore implements EntryPoint {
 			viewLogin(false);
 			
 			//TODO get Logged in Person full profile and letsGo
-			PERSON = new Person(userEmail);
-			//letsGo(PERSON);			
+			PERSON = new Person(DATA.PERSON_FIRSTNAME, DATA.PERSON_LASTNAME, DATA.PERSON_EMAIL, DATA.PERSON_PASSWORD);
+//Window.alert(PERSON.toString());			
+			letsGo(PERSON);			
 		} 
 	}
 	

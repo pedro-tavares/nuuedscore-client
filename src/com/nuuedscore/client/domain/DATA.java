@@ -14,7 +14,7 @@ import com.nuuedscore.shared.dto.TeacherResource;
  */
 public class DATA {
 
-	public static String PERSON_FIRSTNAME = "DERRICK";
+	public static String PERSON_FIRSTNAME = "Coach DERRICK";
 	public static String PERSON_LASTNAME = "O'NEAL";
 	public static String PERSON_EMAIL = "doneal@nuueducation.com"; 
 	public static String PERSON_PASSWORD = "password"; 
