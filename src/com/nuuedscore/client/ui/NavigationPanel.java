@@ -1,9 +1,9 @@
 package com.nuuedscore.client.ui;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.ui.dashboard.StudentDashboardPanel;
@@ -31,6 +31,7 @@ public class NavigationPanel extends VerticalPanel {
 		taskListImage,
 		presentImage,
 		signOutImage;
+	private Panel lastDashboardPanel;
 	private TeacherDashboardPanel teacherDashboardPanel;
 	private StudentDashboardPanel studentDashboardPanel;
 	private PersonPanel personPanel;
@@ -150,11 +151,17 @@ public class NavigationPanel extends VerticalPanel {
 		showStudentDashboard();		
 	}
 
+	public void showLastDashboard() {
+		NuuEdScore.GET().showView(lastDashboardPanel);
+	}
+	
 	public void showTeacherDashboard() {
+		lastDashboardPanel = teacherDashboardPanel;
 		NuuEdScore.GET().showView(teacherDashboardPanel);
 	}
 	
 	public void showStudentDashboard() {
+		lastDashboardPanel = studentDashboardPanel;
 		NuuEdScore.GET().showView(studentDashboardPanel);
 	}
 

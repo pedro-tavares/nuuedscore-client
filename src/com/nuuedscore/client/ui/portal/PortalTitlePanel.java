@@ -21,7 +21,8 @@ public class PortalTitlePanel extends HorizontalPanel {
 	
 	public PortalTitlePanel(RefTopic topic) {
 		this.topic = topic;
-		
+
+		this.setHorizontalAlignment(ALIGN_LEFT);
 		this.setSpacing(10);
 		init();
 	}

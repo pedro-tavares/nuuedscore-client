@@ -22,8 +22,10 @@ import com.nuuedscore.client.ui.CenterPanel;
 import com.nuuedscore.client.ui.MenuPanel;
 import com.nuuedscore.client.ui.NavigationPanel;
 import com.nuuedscore.client.ui.dashboard.StudentDashboardPanel;
+import com.nuuedscore.client.ui.dashboard.TeacherDashboardPanel;
 import com.nuuedscore.client.ui.person.LoggedInPanel;
 import com.nuuedscore.client.ui.person.LoginRegisterPanel;
+import com.nuuedscore.client.ui.portal.BasePortalPanel;
 import com.nuuedscore.shared.dto.Person;
 import com.nuuedscore.shared.dto.refdata.RefPersonRole;
 
@@ -44,8 +46,7 @@ public class NuuEdScore implements EntryPoint {
 		loginButton, 
 		registerButton,
 		asTeacherButton,
-		asStudentButton,
-		backToDashboardButton;
+		asStudentButton;
 	private CenterPanel centerPanel = new CenterPanel();
 	private LoginRegisterPanel loginPanel = new LoginRegisterPanel();
 	private Label poweredByRAILabel = new Label("Powered by R AI - " + new Date());
@@ -177,13 +178,10 @@ public class NuuEdScore implements EntryPoint {
 		}
 		 
 		if (asTeacherButton != null) {
-			RootPanel.get().add(asTeacherButton, Window.getClientWidth() - 530, 80);
+			RootPanel.get().add(asTeacherButton, Window.getClientWidth() - 275, 80);
 		}
 		if (asStudentButton != null) {
-			RootPanel.get().add(asStudentButton, Window.getClientWidth() - 285, 80);
-		}
-		if (backToDashboardButton != null) {
-			RootPanel.get().add(backToDashboardButton, Window.getClientWidth() - 285, 80);
+			RootPanel.get().add(asStudentButton, Window.getClientWidth() - 275, 80);
 		}
 	}
 
@@ -248,13 +246,6 @@ public class NuuEdScore implements EntryPoint {
 			this.navigationPanel.showStudentDashboard();
 		});
 		
-		backToDashboardButton = new Button("MY DASHBOARD");		
-		backToDashboardButton.setStyleName("gwt-Button-green");
-		backToDashboardButton.getElement().getStyle().setProperty("zIndex", "999");
-		backToDashboardButton.addClickHandler(event -> {
-			this.navigationPanel.showDefaultView();
-		});
-		
 		createNavigation();
 	}
 	
@@ -316,6 +307,8 @@ public class NuuEdScore implements EntryPoint {
 		}
 	}
 	
+	private Panel lastDashboardPanel;
+	
 	public void showView(Panel viewPanel) {		
 		if (centerImgLoggedIn != null) {
 			centerImgLoggedIn.removeFromParent();
@@ -326,16 +319,18 @@ public class NuuEdScore implements EntryPoint {
 		//Window.alert("showView:\n" + viewPanel.toString());
 		lastViewPanel = viewPanel;
 		//viewPanel.setPixelSize(Window.getClientWidth()-200, Window.getClientHeight()-75);
-		RootPanel.get().add(viewPanel, MENU_WIDTH+1, 76);
+		RootPanel.get().add(viewPanel, MENU_WIDTH + 1, 76);
 		
-		if (viewPanel instanceof StudentDashboardPanel) {
-			asTeacherButton.setVisible(true);
+		if (viewPanel instanceof TeacherDashboardPanel) {
+			asTeacherButton.setVisible(false);
 			asStudentButton.setVisible(true);
-			backToDashboardButton.setVisible(false);
-		} else {
+		} 
+		else if (viewPanel instanceof StudentDashboardPanel) {
+			asTeacherButton.setVisible(true);
+			asStudentButton.setVisible(false);
+		} else if (viewPanel instanceof BasePortalPanel) {
 			asTeacherButton.setVisible(false);
 			asStudentButton.setVisible(false);
-			backToDashboardButton.setVisible(true);
 		}
 	}
 	

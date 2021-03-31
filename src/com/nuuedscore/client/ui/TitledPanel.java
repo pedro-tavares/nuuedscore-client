@@ -21,6 +21,7 @@ public class TitledPanel extends VerticalPanel {
 		this.titleLabel = new Label(title);
 		this.titleLabel.setStyleName("titledPanelLabel");
 		this.titleLabel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
+		
 		this.add(titleLabel);
 	}
 	

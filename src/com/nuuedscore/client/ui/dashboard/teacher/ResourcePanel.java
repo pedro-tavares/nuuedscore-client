@@ -82,8 +82,8 @@ public class ResourcePanel extends VerticalPanel implements ITeacherFlow {
 	}
 
 	private void flowMore() {
-		Button topicButton = new Button("ASSESSMENT SCORES");
-		topicButton.getElement().getStyle().setProperty("backgroundColor", "yellow");
+		Button topicButton = new Button(RefTopic.ASSESSMENT_SCORES.value());
+		topicButton.getElement().getStyle().setProperty("backgroundColor", UiUx.colourForItem(RefTopic.ASSESSMENT_SCORES.value()));
 		topicButton.getElement().getStyle().setProperty("width", "100%");
 		topicButton.addClickHandler(event -> {
 			Window.alert("Assessment Scores coming soon...");

@@ -6,15 +6,10 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.ScrollPanel;
-import com.nuuedscore.client.ui.TitledPanel;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.nuuedscore.client.ui.portal.BasePortalPanel;
 import com.nuuedscore.client.ui.portal.PortalTitlePanel;
-import com.nuuedscore.client.ui.portal.student.LearningPersonalityNavigationPanel;
-import com.nuuedscore.client.ui.portal.student.PortalTopicAcademicsPanel;
-import com.nuuedscore.shared.dto.StudentResource;
 import com.nuuedscore.shared.dto.TeacherResource;
-import com.nuuedscore.shared.dto.refdata.RefScore;
 import com.nuuedscore.shared.dto.refdata.RefTopic;
 
 /**
@@ -24,7 +19,7 @@ import com.nuuedscore.shared.dto.refdata.RefTopic;
  * @since Mar 2021
  * 
  */
-public class PortalPanel extends TitledPanel {
+public class PortalPanel extends BasePortalPanel {
 	
 	private RefTopic REF_TOPIC;
 	private List<TeacherResource> teacherResources;
@@ -38,6 +33,8 @@ public class PortalPanel extends TitledPanel {
 		this.setSpacing(20);
 
 		init();
+		
+		this.add(this.backToDashboardButton());
 	}
 	
 	private void init() {
@@ -45,7 +42,8 @@ public class PortalPanel extends TitledPanel {
 				
 		PortalTitlePanel titlePanel = new PortalTitlePanel(this.REF_TOPIC);
 		this.add(titlePanel);
-
+		this.setCellHorizontalAlignment(titlePanel, HasHorizontalAlignment.ALIGN_LEFT);
+		
 		// I AM THE MATRIX
 		//this.add(new HTML(teacherResources.toString()));
 		
