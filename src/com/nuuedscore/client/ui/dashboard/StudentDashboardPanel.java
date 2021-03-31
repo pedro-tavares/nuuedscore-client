@@ -29,7 +29,7 @@ public class StudentDashboardPanel extends TitledPanel implements IStudentFlow {
 	private AptitudePanel highAptitudePanel = new AptitudePanel(RefAptitude.HIGH);
 	
 	public StudentDashboardPanel() {
-		super(NuuEdScore.GET_USER().getFirstName() +  "'s Student Dashboard");
+		super(NuuEdScore.GET_PERSON().getFirstName() +  "'s Student Dashboard");
 
 		this.setSpacing(20);
 		this.init();

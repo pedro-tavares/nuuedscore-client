@@ -23,6 +23,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.NuuEdScore;
+import com.nuuedscore.client.domain.DATA;
 import com.nuuedscore.client.service.ServiceFactory;
 import com.nuuedscore.client.ui.dialogs.CreateAccountDialog;
 import com.nuuedscore.shared.dto.Person;
@@ -70,11 +71,11 @@ public class LoginRegisterPanel extends VerticalPanel {
 
 		emailLabel = new Label("Email Address");
 		emailValue = new TextBox();
-emailValue.setText("pedro.javalabs@gmail.com");
+		emailValue.setText(DATA.PERSON_EMAIL);
 
 		passwordLabel = new Label("Password");
 		passwordValue = new PasswordTextBox();
-passwordValue.setText("password");
+		passwordValue.setText(DATA.PERSON_PASSWORD);
 		passwordValue.addFocusHandler(new FocusHandler() {
 			@Override
 			public void onFocus(FocusEvent event) {

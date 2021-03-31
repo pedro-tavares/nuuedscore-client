@@ -80,7 +80,7 @@ public class NuuEdScore implements EntryPoint {
 		return INSTANCE;
 	}
 
-	public static Person GET_USER() {
+	public static Person GET_PERSON() {
 		return PERSON;
 	}
 	
@@ -156,10 +156,9 @@ public class NuuEdScore implements EntryPoint {
 			GWT.log("Logged In as:" + userEmail);
 			viewLogin(false);
 			
-			//TODO get Logged in Person and letsGo
-			
+			//TODO get Logged in Person full profile and letsGo
 			PERSON = new Person(userEmail);
-			letsGo(PERSON);			
+			//letsGo(PERSON);			
 		} 
 	}
 	

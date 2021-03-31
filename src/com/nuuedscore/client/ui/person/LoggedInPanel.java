@@ -1,15 +1,11 @@
 package com.nuuedscore.client.ui.person;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.nuuedscore.client.NuuEdScore;
+import com.nuuedscore.client.domain.DATA;
 import com.nuuedscore.shared.dto.Person;
 
 /**
@@ -28,11 +24,14 @@ public class LoggedInPanel extends HorizontalPanel {
 
 		VerticalPanel loginLogoutPanel = new VerticalPanel();
 		
-		Label loggedinLabel = new Label("Logged in as: " + NuuEdScore.GET_USER().getFirstName() + " " + NuuEdScore.GET_USER().getLastName());
+		//Label loggedinLabel = new Label("Logged in as: " + NuuEdScore.GET_PERSON().getFirstName() + " " + NuuEdScore.GET_PERSON().getLastName());
+		Label loggedinLabel = new Label("Logged in as: " + DATA.PERSON_FIRSTNAME + " " + DATA.PERSON_LASTNAME);
+		
 		loggedinLabel.addStyleName("greenBoldlLabel");
 		loginLogoutPanel.add(loggedinLabel);
 		
-		Label namePersonLabel = new Label(NuuEdScore.GET_USER().getEmail());
+		//Label namePersonLabel = new Label(NuuEdScore.GET_PERSON().getEmail());
+		Label namePersonLabel = new Label(DATA.PERSON_EMAIL);
 		loginLogoutPanel.add(namePersonLabel);
 		namePersonLabel.addStyleName("blueBoldLabel");
 		/*
@@ -49,8 +48,9 @@ public class LoggedInPanel extends HorizontalPanel {
 		*/
 		this.add(loginLogoutPanel);
 		
-		//TODO get USER avatar
-		Image userAvatarImage = new Image("images/the_architect.png");
+		//TODO get PERSON avatar from DB
+		Image userAvatarImage = new Image("images/person/" + DATA.PERSON_AVATAR);
+		
 		userAvatarImage.setPixelSize(50, 50);
 		this.add(userAvatarImage);
 	}

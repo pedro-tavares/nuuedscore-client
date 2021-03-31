@@ -26,7 +26,7 @@ public class TeacherDashboardPanel extends TitledPanel implements ITeacherFlow {
 	private ResourcePanel resourcePanel = new ResourcePanel();
 	
 	public TeacherDashboardPanel() {
-		super(NuuEdScore.GET_USER().getFirstName() +  "'s Teacher Dashboard");
+		super(NuuEdScore.GET_PERSON().getFirstName() +  "'s Teacher Dashboard");
 
 		this.setSpacing(20);
 		this.init();
