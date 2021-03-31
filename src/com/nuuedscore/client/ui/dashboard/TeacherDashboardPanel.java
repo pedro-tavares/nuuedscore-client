@@ -8,6 +8,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.flow.ITeacherFlow;
+import com.nuuedscore.client.flow.IsDashboard;
 import com.nuuedscore.client.ui.TitledPanel;
 import com.nuuedscore.client.ui.dashboard.teacher.ResourcePanel;
 import com.nuuedscore.shared.dto.TeacherResource;
@@ -19,7 +20,7 @@ import com.nuuedscore.shared.dto.TeacherResource;
  * @since Mar 2021
  * 
  */
-public class TeacherDashboardPanel extends TitledPanel implements ITeacherFlow {
+public class TeacherDashboardPanel extends TitledPanel implements IsDashboard, ITeacherFlow {
 
 	private HorizontalPanel innerPanel = new HorizontalPanel();
 	private VerticalPanel innerCenterPanel = new VerticalPanel();

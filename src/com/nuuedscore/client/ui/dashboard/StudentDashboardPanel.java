@@ -8,6 +8,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.flow.IStudentFlow;
+import com.nuuedscore.client.flow.IsDashboard;
 import com.nuuedscore.client.ui.TitledPanel;
 import com.nuuedscore.client.ui.dashboard.student.aptitude.AptitudePanel;
 import com.nuuedscore.client.ui.dashboard.student.skill.SkillsMasterPanel;
@@ -21,7 +22,7 @@ import com.nuuedscore.shared.dto.refdata.RefAptitude;
  * @since Feb 2021
  * 
  */
-public class StudentDashboardPanel extends TitledPanel implements IStudentFlow {
+public class StudentDashboardPanel extends TitledPanel implements IsDashboard, IStudentFlow {
 
 	private HorizontalPanel innerPanel = new HorizontalPanel();
 	private AptitudePanel lowAptitudePanel = new AptitudePanel(RefAptitude.LOW);
