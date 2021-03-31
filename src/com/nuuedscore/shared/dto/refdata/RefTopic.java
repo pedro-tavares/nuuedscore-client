@@ -20,6 +20,7 @@ public enum RefTopic {
 	Learning_Styles("Learning Styles"),
 	Social_Emotional_Learning("Social Emotional Learning"),
 	Education_Loans("Education Loans"),
+	ASSESSMENT_SCORES("ASSESSMENT SCORES"),
 	/**
 	 * STUDENT
 	 */

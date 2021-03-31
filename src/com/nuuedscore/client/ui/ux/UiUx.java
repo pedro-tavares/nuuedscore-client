@@ -40,6 +40,7 @@ public class UiUx {
 		case "Learning Styles": return "#FF6E11";
 		case "Social Emotional Learning": return "#FFA800";
 		case "Education Loans": return "#9EEC00";
+		case "ASSESSMENT SCORES": return "#CB0073";
 		default: return "#0074B9"; 
 		}
 	}
