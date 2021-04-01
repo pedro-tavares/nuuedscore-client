@@ -47,7 +47,9 @@ public class PortalTopicAcademicsPanel extends HorizontalPanel {
 				}				
 				
 				// and Flow the Resources for Subject...
-				portalSubjectPanel.add(studentResource); 
+				if (!"You Tube".equals(studentResource.getName())) {
+					portalSubjectPanel.add(studentResource);
+				}
 			}
 		}
 	}

@@ -85,7 +85,7 @@ public class PortalPanel extends BasePortalPanel {
 			
 			for (StudentResource studentResource: this.studentResources) {
 				if (!"You Tube".equals(studentResource.getName())) {
-					
+
 					Button resourceButton = new Button(studentResource.getName());		
 					if (RefScore.HIGH.equals(studentResource.getScore())) {
 						resourceButton.setStyleName("gwt-Button-green");
