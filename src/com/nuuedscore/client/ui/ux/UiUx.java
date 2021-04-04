@@ -31,7 +31,7 @@ public class UiUx {
 		case "Science": return "#9BDA46";
 		case "History": return "#E21A1A";
 		case "Financial Literacy": return "#00FF00";
-		case "Vocational/Certification": return "#8E1600";
+		case "Vocational/Certification Programs": return "#4D2DB6";
 		case "Technical Skills": return "#800080";
 		case "Office Skills": return "#FF5E13";
 		case "Writing": return "#F8D800";

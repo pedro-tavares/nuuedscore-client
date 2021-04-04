@@ -30,6 +30,7 @@ public class ResourcePanel extends VerticalPanel implements ITeacherFlow {
 	public ResourcePanel() {
 		
 		this.setStyleName("simpleBorderPanel-green");
+		this.setHorizontalAlignment(ALIGN_CENTER);
 		this.setSpacing(20);
 		
 		init();
