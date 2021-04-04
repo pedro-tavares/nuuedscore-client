@@ -7,7 +7,9 @@
   --blue: #0074B9;
   --white: #ffffff;
   --grey: #9B9B9B;
+  --darkgrey: #5C5C5C;
   --lightgrey: #D8D8D8;
+  --anchor: #0375B9;
 }
 body {
 	background-color: white;
@@ -35,9 +37,23 @@ h1 {
 	font-weight: bold;
 	color: var(--blue);
 }
-.viewTitleLabel {
+.viewTitleLabel-blue {
+	width: 100%;
 	color: var(--blue);
 	font-size: 30px;
+	text-align: center;
+}
+.viewTitleLabel-grey {
+	width: 100%;
+	color: var(--grey);
+	font-size: 30px;
+	text-align: center;
+}
+.viewTitleLabel-darkgrey {
+	width: 100%;
+	color: var(--darkgrey);
+	font-size: 35px;
+	text-align: center;
 }
 .fileUploadLabel {
 	width: 75px;
@@ -100,11 +116,18 @@ h1 {
 	font-size: 15px;
 	color: var(--grey);
 }
-.dashboardStudentNameLabel {
-	font-size: 25px;
+.studentLabel {
+	font-size: 15px;
+	color: var(--anchor);
+	cursor: pointer;
+}
+
+/** ANCHOR */
+.resourceAnchor {
 	font-weight: bold;
-	color: #5B5B5B;	
-	text-align: center;
+	font-size: 15px;
+	color: var(--anchor);
+	cursor: pointer;
 }
 
 /** IMAGE */
@@ -167,6 +190,12 @@ h1 {
 .simpleBorderPanel-green {
 	background-color: #F8F8F8;
 	border: 2px solid var(--green);
+  	border-radius: 10px;
+  	-moz-border-radius: 10px;
+}
+.simpleBorderPanel-grey {
+	background-color: #F4F4F4;
+	border: 2px solid #ECECEC;
   	border-radius: 10px;
   	-moz-border-radius: 10px;
 }
