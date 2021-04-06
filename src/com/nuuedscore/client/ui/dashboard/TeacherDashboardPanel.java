@@ -12,10 +12,13 @@ import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.flow.ITeacherFlow;
 import com.nuuedscore.client.flow.IsDashboard;
 import com.nuuedscore.client.ui.TitledPanel;
+import com.nuuedscore.client.ui.dashboard.student.score.ScoresPanel;
 import com.nuuedscore.client.ui.dashboard.teacher.AssessmentPanel;
 import com.nuuedscore.client.ui.dashboard.teacher.ResourcePanel;
 import com.nuuedscore.client.ui.dashboard.teacher.StudentPanel;
 import com.nuuedscore.shared.dto.TeacherResource;
+import com.nuuedscore.shared.dto.refdata.RefAptitude;
+import com.nuuedscore.shared.dto.refdata.RefScore;
 
 /**
  * TEACHER Dashboard Panel
@@ -65,7 +68,6 @@ public class TeacherDashboardPanel extends TitledPanel implements IsDashboard, I
 		Button reportsButton = new Button("REPORTS");
 		reportsButton.setStyleName("gwt-Button-green");
 		reportsButton.getElement().getStyle().setProperty("width", "100%");
-		innerLeftPanel.add(reportsButton);
 
 		Button socialEmotionalLearningButton = new Button("Social Emotional Learning");
 		socialEmotionalLearningButton.setStyleName("gwt-Button-green");
@@ -113,16 +115,24 @@ public class TeacherDashboardPanel extends TitledPanel implements IsDashboard, I
 		Button highAptitudeButton = new Button("HIGH APTITUDE");
 		//highAptitudeButton.setStyleName("gwt-Button-grey");
 		highAptitudeButton.getElement().getStyle().setProperty("width", "100%");
+
+		ScoresPanel highPriorityAreasPanel1 = new ScoresPanel("HIGH PRIORITY AREAS #1", RefAptitude.HIGH, RefScore.HIGH) ;
+		ScoresPanel highPriorityAreasPanel2 = new ScoresPanel("HIGH PRIORITY AREAS #2", RefAptitude.HIGH, RefScore.HIGH) ;
+		ScoresPanel highPriorityAreasPanel3 = new ScoresPanel("HIGH PRIORITY AREAS #3", RefAptitude.HIGH, RefScore.HIGH) ;
+				
 		innerRightPanel.add(highAptitudeButton);
-		
+		innerRightPanel.add(highPriorityAreasPanel1);
+		innerRightPanel.add(highPriorityAreasPanel2);
+		innerRightPanel.add(highPriorityAreasPanel3);
+				
+		// THIS
 		Image poohImage = new Image("images/Pooh.jpg");
 		poohImage.setPixelSize(500, 500);
-		innerRightPanel.add(poohImage);
-		
-		// THIS
+
 		innerPanel.add(innerLeftPanel);
 		innerPanel.add(innerCenterPanel);
 		innerPanel.add(innerRightPanel);		
+		innerPanel.add(poohImage);		
 		this.add(innerPanel);
 	}
 	

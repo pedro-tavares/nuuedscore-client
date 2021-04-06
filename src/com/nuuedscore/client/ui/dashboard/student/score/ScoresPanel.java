@@ -13,12 +13,17 @@ import com.nuuedscore.shared.dto.refdata.RefScore;
  * 
  */
 public class ScoresPanel extends TitledPanel {
-	
+
 	private RefAptitude REF_APTITUDE;
 	private RefScore REF_SCORE;
-	
+
 	public ScoresPanel(RefAptitude refAptitude, RefScore refScore) {
-		super(refScore.value() + " SCORES");
+		this(refScore.value() + " SCORES", refAptitude, refScore);
+	}
+	
+	public ScoresPanel(String title, RefAptitude refAptitude, RefScore refScore) {
+		super(title);
+		
 		this.REF_APTITUDE = refAptitude;
 		this.REF_SCORE = refScore;
 		
