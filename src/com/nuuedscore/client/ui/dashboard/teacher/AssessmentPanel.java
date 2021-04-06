@@ -31,15 +31,6 @@ public class AssessmentPanel extends VerticalPanel {
 		});
 		this.add(assessmentsHeaderButton);
 		
-/*
-SBAC: http://SBAC
-Test Gorilla: https://www.testgorilla.com
-IXL Diagnostic: https://www.ixl.com/standards/california/math/high-school
-MAP Growth: https://teach.mapnwea.org/impl/maphelp/Content/Testing/PracticeTest.htm
-STAR Testing: http://starsamplequestions.org/starRTQ/search.jsp
-Lumos Learning: https://www.lumoslearning.com/llwp/resources/free-standardized-test-practice.html
-*/
-
 		ResourceAnchor assessmentAnchor1 = new ResourceAnchor("Test Gorilla" , "https://www.testgorilla.com");
 		ResourceAnchor assessmentAnchor2 = new ResourceAnchor("IXL Diagnostic" , "https://www.ixl.com/standards/california/math/high-school");
 		ResourceAnchor assessmentAnchor3 = new ResourceAnchor("MAP Growth" , "https://teach.mapnwea.org/impl/maphelp/Content/Testing/PracticeTest.htm");
@@ -50,8 +41,7 @@ Lumos Learning: https://www.lumoslearning.com/llwp/resources/free-standardized-t
 		this.add(assessmentAnchor2);
 		this.add(assessmentAnchor3);
 		this.add(assessmentAnchor4);
-		this.add(assessmentAnchor5);
-		
+		this.add(assessmentAnchor5);		
 	}
 	
 }

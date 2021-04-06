@@ -50,6 +50,7 @@ public class TeacherDashboardPanel extends TitledPanel implements IsDashboard, I
 		
 		Button mainDashboardButton = new Button("MAIN DASHBOARD");
 		mainDashboardButton.setStyleName("gwt-Button-grey");
+		mainDashboardButton.getElement().getStyle().setProperty("width", "100%");
 		innerLeftPanel.add(mainDashboardButton);
 		
 		Label studentsLabel = new Label("STUDENTS");
@@ -111,6 +112,7 @@ public class TeacherDashboardPanel extends TitledPanel implements IsDashboard, I
 		
 		Button highAptitudeButton = new Button("HIGH APTITUDE");
 		//highAptitudeButton.setStyleName("gwt-Button-grey");
+		highAptitudeButton.getElement().getStyle().setProperty("width", "100%");
 		innerRightPanel.add(highAptitudeButton);
 		
 		Image poohImage = new Image("images/Pooh.jpg");

@@ -23,18 +23,10 @@ public class StudentPanel extends VerticalPanel {
 	
 	private void init() {
 
-		Label studentLabel1 = new Label("Student 1");
-		studentLabel1.setStyleName("resourceAnchor");
-		this.add(studentLabel1);
-		
-		Label studentLabel2 = new Label("Student 2");
-		studentLabel2.setStyleName("resourceAnchor");
-		this.add(studentLabel2);
-
-		Label studentLabel3 = new Label("Student 3");
-		studentLabel3.setStyleName("resourceAnchor");
-		this.add(studentLabel3);
-
+		for (int i=1; i<=5; i++) {
+			StudentScorePanel studentScorePanel1 = new StudentScorePanel("Student " + i);
+			this.add(studentScorePanel1);
+		}
 	}
 	
 }
