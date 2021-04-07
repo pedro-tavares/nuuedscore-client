@@ -11,7 +11,6 @@ import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.flow.ITeacherFlow;
 import com.nuuedscore.client.ui.portal.teacher.PortalPanel;
 import com.nuuedscore.client.ui.ux.UiUx;
-import com.nuuedscore.shared.dto.StudentResource;
 import com.nuuedscore.shared.dto.TeacherResource;
 import com.nuuedscore.shared.dto.refdata.RefTopic;
 

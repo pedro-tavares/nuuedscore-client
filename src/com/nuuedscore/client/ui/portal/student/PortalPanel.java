@@ -48,7 +48,6 @@ public class PortalPanel extends BasePortalPanel {
 		if (REF_APTITUDE.value().equals(RefAptitude.LOW.value())) {
 			backToDashboardButton.setStyleName("gwt-Button-green");
 		}
-		
 		this.add(backToDashboardButton);
 	}
 	
