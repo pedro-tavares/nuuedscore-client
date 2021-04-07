@@ -24,7 +24,6 @@ public class BasePortalPanel extends TitledPanel {
 	protected Button backToDashboardButton() {
 		Button backToDashboardButton = new Button("BACK TO DASHBOARD");		
 		backToDashboardButton.getElement().getStyle().setProperty("margin", "10px");
-		backToDashboardButton.setStyleName("gwt-Button-green");
 		backToDashboardButton.addClickHandler(event -> {
 			NuuEdScore.GET().getNavigation().showLastDashboard();
 		});		

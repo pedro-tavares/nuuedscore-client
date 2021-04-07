@@ -44,7 +44,12 @@ public class PortalPanel extends BasePortalPanel {
 
 		init();
 		
-		this.add(this.backToDashboardButton());
+		Button backToDashboardButton = this.backToDashboardButton();		
+		if (REF_APTITUDE.value().equals(RefAptitude.LOW.value())) {
+			backToDashboardButton.setStyleName("gwt-Button-green");
+		}
+		
+		this.add(backToDashboardButton);
 	}
 	
 	private void init() {
