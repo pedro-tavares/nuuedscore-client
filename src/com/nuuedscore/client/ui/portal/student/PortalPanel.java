@@ -72,10 +72,14 @@ public class PortalPanel extends BasePortalPanel {
 			
 			PortalTopicAcademicsPanel portalTopicPanel = new PortalTopicAcademicsPanel();
 			//portalTopicPanel.getElement().getStyle().setProperty("backgroundColor", "yellow");
-
+			
 			ScrollPanel scrollPanel = new ScrollPanel(portalTopicPanel);
 			//scrollPanel.getElement().getStyle().setProperty("backgroundColor", "green");
-		    scrollPanel.setSize("1200px", "500px");
+
+			//1900,970
+			//Window.alert(Window.getClientWidth() + "," + Window.getClientHeight());			
+
+			scrollPanel.setSize(Window.getClientWidth()-300 + "px", Window.getClientHeight()-350 + "px");
 			
 			//academicsPanel.add(portalTopicPanel);
 		    academicsPanel.add(scrollPanel);

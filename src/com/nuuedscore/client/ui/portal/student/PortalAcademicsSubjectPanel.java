@@ -1,8 +1,10 @@
 package com.nuuedscore.client.ui.portal.student;
 
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.nuuedscore.client.ui.ResourceButton;
 import com.nuuedscore.client.ui.ux.UiUx;
 import com.nuuedscore.shared.dto.StudentResource;
 
@@ -40,7 +42,9 @@ public class PortalAcademicsSubjectPanel extends VerticalPanel {
 	}
 	
 	public void add(StudentResource studentResource) {
-		Button resourceButton = new Button(studentResource.getName());
+		ResourceButton resourceButton = new ResourceButton();
+		//resourceButton.setResource("images/you_tube_mini_logo.png");
+		resourceButton.setText(studentResource.getName());
 		resourceButton.setStyleName("resourceButton");
 		resourceButton.addClickHandler(event -> {
 			// TODO can do features on resource

@@ -55,6 +55,11 @@ public class StudentDashboardPanel extends TitledPanel implements IsDashboard, I
 		
 		for (StudentResource studentResource: studentResources) {
 			GWT.log("TOPIC:" + studentResource.getTopic() + ", APTITUDE:" + studentResource.getScore());
+		
+			if (studentResource.getSubject().equals("Quotes")) {
+				// TODO Keep Quotes on DASH
+				continue;
+			}
 			
 			switch(studentResource.getScore()) {
 			case LOW:
