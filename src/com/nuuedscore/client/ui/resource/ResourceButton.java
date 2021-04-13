@@ -1,10 +1,17 @@
-package com.nuuedscore.client.ui;
+package com.nuuedscore.client.ui.resource;
 
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Image;
 
+/**
+ * Resource Button
+ * 
+ * @author PATavares
+ * @since Feb 2021
+ * 
+ */
 public class ResourceButton extends Button {
 	
 	private String text;

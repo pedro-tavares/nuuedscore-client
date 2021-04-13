@@ -312,6 +312,11 @@ h1 {
 .portalAcademicsSubjectPanel {
 	padding: 10px;	
 }
+.resourcePreviewPanel {
+	border: 2px solid var(--green);
+  	border-radius: 10px;
+  	-moz-border-radius: 10px;
+}
 
 /** TEXTBOX **/
 .gwt-TextBox {
@@ -350,7 +355,7 @@ button.gwt-Button {
   color: white;
   cursor: pointer;
 }
-button.gwt-Button-blue-100 {
+button.resourcePreviewPanel-100 {
 	width: 100%;
   background: var(--blue);
   border: none;

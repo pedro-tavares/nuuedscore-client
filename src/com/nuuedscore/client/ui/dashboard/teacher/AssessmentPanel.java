@@ -2,7 +2,7 @@ package com.nuuedscore.client.ui.dashboard.teacher;
 
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.nuuedscore.client.ui.ResourceAnchor;
+import com.nuuedscore.client.ui.resource.ResourceAnchor;
 
 /**
  * Assessment Panel

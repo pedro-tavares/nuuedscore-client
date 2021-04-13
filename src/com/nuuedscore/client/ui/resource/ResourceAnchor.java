@@ -1,4 +1,4 @@
-package com.nuuedscore.client.ui;
+package com.nuuedscore.client.ui.resource;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Label;

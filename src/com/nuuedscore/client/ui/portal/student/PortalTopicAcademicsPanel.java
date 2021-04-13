@@ -7,6 +7,7 @@ import java.util.Map;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.nuuedscore.client.domain.DATA;
+import com.nuuedscore.client.ui.resource.ResourceCard;
 import com.nuuedscore.shared.dto.StudentResource;
 
 /**
@@ -30,6 +31,9 @@ public class PortalTopicAcademicsPanel extends HorizontalPanel {
 		List<StudentResource> studentResources = DATA.STUDENT_RESOURCES;
 		
 		Map<String, PortalAcademicsSubjectPanel> studentResourcesForAcademics = new HashMap<String, PortalAcademicsSubjectPanel>();
+
+		ResourceCard openEdCard = new ResourceCard(new StudentResource("http://opened.com"));
+		//this.add(openEdCard);
 		
 		for (StudentResource studentResource: studentResources) {
 			if (studentResource.getSubject().equals("Quotes")) { // TODO Quotes go to DASH
