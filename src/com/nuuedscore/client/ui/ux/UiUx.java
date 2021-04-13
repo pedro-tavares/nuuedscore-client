@@ -30,7 +30,7 @@ public class UiUx {
 		case "Reading": return "#FF6F12";
 		case "Science": return "#9BDA46";
 		case "History": return "#E21A1A";
-		case "Financial Literacy": return "#00FF00";
+		case "Financial Literacy": return "#9EEC00";
 		case "Vocational / Certification Programs": return "#4D2DB6";
 		case "Technical Skills": return "#800080";
 		case "Office Skills": return "#FF5E13";
@@ -40,6 +40,8 @@ public class UiUx {
 		case "Learning Styles": return "#FF6E11";
 		case "Social Emotional Learning": return "#FFA800";
 		case "Education Loans": return "#9EEC00";
+		case "Career Options": return "#2B53B3";
+		case "Tutoring Options": return "#46B4B5";
 		case "ASSESSMENT SCORES": return "#CB0073";
 		default: return "#0074B9"; 
 		}
