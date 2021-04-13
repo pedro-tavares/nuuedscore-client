@@ -41,6 +41,10 @@ public class StudentResource implements Model {
 
 	public StudentResource() {}
 	
+	public StudentResource(String resource) {
+		this.resource = resource;
+	}
+	
     public StudentResource(Long id, String topic, String score, String learningPersonality, String bloom, String subject, String name, String resource) {
     	this(id, topic, RefScore.get(score), RefLearningPersonality.get(learningPersonality), RefBloom.get(bloom), subject, name, resource);
     }
