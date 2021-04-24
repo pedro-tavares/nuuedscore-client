@@ -355,7 +355,7 @@ button.gwt-Button {
   color: white;
   cursor: pointer;
 }
-button.resourcePreviewPanel-100 {
+button.gwt-Button-blue-100 {
 	width: 100%;
   background: var(--blue);
   border: none;
