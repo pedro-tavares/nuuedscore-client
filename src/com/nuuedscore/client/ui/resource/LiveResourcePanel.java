@@ -4,15 +4,15 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Frame;
 
 /**
- * Resource Preview Panel
+ * Live Resource Panel
  * 
  * @author PATavares
  * @since Feb 2021
  * 
  */
-public class ResourcePreviewPanel extends Frame {
+public class LiveResourcePanel extends Frame {
 
-	public ResourcePreviewPanel(String resource) {
+	public LiveResourcePanel(String resource) {
 		super(resource);
 
 		this.setUrl(resource);

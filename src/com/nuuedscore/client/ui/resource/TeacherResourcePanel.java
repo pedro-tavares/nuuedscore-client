@@ -194,7 +194,7 @@ public class TeacherResourcePanel extends TitledPanel {
 	private void showPreviewPopup(CellPreviewEvent<TeacherResource> event) {
 		resourcePreviewPopup = new DecoratedPopupPanel(true);
 		resourcePreviewPopup.setWidth("150px");
-		resourcePreviewPopup.setWidget(new ResourcePreviewPanel(event.getValue().getResource()));
+		resourcePreviewPopup.setWidget(new LiveResourcePanel(event.getValue().getResource()));
 		resourcePreviewPopup.setPopupPosition(event.getNativeEvent().getClientX(), event.getNativeEvent().getClientY());
 		resourcePreviewPopup.show();
 	}

@@ -32,8 +32,10 @@ public class PortalTopicAcademicsPanel extends HorizontalPanel {
 		
 		Map<String, PortalAcademicsSubjectPanel> studentResourcesForAcademics = new HashMap<String, PortalAcademicsSubjectPanel>();
 
+		/*
 		ResourceCard openEdCard = new ResourceCard(new StudentResource("http://opened.com"));
-		//this.add(openEdCard);
+		this.add(openEdCard);
+		*/
 		
 		for (StudentResource studentResource: studentResources) {
 			if (studentResource.getSubject().equals("Quotes")) { // TODO Quotes go to DASH
