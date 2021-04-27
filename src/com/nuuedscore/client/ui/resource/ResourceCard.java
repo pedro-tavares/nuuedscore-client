@@ -1,8 +1,8 @@
 package com.nuuedscore.client.ui.resource;
 
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.shared.dto.StudentResource;
 
 /**
@@ -12,35 +12,30 @@ import com.nuuedscore.shared.dto.StudentResource;
  * @since Feb 2021
  * 
  */
-public class ResourceCard extends VerticalPanel {
+public class ResourceCard extends FlowPanel {
 
 	private StudentResource resource;
 	private Image mainImage, scrollImage;
-	private LiveResourcePanel liveResourcePanel; 
 
 	public ResourceCard(StudentResource resource) {
 		super();
 		this.resource = resource;
 		
+		//this.getElement().getStyle().setProperty("padding", "5px");
+		
 		init();
 	}
 	
-	private void init() {
+	private void init() {		
 		
-		mainImage = new Image(this.resource.getId() + "-1.png");
+		mainImage = new Image("images/resources/student/" + this.resource.getId() + "-1.png");
+		mainImage.setStyleName("resourceCard-image");
+		mainImage.setPixelSize(200, 200);
 		this.add(mainImage);
-		
-		Label resourceNameLabel = new Label(this.resource.getName());
-		resourceNameLabel.setStyleName("blueBoldLabel");
-		this.add(resourceNameLabel);
-	}
-	
-	private void addLiveResourcePanel() {
-		if (this.liveResourcePanel == null) {
-			this.liveResourcePanel = new LiveResourcePanel(resource.getResource());		
-		}
-		this.add(liveResourcePanel);
 
+		Label resourceNameLabel = new Label(this.resource.getName());
+		resourceNameLabel.setStyleName("resourceCard-label");
+		this.add(resourceNameLabel);	
 	}
 
 }

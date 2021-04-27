@@ -318,6 +318,30 @@ h1 {
   	-moz-border-radius: 10px;
 }
 
+/** RESOURCE CARD **/
+.resourceCard-low {
+	margin: 10px;
+	padding: 1px;	
+	border: 2px solid var(--blue);
+  	border-radius: 10px;
+  	-moz-border-radius: 10px;
+}
+.resourceCard-high {
+	margin: 10px;	
+	border: 2px solid var(--green);
+  	border-radius: 10px;
+  	-moz-border-radius: 10px;
+}
+.resourceCard-image {
+  	border-radius: 10px;
+  	-moz-border-radius: 10px;
+}
+.resourceCard-label {
+	font-weight: bold;
+	color: var(--blue);
+	margin: 10px;
+}
+
 /** TEXTBOX **/
 .gwt-TextBox {
 	height: 25px;

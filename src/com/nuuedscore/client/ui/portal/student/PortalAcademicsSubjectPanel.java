@@ -54,8 +54,10 @@ public class PortalAcademicsSubjectPanel extends VerticalPanel {
 */
 
 	public void add(StudentResource studentResource) {
-		ResourceCard resourceCard = new ResourceCard(studentResource);
-		this.innerPanel.add(resourceCard);
+		if (!studentResource.getResource().contains("youtube.com")) {
+			ResourceCard resourceCard = new ResourceCard(studentResource);
+			this.innerPanel.add(resourceCard);
+		}
 	}
 	
 }
