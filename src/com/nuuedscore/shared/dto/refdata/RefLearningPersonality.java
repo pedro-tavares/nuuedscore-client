@@ -18,7 +18,7 @@ public enum RefLearningPersonality {
 	LOGICAL("Logical"),
 	KINESTHETIC("Kinesthetic"),
 	SOLITARY("Solitary"),
-	EGP("EGP");
+	EGP("Egp");
 
 	private String value;
 
