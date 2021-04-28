@@ -16,7 +16,7 @@ import com.nuuedscore.shared.dto.refdata.RefScore;
  * @since Mar 2021
  * 
  */
-public class StudentResource implements Model {
+public class StudentResource implements IResource {
 	
 	private static final long serialVersionUID = -9100127812169529898L;
 	

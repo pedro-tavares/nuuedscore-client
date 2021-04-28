@@ -15,7 +15,7 @@ import com.nuuedscore.shared.dto.refdata.RefLearningPersonality;
  * @since Mar 2021
  * 
  */
-public class TeacherResource implements Model {
+public class TeacherResource implements IResource {
 	
 	private static final long serialVersionUID = -1713364144496580084L;
 
