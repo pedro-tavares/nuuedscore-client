@@ -1,9 +1,12 @@
 package com.nuuedscore.client.ui.resource;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
+import com.nuuedscore.shared.dto.IResource;
 import com.nuuedscore.shared.dto.StudentResource;
+import com.nuuedscore.shared.dto.TeacherResource;
 
 /**
  * Resource Card
@@ -14,10 +17,11 @@ import com.nuuedscore.shared.dto.StudentResource;
  */
 public class ResourceCard extends FlowPanel {
 
-	private StudentResource resource;
+	private IResource resource;
 	private Image mainImage, scrollImage;
+	private Label resourceNameLabel;
 
-	public ResourceCard(StudentResource resource) {
+	public ResourceCard(IResource resource) {
 		super();
 		this.resource = resource;
 		
@@ -28,14 +32,29 @@ public class ResourceCard extends FlowPanel {
 	
 	private void init() {		
 		
-		mainImage = new Image("images/resources/student/" + this.resource.getId() + "-1.png");
+		String resourceFolder = "";
+		if (this.resource instanceof TeacherResource) {
+			resourceFolder = "teacher";
+		}
+		else if (this.resource instanceof StudentResource) {
+			resourceFolder = "student";
+		}
+		//GWT.log("" + resourceFolder);		
+
+		mainImage = new Image("images/resources/" + resourceFolder + "/" + this.resource.getId() + "-1.png");
 		mainImage.setStyleName("resourceCard-image");
 		mainImage.setPixelSize(200, 200);
+		mainImage.addClickHandler(event -> {click();});
 		this.add(mainImage);
 
-		Label resourceNameLabel = new Label(this.resource.getName());
+		resourceNameLabel = new Label(this.resource.getName());
 		resourceNameLabel.setStyleName("resourceCard-label");
-		this.add(resourceNameLabel);	
+		resourceNameLabel.addClickHandler(event -> {click();});
+		this.add(resourceNameLabel);
 	}
 
+	private void click() {
+		// TODO can do features on resource
+		Window.open(resource.getResource(), resource.getName(), "");		
+	}
 }

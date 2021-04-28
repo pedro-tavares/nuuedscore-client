@@ -335,11 +335,13 @@ h1 {
 .resourceCard-image {
   	border-radius: 10px;
   	-moz-border-radius: 10px;
+  	cursor: pointer;
 }
 .resourceCard-label {
 	font-weight: bold;
 	color: var(--blue);
 	margin: 10px;
+	cursor: pointer;
 }
 
 /** TEXTBOX **/

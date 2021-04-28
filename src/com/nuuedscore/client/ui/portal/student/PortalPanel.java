@@ -108,8 +108,7 @@ public class PortalPanel extends BasePortalPanel {
 		}
 	}	
 	
-	public void addButton(/*FlowPanel flowPanel, */StudentResource studentResource) {
-		
+	public void addButton(StudentResource studentResource) {
 		Button resourceButton = new Button(studentResource.getName());		
 		if (RefScore.HIGH.equals(studentResource.getScore())) {
 			resourceButton.setStyleName("gwt-Button-green");
@@ -118,8 +117,7 @@ public class PortalPanel extends BasePortalPanel {
 		resourceButton.addClickHandler(event -> {
 			// TODO can do features on resource
 			Window.open(studentResource.getResource(), studentResource.getName(), "");
-		});
-		
+		});		
 		this.flowPanel.add(resourceButton);		
 	}
 	
@@ -127,10 +125,6 @@ public class PortalPanel extends BasePortalPanel {
 		ResourceCard resourceCard = new ResourceCard(studentResource);
 		resourceCard.setStyleName(studentResource.getScore().equals(RefScore.HIGH) ? "resourceCard-high" : "resourceCard-low");
 		resourceCard.getElement().getStyle().setDisplay(Display.INLINE_BLOCK); //!important
-
-		
-		//TODO click 
-
 		this.flowPanel.add(resourceCard);
 	}
 
