@@ -9,7 +9,7 @@ import javax.ws.rs.QueryParam;
  * @since Feb 2021
  * 
  */
-public class Email implements Model {
+public class Email implements IModel {
 
 	private static final long serialVersionUID = -5095738289505688833L;
 

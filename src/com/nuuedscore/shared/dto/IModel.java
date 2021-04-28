@@ -9,4 +9,4 @@ import java.io.Serializable;
  * @since Feb 2021
  * 
  */
-public interface Model extends Serializable {}
+public interface IModel extends Serializable {}

@@ -11,7 +11,7 @@ import com.nuuedscore.shared.dto.refdata.RefPersonStatus;
  * @since Feb 2021
  * 
  */
-public class Person implements Model {
+public class Person implements IModel {
 
 	private static final long serialVersionUID = -4044000771030154419L;
 	
