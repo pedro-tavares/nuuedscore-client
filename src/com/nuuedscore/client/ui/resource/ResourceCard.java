@@ -18,7 +18,7 @@ import com.nuuedscore.shared.dto.TeacherResource;
 public class ResourceCard extends FlowPanel {
 
 	private IResource resource;
-	private Image mainImage, scrollImage;
+	private Image mainImage, previewImage;
 	private Label resourceNameLabel;
 
 	public ResourceCard(IResource resource) {
@@ -41,20 +41,29 @@ public class ResourceCard extends FlowPanel {
 		}
 		//GWT.log("" + resourceFolder);		
 
-		mainImage = new Image("images/resources/" + resourceFolder + "/" + this.resource.getId() + "-1.png");
+		mainImage = new Image("images/resources/" + resourceFolder + "/" + this.resource.getId() + "-2.png");
 		mainImage.setStyleName("resourceCard-image");
-		mainImage.setPixelSize(200, 200);
+		mainImage.setPixelSize(400, 400);
 		mainImage.addClickHandler(event -> {click();});
 		this.add(mainImage);
 
+		previewImage = new Image("images/resources/" + resourceFolder + "/" + this.resource.getId() + "-2.png");
+		//previewImage.setStyleName("resourceCard-image");
+		previewImage.setPixelSize(300, 500);
+		
 		resourceNameLabel = new Label(this.resource.getName());
 		resourceNameLabel.setStyleName("resourceCard-label");
 		resourceNameLabel.addClickHandler(event -> {click();});
 		this.add(resourceNameLabel);
 	}
 
+	public Image getPreviewImage() {
+		return previewImage;
+	}
+	
 	private void click() {
 		// TODO can do features on resource
 		Window.open(resource.getResource(), resource.getName(), "");		
 	}
+	
 }
