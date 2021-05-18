@@ -1,8 +1,9 @@
 package com.nuuedscore.client.ui.portal.student;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.nuuedscore.client.ui.resource.ResourceCard;
+import com.nuuedscore.client.ui.resource.ResourceButton;
 import com.nuuedscore.client.ui.ux.UiUx;
 import com.nuuedscore.shared.dto.StudentResource;
 
@@ -38,7 +39,7 @@ public class PortalAcademicsSubjectPanel extends VerticalPanel {
 		
 		this.add(innerPanel);
 	}
-/*	
+
 	public void add(StudentResource studentResource) {
 		ResourceButton resourceButton = new ResourceButton();
 		//resourceButton.setResource("images/you_tube_mini_logo.png");
@@ -51,14 +52,14 @@ public class PortalAcademicsSubjectPanel extends VerticalPanel {
 		
 		this.innerPanel.add(resourceButton);
 	}
-*/
-
+	
+/*
 	public void add(StudentResource studentResource) {
 		if (!studentResource.getResource().contains("youtube.com")) {
 			ResourceCard resourceCard = new ResourceCard(studentResource);
 			this.innerPanel.add(resourceCard);
 		}
 	}
-	
+*/	
 }
 

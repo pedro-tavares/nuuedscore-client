@@ -42,7 +42,7 @@ public class UiUx {
 		case "Education Loans": return "#9EEC00";
 		case "Career Options": return "#2B53B3";
 		case "Tutoring Options": return "#46B4B5";
-		case "ASSESSMENT SCORES": return "#CB0073";
+		case "Take ASSESSMENT": case "ASSESSMENT SCORES": return "#CB0073";
 		default: return "#0074B9"; 
 		}
 	}

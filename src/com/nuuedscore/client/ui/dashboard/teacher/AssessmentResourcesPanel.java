@@ -11,9 +11,9 @@ import com.nuuedscore.client.ui.resource.ResourceAnchor;
  * @since Apr 2021
  * 
  */
-public class AssessmentPanel extends VerticalPanel {
+public class AssessmentResourcesPanel extends VerticalPanel {
 
-	public AssessmentPanel() {
+	public AssessmentResourcesPanel() {
 		
 		this.setStyleName("simpleBorderPanel-grey");
 		this.setWidth("100%");
@@ -31,12 +31,14 @@ public class AssessmentPanel extends VerticalPanel {
 		});
 		this.add(assessmentsHeaderButton);
 		
+		ResourceAnchor assessmentAnchorA = new ResourceAnchor("ACT - American College Testing" , "https://www.act.org");
 		ResourceAnchor assessmentAnchor1 = new ResourceAnchor("Test Gorilla" , "https://www.testgorilla.com");
 		ResourceAnchor assessmentAnchor2 = new ResourceAnchor("IXL Diagnostic" , "https://www.ixl.com/standards/california/math/high-school");
 		ResourceAnchor assessmentAnchor3 = new ResourceAnchor("MAP Growth" , "https://teach.mapnwea.org/impl/maphelp/Content/Testing/PracticeTest.htm");
 		ResourceAnchor assessmentAnchor4 = new ResourceAnchor("STAR Testing" , "http://starsamplequestions.org/starRTQ/search.jsp");
 		ResourceAnchor assessmentAnchor5 = new ResourceAnchor("Lumos Learning" , "https://www.lumoslearning.com/llwp/resources/free-standardized-test-practice.html");
 		
+		this.add(assessmentAnchorA);
 		this.add(assessmentAnchor1);
 		this.add(assessmentAnchor2);
 		this.add(assessmentAnchor3);

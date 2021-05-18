@@ -100,8 +100,8 @@ public class PortalPanel extends BasePortalPanel {
 			
 			for (StudentResource studentResource: this.studentResources) {
 				if (!studentResource.getResource().contains("youtube.com")) {
-					//addButton(studentResource);
-					addCard(studentResource);
+					addButton(studentResource);
+					//addCard(studentResource);
 				}
 			}
 			this.add(flowPanel);

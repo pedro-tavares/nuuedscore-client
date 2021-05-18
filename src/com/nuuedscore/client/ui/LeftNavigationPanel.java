@@ -1,6 +1,7 @@
 package com.nuuedscore.client.ui;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Panel;
@@ -8,6 +9,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.ui.dashboard.StudentDashboardPanel;
 import com.nuuedscore.client.ui.dashboard.TeacherDashboardPanel;
+import com.nuuedscore.client.ui.dashboard.student.assessment.StudentAssessmentPanel;
 import com.nuuedscore.client.ui.person.PersonPanel;
 import com.nuuedscore.client.ui.resource.StudentResourcePanel;
 import com.nuuedscore.client.ui.resource.TeacherResourcePanel;
@@ -20,7 +22,7 @@ import com.nuuedscore.shared.dto.refdata.RefPersonRole;
  * @since Feb 2021
  * 
  */
-public class NavigationPanel extends VerticalPanel {
+public class LeftNavigationPanel extends VerticalPanel {
 
 	private VerticalPanel innerPanel = new VerticalPanel();
 	private Image 
@@ -34,11 +36,12 @@ public class NavigationPanel extends VerticalPanel {
 	private Panel lastDashboardPanel;
 	private TeacherDashboardPanel teacherDashboardPanel;
 	private StudentDashboardPanel studentDashboardPanel;
+	private StudentAssessmentPanel studentAssessmentPanel; 
 	private PersonPanel personPanel;
 	private TeacherResourcePanel teacherResourcePanel;
 	private StudentResourcePanel studentResourcePanel;
 	
-	public NavigationPanel() {
+	public LeftNavigationPanel() {
 		super();
 		
 		innerPanel.setSpacing(0);
@@ -165,4 +168,10 @@ public class NavigationPanel extends VerticalPanel {
 		NuuEdScore.GET().showView(studentDashboardPanel);
 	}
 
+	public void takeStudentAssessment() {
+		lastDashboardPanel = studentDashboardPanel;
+		studentAssessmentPanel = new StudentAssessmentPanel();
+		NuuEdScore.GET().showView(studentAssessmentPanel);
+	}
+	
 }

@@ -5,6 +5,7 @@
 :root {
   --green: #46BC61;
   --blue: #0074B9;
+  --orange: #FF6E11;
   --white: #ffffff;
   --grey: #9B9B9B;
   --darkgrey: #5C5C5C;
@@ -409,6 +410,29 @@ button.gwt-Button-green {
 button.gwt-Button-green-100 {
 	width: 100%;
   background: var(--green);
+  border: none;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 10px 50px;
+  font-size: 18px;
+  letter-spacing: 0.8;
+  color: white;
+  cursor: pointer;
+}
+button.gwt-Button-orange {
+  background: var(--orange);
+  border: none;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 10px 50px;
+  font-size: 18px;
+  letter-spacing: 0.8;
+  color: white;
+  cursor: pointer;
+}
+button.gwt-Button-orange-100 {
+	width: 100%;
+  background: var(--orange);
   border: none;
   border-radius: 10px;
   -moz-border-radius: 10px;

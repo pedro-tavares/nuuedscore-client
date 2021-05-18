@@ -54,10 +54,11 @@ public class LearningPersonalityNavigationPanel extends VerticalPanel {
 		Label solitaryLabel = new Label(RefLearningPersonality.SOLITARY.value());
 		solitaryLabel.setStyleName("learningPersonalityNavigationPanel-text");
 		this.add(solitaryLabel);
-		
+/*		
 		Label egpLabel = new Label(RefLearningPersonality.EGP.value());
 		egpLabel.setStyleName("learningPersonalityNavigationPanel-text");
 		this.add(egpLabel);
+*/	
 	}
 	
 	

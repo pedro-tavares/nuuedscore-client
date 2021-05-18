@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.nuuedscore.client.NuuEdScore;
 import com.nuuedscore.client.flow.IStudentFlow;
@@ -12,8 +13,10 @@ import com.nuuedscore.client.flow.IsDashboard;
 import com.nuuedscore.client.ui.TitledPanel;
 import com.nuuedscore.client.ui.dashboard.student.aptitude.AptitudePanel;
 import com.nuuedscore.client.ui.dashboard.student.skill.SkillsMasterPanel;
+import com.nuuedscore.client.ui.ux.UiUx;
 import com.nuuedscore.shared.dto.StudentResource;
 import com.nuuedscore.shared.dto.refdata.RefAptitude;
+import com.nuuedscore.shared.dto.refdata.RefPersonRole;
 
 /**
  * STUDENT Dashboard Panel
@@ -34,7 +37,6 @@ public class StudentDashboardPanel extends TitledPanel implements IsDashboard, I
 
 		this.setSpacing(20);
 		this.init();
-
 	}
 
 	private void init() {

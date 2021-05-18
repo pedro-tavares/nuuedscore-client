@@ -14,4 +14,6 @@ public class ServiceFactory {
 	public static final IPersonService PERSON_SERVICE = GWT.create(IPersonService.class);
 	public static final ITeacherResourceService TEACHER_RESOURCE_SERVICE = GWT.create(ITeacherResourceService.class);
 	public static final IStudentResourceService STUDENT_RESOURCE_SERVICE = GWT.create(IStudentResourceService.class);
+	public static final IActResourceService ACT_RESOURCE_SERVICE = GWT.create(IActResourceService.class);
+	
 }

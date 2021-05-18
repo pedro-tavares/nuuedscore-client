@@ -63,8 +63,8 @@ public class PortalPanel extends BasePortalPanel {
 		//flowPanel.getElement().getStyle().setFloat(Style.Float.RIGHT);
 		
 		for (TeacherResource teacherResource: this.teacherResources) {
-//			addButton(teacherResource);
-			addCard(teacherResource);
+			addButton(teacherResource);
+			//addCard(teacherResource);
 		}
 		this.add(flowPanel);
 
@@ -88,3 +88,4 @@ public class PortalPanel extends BasePortalPanel {
 	}
 	
 }
+

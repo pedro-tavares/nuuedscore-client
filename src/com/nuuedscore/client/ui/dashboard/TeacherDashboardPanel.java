@@ -13,7 +13,7 @@ import com.nuuedscore.client.flow.ITeacherFlow;
 import com.nuuedscore.client.flow.IsDashboard;
 import com.nuuedscore.client.ui.TitledPanel;
 import com.nuuedscore.client.ui.dashboard.student.score.ScoresPanel;
-import com.nuuedscore.client.ui.dashboard.teacher.AssessmentPanel;
+import com.nuuedscore.client.ui.dashboard.teacher.AssessmentResourcesPanel;
 import com.nuuedscore.client.ui.dashboard.teacher.ResourcePanel;
 import com.nuuedscore.client.ui.dashboard.teacher.StudentPanel;
 import com.nuuedscore.shared.dto.TeacherResource;
@@ -61,7 +61,7 @@ public class TeacherDashboardPanel extends TitledPanel implements IsDashboard, I
 		studentsLabel.getElement().getStyle().setProperty("width", "100%");
 		studentsLabel.getElement().getStyle().setProperty("align", "center");
 		
-		AssessmentPanel assessmentPanel = new AssessmentPanel(); 
+		AssessmentResourcesPanel assessmentPanel = new AssessmentResourcesPanel(); 
 		Button headerAssessmentButton = new Button("ASSESSMENTS");
 		headerAssessmentButton.setStyleName("gwt-Button-grey");
 

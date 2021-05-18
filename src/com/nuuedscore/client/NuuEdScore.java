@@ -20,12 +20,13 @@ import com.nuuedscore.IConstants;
 import com.nuuedscore.client.domain.DATA;
 import com.nuuedscore.client.ui.CenterPanel;
 import com.nuuedscore.client.ui.MenuPanel;
-import com.nuuedscore.client.ui.NavigationPanel;
+import com.nuuedscore.client.ui.LeftNavigationPanel;
 import com.nuuedscore.client.ui.dashboard.StudentDashboardPanel;
 import com.nuuedscore.client.ui.dashboard.TeacherDashboardPanel;
 import com.nuuedscore.client.ui.person.LoggedInPanel;
 import com.nuuedscore.client.ui.person.LoginRegisterPanel;
 import com.nuuedscore.client.ui.portal.BasePortalPanel;
+import com.nuuedscore.client.ui.ux.UiUx;
 import com.nuuedscore.shared.dto.Person;
 import com.nuuedscore.shared.dto.refdata.RefPersonRole;
 
@@ -46,7 +47,8 @@ public class NuuEdScore implements EntryPoint {
 		loginButton, 
 		registerButton,
 		asTeacherButton,
-		asStudentButton;
+		asStudentButton,
+		takeAssessmentButton;
 	private CenterPanel centerPanel = new CenterPanel();
 	private LoginRegisterPanel loginPanel = new LoginRegisterPanel();
 	private Label poweredByRAILabel = new Label("Powered by R AI - " + new Date());
@@ -57,7 +59,7 @@ public class NuuEdScore implements EntryPoint {
 	private LoggedInPanel loggedinPanel;	
 	private Panel lastViewPanel;
 	private MenuPanel menuPanel = new MenuPanel(); // TODO remove
-	private NavigationPanel navigationPanel;
+	private LeftNavigationPanel leftNavigationPanel;
 	
 	public static Person PERSON;
 	public static RefPersonRole PERSON_ROLE = RefPersonRole.ROLE_STUDENT;
@@ -183,6 +185,9 @@ public class NuuEdScore implements EntryPoint {
 		if (asStudentButton != null) {
 			RootPanel.get().add(asStudentButton, Window.getClientWidth() - 275, 80);
 		}
+		if (takeAssessmentButton != null) {
+			RootPanel.get().add(takeAssessmentButton, Window.getClientWidth() - 550, 80);
+		}
 	}
 
 	/**
@@ -231,8 +236,8 @@ public class NuuEdScore implements EntryPoint {
 			GWT.log("SHOW " + RefPersonRole.ROLE_TEACHER + " DASHBOARD");
 
 			PERSON_ROLE = RefPersonRole.ROLE_TEACHER;
-			this.navigationPanel.createViews();
-			this.navigationPanel.showTeacherDashboard();
+			this.leftNavigationPanel.createViews();
+			this.leftNavigationPanel.showTeacherDashboard();
 			
 		});
 
@@ -243,24 +248,35 @@ public class NuuEdScore implements EntryPoint {
 			GWT.log("SHOW " + RefPersonRole.ROLE_STUDENT + " DASHBOARD");
 
 			PERSON_ROLE = RefPersonRole.ROLE_STUDENT;
-			this.navigationPanel.showStudentDashboard();
+			this.leftNavigationPanel.showStudentDashboard();
+		});
+
+		
+		String ACTION = "Take ASSESSMENT";
+		takeAssessmentButton = new Button(ACTION);		
+		takeAssessmentButton.setStyleName("gwt-Button-orange");
+		takeAssessmentButton.getElement().getStyle().setProperty("zIndex", "999");
+		takeAssessmentButton.addClickHandler(event -> {
+			GWT.log("" + ACTION);
+			
+			this.leftNavigationPanel.takeStudentAssessment();
 		});
 		
 		createNavigation();
 	}
 	
 	private void createNavigation() {
-		navigationPanel = new NavigationPanel();
-		RootPanel.get().add(navigationPanel, 0, 0);
+		leftNavigationPanel = new LeftNavigationPanel();
+		RootPanel.get().add(leftNavigationPanel, 0, 0);
 		RootPanel.get().add(topPanel, MENU_WIDTH, 0);		 
 		resize();
 		
-		navigationPanel.createViews();
-		navigationPanel.showDefaultView();
+		leftNavigationPanel.createViews();
+		leftNavigationPanel.showDefaultView();
 	}
 
-	public NavigationPanel getNavigation() {
-		return navigationPanel;
+	public LeftNavigationPanel getNavigation() {
+		return leftNavigationPanel;
 	}
 	
 	public void logOut() {
@@ -324,13 +340,16 @@ public class NuuEdScore implements EntryPoint {
 		if (viewPanel instanceof TeacherDashboardPanel) {
 			asTeacherButton.setVisible(false);
 			asStudentButton.setVisible(true);
+			takeAssessmentButton.setVisible(false);
 		} 
 		else if (viewPanel instanceof StudentDashboardPanel) {
 			asTeacherButton.setVisible(true);
 			asStudentButton.setVisible(false);
+			takeAssessmentButton.setVisible(true);
 		} else if (viewPanel instanceof BasePortalPanel) {
 			asTeacherButton.setVisible(false);
 			asStudentButton.setVisible(false);
+			takeAssessmentButton.setVisible(false);
 		}
 	}
 	
