@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.nuuedscore.shared.dto.StudentResource;
 import com.nuuedscore.shared.dto.TeacherResource;
+import com.nuuedscore.shared.dto.act.ACTAuthId;
 
 /**
  * DATA
@@ -29,5 +30,12 @@ public class DATA {
 	
 	public static List<TeacherResource> TEACHER_RESOURCES;
 	public static List<StudentResource> STUDENT_RESOURCES;
-	
+
+	public static ACTAuthId ACT_AUTH_ID = new ACTAuthId(
+		"GL3nYdxNixGsLw0oW2CrwMLNBL5f92E5",
+		"cDYAbwvXdk3IHkHvWPnni_DuTz2Cu7lbKFEM_D6eJIMV58sAfGnMv0ybqhUPkrud",
+		"dev-minerva",
+		"client_credentials"
+	);
+
 }

@@ -259,7 +259,7 @@ public class NuuEdScore implements EntryPoint {
 		takeAssessmentButton.addClickHandler(event -> {
 			GWT.log("" + ACTION);
 			
-			this.leftNavigationPanel.takeStudentAssessment();
+			this.leftNavigationPanel.takeStudentAssessment(takeAssessmentButton);
 		});
 		
 		createNavigation();

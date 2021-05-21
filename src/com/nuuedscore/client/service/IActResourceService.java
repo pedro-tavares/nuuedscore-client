@@ -1,17 +1,16 @@
 package com.nuuedscore.client.service;
 
-import java.util.List;
-
 import javax.ws.rs.BeanParam;
-import javax.ws.rs.GET;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
 
 import org.fusesource.restygwt.client.MethodCallback;
 import org.fusesource.restygwt.client.RestService;
 
-import com.nuuedscore.shared.dto.Email;
-import com.nuuedscore.shared.dto.Person;
+import com.nuuedscore.shared.dto.act.ACTAuthId;
+import com.nuuedscore.shared.dto.act.ACTToken;
 
 /**
  * ACT Service
@@ -25,6 +24,7 @@ public interface IActResourceService extends RestService {
 
 	@POST
 	@Path("/oauth/token")
-	public void oauthToken(@BeanParam Email email, MethodCallback<Person> callback);
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void oauthToken(@BeanParam ACTAuthId actAuthId, MethodCallback<ACTToken> callback);
 
 }

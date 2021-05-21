@@ -5,15 +5,17 @@ import org.fusesource.restygwt.client.MethodCallback;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Cursor;
-import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.nuuedscore.client.NuuEdScore;
+import com.nuuedscore.client.domain.DATA;
 import com.nuuedscore.client.flow.IStudentAssess;
 import com.nuuedscore.client.service.ServiceFactory;
 import com.nuuedscore.client.ui.TitledPanel;
-import com.nuuedscore.client.ui.resource.LiveResourcePanel;
 import com.nuuedscore.shared.dto.Person;
+import com.nuuedscore.shared.dto.act.ACTToken;
 
 /**
  * STUDENT ASSESSMENT Panel
@@ -24,23 +26,34 @@ import com.nuuedscore.shared.dto.Person;
  */
 public class StudentAssessmentPanel extends TitledPanel implements IStudentAssess {
 
+	private Button assessmentButton;
 	private VerticalPanel innerPanel = new VerticalPanel();
+	private HTML serverResponseLabel;
 	
-	public StudentAssessmentPanel() {
+	public StudentAssessmentPanel(Button assessmentButton) {
 		super(NuuEdScore.GET_PERSON().getFirstName() +  "'s Assessment");
 
+		this.assessmentButton = assessmentButton;
+		
 		this.setSpacing(20);
 		this.init();
 	}
 
 	private void init() {
+		this.add(innerPanel);
 		
-		Window.alert("FOK!");
+		serverResponseLabel = new HTML();
+		serverResponseLabel.setStyleName("infoLabel");		
+		innerPanel.add(serverResponseLabel);
 		
+		GWT.log("Initialising Student Assessment...");
+		callACTAuthenticationService();
+		
+		/*
 		LiveResourcePanel assessmentPanel = new LiveResourcePanel("https://www.act.org");		
 		innerPanel.add(assessmentPanel);
-		
 		this.add(innerPanel);
+		*/
 	}
 
 	@Override
@@ -55,43 +68,43 @@ public class StudentAssessmentPanel extends TitledPanel implements IStudentAsses
 		
 	}
 	
-	private void callAuthenticateService(Person person) {
-		GWT.log("callLoginService");
+	private void callACTAuthenticationService() {
+		GWT.log("callACTAuthenticationService:\n" + DATA.ACT_AUTH_ID);
 
-		loginButton.getElement().getStyle().setCursor(Cursor.WAIT);
+		assessmentButton.getElement().getStyle().setCursor(Cursor.WAIT);
 		RootPanel.getBodyElement().getStyle().setCursor(Cursor.WAIT);
 
-		ServiceFactory.ACT_RESOURCE_SERVICE.login(person, new MethodCallback<String>() {
-			
+		ServiceFactory.ACT_RESOURCE_SERVICE.oauthToken(DATA.ACT_AUTH_ID, new MethodCallback<ACTToken>() {			
 			@Override
-			public void onSuccess(Method method, String response) {
-				GWT.log("PERSON_SERVICE.loginS:" + response);
+			public void onSuccess(Method method, ACTToken response) {
+				GWT.log("ACT_RESOURCE_SERVICE.oauthToken.onSuccess:" + response);
 
-				loginButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
+				assessmentButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
 				RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
 
-//				serverResponseLabel.removeStyleName("errorLabel");
-				serverResponseLabel.setText("Login Successful for:" + person.getEmail());
+				serverResponseLabel.removeStyleName("errorLabel");
+				serverResponseLabel.setText("ACT Authentication Successful!");
 				
-				NuuEdScore.GET().letsGo(/*person*/ARCHITECT_PERSON());
+				doAssessment();
 			}
 
 			@Override
 			public void onFailure(Method method, Throwable exception) {
-				loginButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
+				assessmentButton.getElement().getStyle().setCursor(Cursor.DEFAULT);
 				RootPanel.getBodyElement().getStyle().setCursor(Cursor.DEFAULT);
 
-				GWT.log("PERSON_SERVICE.loginF:" + method.getResponse().getText());
-				String response = method.getResponse().getText();
-								
-				if (response.indexOf("ERROR:") == -1) {
-					NuuEdScore.GET().letsGo(/*person*/ARCHITECT_PERSON());
-				} else {
-					serverResponseLabel.setStyleName("errorLabel");					
-					serverResponseLabel.setText(response);				
-				}
+				String response = method.getResponse().getText();		
+				
+				GWT.log("ACT_RESOURCE_SERVICE.oauthToken.onFailure:" + response);
+				
+				serverResponseLabel.setStyleName("errorLabel");					
+				serverResponseLabel.setText(response);				
 			}
 		});
+	}
+	
+	private void doAssessment() {
+		GWT.log("doAssessment");		
 	}
 	
 }

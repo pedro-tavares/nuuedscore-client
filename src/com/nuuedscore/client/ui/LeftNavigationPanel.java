@@ -168,9 +168,9 @@ public class LeftNavigationPanel extends VerticalPanel {
 		NuuEdScore.GET().showView(studentDashboardPanel);
 	}
 
-	public void takeStudentAssessment() {
+	public void takeStudentAssessment(Button takeAssessmentButton) {
 		lastDashboardPanel = studentDashboardPanel;
-		studentAssessmentPanel = new StudentAssessmentPanel();
+		studentAssessmentPanel = new StudentAssessmentPanel(takeAssessmentButton);
 		NuuEdScore.GET().showView(studentAssessmentPanel);
 	}
 	

@@ -2,6 +2,8 @@ package com.nuuedscore.shared.dto.act;
 
 import javax.ws.rs.QueryParam;
 
+import com.nuuedscore.shared.dto.IModel;
+
 /**
  * Token Model
  * 
@@ -9,8 +11,10 @@ import javax.ws.rs.QueryParam;
  * @since May 2021
  * 
  */
-public class ACTToken {
+public class ACTToken implements IModel {
 
+	private static final long serialVersionUID = -7305705989524733106L;
+	
 	@QueryParam("access_token")
 	private String accessToken;
 	@QueryParam("scope")
