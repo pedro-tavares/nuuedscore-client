@@ -68,6 +68,10 @@ public class StudentAssessmentPanel extends TitledPanel implements IStudentAsses
 		
 	}
 	
+	private void getACTAuthenticationCookie() {
+		GWT.log("getACTAuthenticationCookie:\n" + DATA.ACT_AUTH_ID);
+	}
+	
 	private void callACTAuthenticationService() {
 		GWT.log("callACTAuthenticationService:\n" + DATA.ACT_AUTH_ID);
 

@@ -1,5 +1,6 @@
 package com.nuuedscore.client;
 
+import java.util.Collection;
 import java.util.Date;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -19,14 +20,13 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.nuuedscore.IConstants;
 import com.nuuedscore.client.domain.DATA;
 import com.nuuedscore.client.ui.CenterPanel;
-import com.nuuedscore.client.ui.MenuPanel;
 import com.nuuedscore.client.ui.LeftNavigationPanel;
+import com.nuuedscore.client.ui.MenuPanel;
 import com.nuuedscore.client.ui.dashboard.StudentDashboardPanel;
 import com.nuuedscore.client.ui.dashboard.TeacherDashboardPanel;
 import com.nuuedscore.client.ui.person.LoggedInPanel;
 import com.nuuedscore.client.ui.person.LoginRegisterPanel;
 import com.nuuedscore.client.ui.portal.BasePortalPanel;
-import com.nuuedscore.client.ui.ux.UiUx;
 import com.nuuedscore.shared.dto.Person;
 import com.nuuedscore.shared.dto.refdata.RefPersonRole;
 
@@ -72,6 +72,7 @@ public class NuuEdScore implements EntryPoint {
 		INSTANCE = this;
 
 		detectHOST_IP();
+		detectCOOKIES();
 		
 		//prototypeUI();
 		createUI();
@@ -97,6 +98,14 @@ public class NuuEdScore implements EntryPoint {
 		//Window.alert(HOST);
 	}
 
+	private void detectCOOKIES() {
+		GWT.log("detecting COOKIES...");
+		Collection<String> cookies = Cookies.getCookieNames();
+		for (String key: cookies) {
+			GWT.log(key);
+		}
+	}
+	
 	private void prototypeUI() {
 		
 	}

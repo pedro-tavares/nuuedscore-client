@@ -16,14 +16,15 @@ public class ACTAuthId implements IModel {
 	private static final long serialVersionUID = 2096179087049632620L;
 		
 	public ACTAuthId() {
-		this("", "", "", "");
+		this("", "", "", "", "");
 	}
 	
-	public ACTAuthId(String clientId, String clientSecret, String audience, String grantType) {
+	public ACTAuthId(String clientId, String clientSecret, String audience, String grantType, String userId) {
 		this.clientId = clientId;
 		this.clientSecret = clientSecret;
 		this.audience = audience;
 		this.grantType = grantType;
+		this.userId = userId;
 	}
 	
 	@QueryParam("client_id")
@@ -34,10 +35,12 @@ public class ACTAuthId implements IModel {
 	private String audience;
 	@QueryParam("grant_type")
 	private String grantType;
-
+	@QueryParam("user_id")
+	private String userId;
+	
 	@Override
 	public String toString() {
-		return "{" + "client_id=" + clientId + ", client_secret=" + clientSecret + ", audience=" + audience + ", grant_type=" + grantType + "}";
+		return "{" + "client_id=" + clientId + ", client_secret=" + clientSecret + ", audience=" + audience + ", grant_type=" + grantType + ", user_id=" + userId + "}";
 	}	
 	
 }

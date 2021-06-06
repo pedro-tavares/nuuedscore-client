@@ -35,7 +35,8 @@ public class DATA {
 		"GL3nYdxNixGsLw0oW2CrwMLNBL5f92E5",
 		"cDYAbwvXdk3IHkHvWPnni_DuTz2Cu7lbKFEM_D6eJIMV58sAfGnMv0ybqhUPkrud",
 		"dev-minerva",
-		"client_credentials"
+		"client_credentials",
+		"NuuEdScoreC Client"
 	);
 
 }
